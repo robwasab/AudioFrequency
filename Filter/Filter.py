@@ -5,7 +5,7 @@ class FirFilter(Module):
 	def __init__(self, *args, **kwargs):
 		Module.__init__(self, *args, **kwargs)
 		try:
-			self.bcoef = kwargs['bcoef']
+			self.bcoef = np.array(kwargs['bcoef'])
 		except KeyError as kerr:
 			print Module.FAIL + self.__class__.__name__ + ' requires key word argument bcoef!' + Module.ENDC
 			raise kerr

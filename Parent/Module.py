@@ -2,7 +2,7 @@ import Queue
 from threading import Thread, Lock 
 import traceback
 from Utility.PlotClient import PlotClient
-from time import time,sleep
+from   time import time,sleep
 import pdb
 
 class Module(Thread):
@@ -47,7 +47,10 @@ class Module(Thread):
 			if self.passthrough == True:
 				self.output.input.put(in_data)
 				return True
+			start = time()
 			out_dat = self.process(in_data)
+			stop  = time()
+			print self.YELLOW + self.__class__.__name__+':\t [%4.3f ms]'%(1000.0*(stop-start))+self.ENDC
 
 			if self.output is not None:
 				if out_dat is not None:
@@ -82,7 +85,6 @@ class Module(Thread):
 		try:
 			while True:
 				busy = self.work()
-
 				if busy:
 					base = time()
 				else:

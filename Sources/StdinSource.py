@@ -1,12 +1,9 @@
-from Parent.Source import Source
+from Parent.Source  import Source
+from Functions.util import letters2pam
 import select
 import sys
 import os
-import numpy as np
-import itertools
 
-def letters2pam(s):
-	return list(itertools.chain(*[[int(pair[0] + pair[1],2)*2-3 for pair in np.reshape(list('{:08b}'.format(ord(c))),(4,2))] for c in s]))
 
 class StdinSource(Source):
 	def __init__(self, *args, **kwargs):
@@ -16,4 +13,5 @@ class StdinSource(Source):
 		readable, writeable, execeptional = select.select([sys.stdin.fileno()], [], [], 1.0)
 		for fd in readable:
 			data = os.read(fd, 1024)
+			print data
 			return letters2pam(data)
