@@ -13,13 +13,15 @@ class PlotSink(Sink):
 
 	def process(self, data):
 		if self.plt != None:
-			os.write(sys.stdout.fileno(), self.YELLOW + self.__class__.__name__+ '[%d]: plotting...'%(self.fig))
+			#os.write(sys.stdout.fileno(), self.YELLOW + self.__class__.__name__+ '[%d]: plotting...'%(self.fig))
 			self.plt.figure(self.fig)
+			self.plt.clf()
 			if self.stem:
 				self.plt.stem(data)
 			else:
 				self.plt.plot(data)
 			self.plt.show(block = False)
-			os.write(sys.stdout.fileno(), self.GREEN + ' Done!' + self.ENDC + '\n')
+			self.plt.pause(0.01)
+			#os.write(sys.stdout.fileno(), self.GREEN + ' Done!' + self.ENDC + '\n')
 		else:
 			print self.FAIL + self.__class__.__name__+': You must pass plt object as \'plt\' key word argument' + self.ENDC

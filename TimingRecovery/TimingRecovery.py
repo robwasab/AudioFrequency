@@ -17,11 +17,11 @@ class TimingRecovery(Module):
 
 	def process(self, data):
 		down_samples = np.zeros(len(data)/self.M)
-		down_samples_index = 0
+		down_samples_index = 1 
 		step = self.M / 2		
 		
 		for skip_by_m in range(0, len(data), self.M):
-			print self.offset
+			#print self.offset
 			n = int(round(skip_by_m + self.offset))
 			if n >= len(data):
 				break
@@ -32,5 +32,5 @@ class TimingRecovery(Module):
 			dy_doffset = (quantize(data[n], self.alphabet) - data[n]) * (data[n+1] - data[n-1])
 			self.offset += step * dy_doffset
 
-		print self.BLUE + 'down_samples_index [%d/%d]'%(down_samples_index, len(data)/self.M)
+		#print self.BLUE + 'down_samples_index [%d/%d]'%(down_samples_index, len(data)/self.M)
 		return down_samples[0:down_samples_index]

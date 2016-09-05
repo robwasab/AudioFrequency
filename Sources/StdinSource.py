@@ -14,4 +14,4 @@ class StdinSource(Source):
 		for fd in readable:
 			data = os.read(fd, 1024)
 			print data
-			return letters2pam(data)
+			return data

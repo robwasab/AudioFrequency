@@ -9,7 +9,7 @@ import pdb
 class RandomSource(Source):
 	def __init__(self, *args, **kwargs):
 		Source.__init__(self, *args, **kwargs)
-		self.num = 1000
+		self.num = 5000 
 
 	def read(self):
 		readable, writeable, execeptional = select.select([sys.stdin.fileno()], [], [], 1.0)
