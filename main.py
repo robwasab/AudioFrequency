@@ -6,6 +6,7 @@ from   Autogain.Autogain     import Autogain
 from   Filter.MatchedFilter  import MatchedFilter 
 from   Filter.FastFilter     import FastFilter
 from   TimingRecovery.TimingRecovery import TimingRecovery
+from   FrameSync.FrameSync import FrameSync
 from   Sinks.StdoutSink import StdoutSink
 from   Sinks.Plotspec   import Plotspec
 from   Sinks.PlotSink   import PlotSink
@@ -26,19 +27,21 @@ prefix = Prefix()
 pshape = Pulseshape (M = 101, beta = 0.5, debug = False)
 mfilt  = FastFilter(bcoef = pshape.ps)
 trecov = TimingRecovery(M = 101)
+fsync  = FrameSync(prefix = prefix.prefix)
 sink   = StdoutSink()
 specan = Plotspec(fs = 44.1E3, plt = plt, main = True)
-stem1  = PlotSink(plt = plt, stem = False, main = True)
-stem2  = PlotSink(plt = plt, stem = False, main = True)
-
-modules = [source, prefix, pshape, mfilt, stem1, trecov, stem2, sink]
+plot1  = PlotSink(plt = plt, stem = False, main = True)
+plot2  = PlotSink(plt = plt, stem = False, main = True, persist = True)
+plot3  = PlotSink(plt = plt, stem = False, main = True)
+modules = [source, prefix, pshape, mfilt, trecov, plot1, fsync, plot2, sink]
 connect(modules)
 try:
 	modules[0].start()
 	while True:
 		#specan.work()
-		stem1.work()
-		stem2.work()
+		plot1.work()
+		plot2.work()
+		#plot3.work()
 except KeyboardInterrupt:
 	print 'quitting all threads!'
 

@@ -7,15 +7,18 @@ class PlotSink(Sink):
 	def __init__(self, *args, **kwargs):
 		Sink.__init__(self, *args, **kwargs)
 		self.stem = False
+		self.persist = False
 		for key in kwargs:
 			if key == 'stem':
 				self.stem = bool(kwargs[key])
-
+			elif key == 'persist':
+				self.persist = bool(kwargs[key])
 	def process(self, data):
 		if self.plt != None:
 			#os.write(sys.stdout.fileno(), self.YELLOW + self.__class__.__name__+ '[%d]: plotting...'%(self.fig))
 			self.plt.figure(self.fig)
-			self.plt.clf()
+			if not self.persist:
+				self.plt.clf()
 			if self.stem:
 				self.plt.stem(data)
 			else:

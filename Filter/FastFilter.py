@@ -35,29 +35,25 @@ class FastFilter(FirFilter):
 			self.save = signal[-self.slen]
 		return outp[:len(signal)]
 		
-	def conv_chunk(self,sig,db=False):
+	def reset(self):
+		self.save = np.zeros(self.slen)
+
+	def conv_chunk(self,sig,fsync_hack=False):
 		size = self.chunklen - self.slen  # size sig chunk + slen = pwr of 2
 		pad = [0] * (len(self.bcoef) - 1 + size - ((len(self.bcoef)+len(sig)-1)%size)) # pad make sig integer number of size
 		sig = np.append(sig, pad)
 		outp = []
 		for k in range(0, len(sig)/size):
 			self.save = np.append(self.save, sig[k*size:(k+1)*size])
-			if db:
-				plt.clf()
-				plt.subplot(211)
-				plt.plot(save)
-				plt.plot(save[0:slen], 'r.')
-				plt.title('saved + signal chunk')
 			raw = peri_convo(self.save, self.bcoef)
-			if db:
-				plt.subplot(212)
-				plt.plot(raw)
-				if len(outp) > len(fir):
-					plt.plot(outp[-slen:], 'g')
-				plt.title('convolution with (saved + signal chunk) and tri')
-				plt.show(block=False)
-				plt.pause(.1)
+			if fsync_hack:
+				idx = np.argmax(raw)
+				if raw[idx] > 0.75:
+					return k * size + idx
 			#print k, k*size, (k+1)*size
 			outp.extend(raw[self.slen:].tolist())
 			self.save = self.save[-self.slen:]
-		return outp[:len(sig)-len(pad)+self.slen]
+		if fsync_hack:
+			return -1
+		else:
+			return outp[:len(sig)-len(pad)+self.slen]
