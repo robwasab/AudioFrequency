@@ -21,7 +21,7 @@ def connect(modules):
 		modules[i].fig = i
 	modules[-1].fig = len(modules)-1
 
-source = StdinSource()
+source = StdinSource(main = True)
 #ransrc = RandomSource()
 prefix = Prefix()
 pshape = Pulseshape (M = 101, beta = 0.5, debug = False)
@@ -29,18 +29,19 @@ mfilt  = FastFilter(bcoef = pshape.ps)
 trecov = TimingRecovery(M = 101)
 fsync  = FrameSync(prefix = prefix.prefix)
 sink   = StdoutSink()
-specan = Plotspec(fs = 44.1E3, plt = plt, main = True)
-plot1  = PlotSink(plt = plt, stem = False, main = True)
-plot2  = PlotSink(plt = plt, stem = False, main = True, persist = True)
+specan = Plotspec(fs = 44.1E3, plt = plt,  main = True)
+plot1  = PlotSink(plt = plt, stem = False, main = True, persist = False)
+plot2  = PlotSink(plt = plt, stem = True,  main = True, persist = True)
 plot3  = PlotSink(plt = plt, stem = False, main = True)
-modules = [source, prefix, pshape, mfilt, trecov, plot1, fsync, plot2, sink]
+modules = [source, prefix, pshape, mfilt, trecov, plot1, fsync, sink]
 connect(modules)
 try:
 	modules[0].start()
 	while True:
 		#specan.work()
+		source.work()
 		plot1.work()
-		plot2.work()
+		#plot2.work()
 		#plot3.work()
 except KeyboardInterrupt:
 	print 'quitting all threads!'

@@ -62,6 +62,8 @@ def quantize(x, alphabet = [-3,-1,1,3]):
 			least_error = error
 	return closest
 
+def pam2char(pam):
+	return list
 if __name__ == '__main__':
 	for bits in range(2,20):
 		maximumlength(bits)

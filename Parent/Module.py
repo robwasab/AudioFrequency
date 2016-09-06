@@ -1,8 +1,9 @@
-import Queue
-from threading import Thread, Lock 
-import traceback
-from Utility.PlotClient import PlotClient
+from   Utility.PlotClient import PlotClient
+from   threading import Thread, Lock 
 from   time import time,sleep
+import traceback
+import Queue
+import sys
 import pdb
 
 class Module(Thread):
@@ -110,5 +111,9 @@ class Module(Thread):
 
 	def process(self, input_data):
 		return input_data
-
 	
+	def log(self, msg):
+		if type(msg) != str:
+			msg = str(msg)
+		msg = self.GREEN + self.__class__.__name__ + ': '+ self.ENDC + msg
+		print msg

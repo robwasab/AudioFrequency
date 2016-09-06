@@ -33,4 +33,5 @@ class TimingRecovery(Module):
 			self.offset += step * dy_doffset
 
 		#print self.BLUE + 'down_samples_index [%d/%d]'%(down_samples_index, len(data)/self.M)
+		self.log('adaptation offset: %.3f'%self.offset)
 		return down_samples[0:down_samples_index]

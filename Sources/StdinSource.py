@@ -13,5 +13,5 @@ class StdinSource(Source):
 		readable, writeable, execeptional = select.select([sys.stdin.fileno()], [], [], 1.0)
 		for fd in readable:
 			data = os.read(fd, 1024)
-			print data
+			self.log('[Beginning transmission!] \n>> ' + data)
 			return data

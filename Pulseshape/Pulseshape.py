@@ -49,6 +49,7 @@ class Pulseshape(FastFilter):
 		mup = np.zeros(self.M*len(signal))
         	mup[np.arange(0,len(mup),self.M)] = signal	
 		analog_signal = FastFilter.process(self, mup)
+		#self.log('signal length: %d'%len(analog_signal))
 		if self.debug:
 			self.plt.figure(self.fig)
 			self.plt.subplot(211)

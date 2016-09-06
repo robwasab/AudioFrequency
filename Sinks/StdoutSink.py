@@ -15,6 +15,7 @@ class StdoutSink(Sink):
 				header += ' LENGTH: %d' % (len(data))
 			except Exception:
 				pass
-			header += self.ENDC + '\n'
-			os.write(fd,  header + str(data) + '\n')
+			header += self.ENDC + '\n>> '
+			#os.write(fd,  header + str(data) + '\n')
+			self.log('[Receiving data!]\n'+header+str(data))
 	
