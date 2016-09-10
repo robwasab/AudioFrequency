@@ -17,6 +17,10 @@ class Module(Thread):
 	UNDERLINE = '\033[4m'
 	print_lock = Lock()
 	
+	
+	def reset(self):
+		return
+
 	def __init__(self, next_module = None, **kwargs):
 		Thread.__init__(self)
 		self.input  = Queue.Queue()
@@ -117,3 +121,6 @@ class Module(Thread):
 			msg = str(msg)
 		msg = self.GREEN + self.__class__.__name__ + ': '+ self.ENDC + msg
 		print msg
+	
+	def print_kw_error(self, arg_name):
+		print Module.FAIL + self.__class__.__name__ + ' requires key word argument %s!'%arg_name + Module.ENDC
