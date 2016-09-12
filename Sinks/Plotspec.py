@@ -16,9 +16,10 @@ class Plotspec(Sink):
 		if self.plt != None:
 			data = data[:-1]
 			fft_data = fft(data)/float(len(data))
-			fft_axis = fftfreq(len(data))
+			fft_axis = fftfreq(len(data))/self.ts/1E3
+			
 			self.plt.figure(self.fig)
-		
+			self.plt.gcf().clf()
 			self.plt.subplot(311)
 			self.plt.cla()
 			self.plt.plot(np.arange(0, len(data))*self.ts, data)
@@ -27,7 +28,7 @@ class Plotspec(Sink):
 
 			self.plt.subplot(312)
 			self.plt.cla()
-			self.plt.plot(fft_axis, np.abs(fft_data))
+			self.plt.plot(fft_axis, 20.0*np.log10(np.abs(fft_data)))
 			fft_lim = fft_axis[ np.array([-1,0])+(len(fft_axis)+1)/2]
 			self.plt.xlim(fft_lim)
 			self.plt.title('Magnitude')
@@ -39,5 +40,7 @@ class Plotspec(Sink):
 			self.plt.ylabel('Phase/pi')
 			self.plt.title('Phase')
 			self.plt.pause(.1)
+			if self.debug:
+				self.plt.show()
 		else:
 			print self.YELLOW + 'No plt object. Pass as key word argument \'plt\'' + self.ENDC

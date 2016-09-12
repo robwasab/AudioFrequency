@@ -1,19 +1,26 @@
-from   Sources.StdinSource   import StdinSource
-from   Sources.RandomSource  import RandomSource
-from   Prefix.Prefix         import Prefix
-from   Pulseshape.Pulseshape import Pulseshape
-from   Autogain.Autogain     import Autogain
-from   Filter.MatchedFilter  import MatchedFilter 
-from   Filter.FastFilter     import FastFilter
-from   TimingRecovery.TimingRecovery import TimingRecovery
-from   FrameSync.FrameSync import FrameSync
-from   Sinks.StdoutSink import StdoutSink
-from   Sinks.Plotspec   import Plotspec
-from   Sinks.PlotSink   import PlotSink
+from   Sources.StdinSource   import StdinSource   as StdinS
+from   Sources.RandomSource  import RandomSource  as Random
+from   Prefix.Prefix         import Prefix        as Prefix
+from   Pulseshape.Pulseshape import Pulseshape    as Pulses
+from   Modulator.Modulator   import Modulator     as Modula
+from   Demodulator.Demodulator import Demodulator as Demodu
+from   Filter.FastFilter       import FastFilter    as FastFi
+from   TimingRecovery.TimingRecovery import TimingRecovery as Timing
+from   FrameSync.FrameSync           import FrameSync      as FrameS
+from   Sinks.StdoutSink              import StdoutSink     as Stdout
+from   Sinks.Plotspec                import Plotspec       as Plotsp
+from   Sinks.PlotSink                import PlotSink       as PlotSi
 import matplotlib.pyplot as plt
-from   time import sleep
+import numpy as np
 import traceback
 import pdb
+
+fs = 44.1E3
+
+def fround(fc):
+	n = np.round(float(fs)/float(fc))
+	return fs/n
+
 
 def connect(modules):
 	for i in range(0, len(modules)-1):
@@ -21,28 +28,28 @@ def connect(modules):
 		modules[i].fig = i
 	modules[-1].fig = len(modules)-1
 
-source = StdinSource(main = True)
-#ransrc = RandomSource()
-prefix = Prefix()
-pshape = Pulseshape (M = 101, beta = 0.5, debug = False)
-mfilt  = FastFilter(bcoef = pshape.ps)
-trecov = TimingRecovery(M = 101)
-fsync  = FrameSync(prefix = prefix.prefix)
-sink   = StdoutSink()
-specan = Plotspec(fs = 44.1E3, plt = plt,  main = True)
-plot1  = PlotSink(plt = plt, stem = False, main = True, persist = False)
-plot2  = PlotSink(plt = plt, stem = True,  main = True, persist = True)
-plot3  = PlotSink(plt = plt, stem = False, main = True)
-modules = [source, prefix, pshape, mfilt, trecov, plot1, fsync, sink]
+source = StdinS(main = True)
+#ransrc= Random()
+prefix = Prefix(main = False, debug = False )
+pshape = Pulses(main = False, debug = False, M = 101, beta = 0.5)
+modula = Modula(main = False, debug = False, fs = fs, fc = 12.5E3)
+demodu = Demodu(main = False, debug = False, fs = fs, fc = fround(10E3), plt = plt)
+mfilte = FastFi(main = False, debug = False, bcoef = pshape.ps)
+trecov = Timing(main = False, debug = False, M = 101)
+frsync = FrameS(main = False, debug = False, prefix = prefix.prefix)
+stdsin = Stdout(main = False, debug = False )
+specan = Plotsp(main = True , debug = False, plt = plt, fs = fs)
+plot1  = PlotSi(main = True , debug = False, plt = plt, stem = False, persist = False)
+plot2  = PlotSi(main = True , debug = False ,plt = plt, stem = False, persist = False)
+plot3  = PlotSi(main = True , debug = False, plt = plt, stem = False, persist = False)
+modules = [source, prefix, pshape, modula, demodu, mfilte, trecov, plot1, frsync, stdsin]
 connect(modules)
+
 try:
 	modules[0].start()
 	while True:
-		#specan.work()
 		source.work()
 		plot1.work()
-		#plot2.work()
-		#plot3.work()
 except KeyboardInterrupt:
 	print 'quitting all threads!'
 

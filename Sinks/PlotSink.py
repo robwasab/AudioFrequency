@@ -23,7 +23,7 @@ class PlotSink(Sink):
 				self.plt.stem(data)
 			else:
 				self.plt.plot(data)
-			self.plt.show(block = False)
+			self.plt.show(block = self.debug)
 			self.plt.pause(0.01)
 			#os.write(sys.stdout.fileno(), self.GREEN + ' Done!' + self.ENDC + '\n')
 		else:

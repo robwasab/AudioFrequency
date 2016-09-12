@@ -83,7 +83,7 @@ class FastFilter(FirFilter):
 			#self.plt.pause(0.5)
 
 			if fsync_hack:
-				idx = np.argmax(raw)
+				idx = np.argmax(np.abs(raw))
 				# OK, this is pretty weird, it fucked my brain pretty hard.
 				# It is where the maximimum correlation point happens in the
 				# recorded data.
@@ -102,7 +102,10 @@ class FastFilter(FirFilter):
 					# I did have to do a little guess work here, but the 
 					# above analysis made me less blind, it really helped.
 					start_idx = k*size + len(raw) + idx - self.slen
-					return start_idx
+					sign = np.sign(raw[idx])
+					self.log('Sign of correlation:')
+					self.log(np.sign(raw[idx]))
+					return (start_idx, sign)
 			#else:
 			#	self.log('[%d/%d] raw len: %d slen: %d'%(k,len(sig)/size, len(raw), self.slen))
 			outp.extend(raw[self.slen:].tolist())

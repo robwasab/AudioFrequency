@@ -19,13 +19,13 @@ class FrameSync(FastFilter):
 			raise(ke)
 	
 	def process(self, data):
-		index = self.conv_chunk(data, fsync_hack = True)
+		index, sign = self.conv_chunk(data, fsync_hack = True)
 		self.reset()
 		if index == -1:
 			print self.FAIL + 'Could not find start index...' + self.ENDC
 			return data
 		
-		payload = [quantize(d) for d in data[index + 1:]]
+		payload = [quantize(d) for d in sign*data[index + 1:]]
 		
 		# Beastly one-liner
 		num_bytes,= unpack('H', pam2letters(payload[:8]))
