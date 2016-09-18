@@ -58,7 +58,7 @@ class TesMod(Modula):
 
 modula = TesMod(main = True, debug = False, fs = fs)
 
-demodu = Demodu(main = True, debug = True , fs = fs, fc = fround(5E3), plt = plt)
+demodu = Demodu(main = True, debug = False, fs = fs, fc = 5E3, plt = plt)
 stdsin = Stdout(main = True, debug = False )
 specan = Plotsp(main = True, debug = True , fs = fs, plt = plt)
 plot1  = PlotSi(main = True, debug = False, plt = plt, stem = False, persist = False)

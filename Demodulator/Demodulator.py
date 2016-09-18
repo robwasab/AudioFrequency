@@ -1,5 +1,6 @@
 from   Parent.Module import Module
 from   numpy import cos, sin, pi
+from   time import time
 import numpy as np
 
 def fround(fc, fs):
@@ -22,6 +23,7 @@ class Demodulator(Module):
 		self.qp_lp = LowPass(10, self.fs)
 		self.fc = fround(self.fc, self.fs)
 		self.log('fcenter: %.3f Hz'%self.fc)
+		self.loop_time = 0
 	
 	def process(self, data):
 		if self.debug:
@@ -30,36 +32,60 @@ class Demodulator(Module):
 			self.ipower = np.zeros(len(data))
 			self.qpower = np.zeros(len(data))
 			self.freqs  = np.zeros(len(data))
+			self.locks  = np.zeros(len(data))
 
 		demod = np.zeros(len(data))
+		start = time()
 		for n in xrange(0, len(data)):
 			if self.debug:
-				phase, error, in_phase, qu_phase, in_vco, qu_vco, freq = self.costa.work(data[n])
+				phase, error, in_phase, qu_phase, in_vco, qu_vco, freq, lock = self.costa.work(data[n])
 				demod[n] = in_phase 
 				self.phase[n] = phase
 				self.error[n] = error
 				self.qpower[n] = self.qp_lp.work(qu_phase**2)
 				self.ipower[n] = self.ip_lp.work(in_phase**2)
 				self.freqs[n]  = freq
+				self.locks[n]  = lock
 			else:
 				demod[n] = self.costa.work(data[n])
 		if self.debug:
 			if self.plt != None:
 				self.plt.figure(self.fig)
 				self.plt.gcf().clf()
-				self.plt.subplot(411)
-				self.plt.plot(self.ipower, 'r')
-				self.plt.title('In Phase')
-				self.plt.subplot(412)
-				self.plt.plot(self.qpower, 'b')
-				self.plt.title('Quad Phase')
-				self.plt.subplot(413)
-				self.plt.plot(demod)
-				self.plt.title('Data')
-				self.plt.subplot(414)
-				self.plt.plot(self.freqs)
-				self.plt.title('Frequencies')
+				plot_dc = 'plot_dc'
+				plot_freq_phase = 'plot_freq_phase'
+				plot_mode = plot_dc
+				if plot_mode == plot_dc:
+					self.plt.subplot(511)
+					self.plt.plot(self.ipower, 'r')
+					self.plt.title('In Phase')
+					self.plt.subplot(512)
+					self.plt.plot(self.qpower, 'b')
+					self.plt.title('Quad Phase')
+					self.plt.subplot(513)
+					self.plt.plot(self.locks)
+					self.plt.title('Locked')
+					self.plt.subplot(514)
+					self.plt.plot(demod)
+					self.plt.title('Data')
+					self.plt.subplot(515)
+					self.plt.plot(self.freqs)
+					self.plt.title('Frequencies')
+				elif plot_mode == plot_freq_phase:
+					self.plt.subplot(211)
+					self.plt.plot(10.0*np.log10(self.phase))
+					self.plt.title('Ramping Phase')
+					self.plt.subplot(212)
+					self.plt.plot(self.freqs)
+					self.plt.title('Frequencies')
+
 				self.plt.show(block = False)
+			self.costa.print_times()
+			print 'Average Loop time: %.3f'%(self.costa.time_loop*1E6)
+		duration = time() - start
+		avg_loop = duration / float(len(data))*1E6
+		self.log('Avg Loop Duration:\t%.3f [us]'%avg_loop)
+		self.log('%.3f Hz Sample Period:\t%.3f [us]'%(self.fs, 1E6/self.fs))
 		return demod
 
 class CostasLoop(object):
@@ -92,11 +118,15 @@ class CostasLoop(object):
 		# Lock Detector. If the in phase power is above the 
 		# Threshold and quadrature phase below the threshold,
 		# Then it will report True for locked. 
-		self.lock_detect = CostasLoop.LockDetect(fs, 1E-4) 
+		self.lock_detect = CostasLoop.LockDetect(fs, 1E-3) 
 
 		# State Variable
 		self.lock = False
-		self.osc_lock = False
+
+		# Timing Variables
+		labels = ['time phase gen', 'time freq calc', 'time osc', 'time error', 'time integ', 'time analog', 'time lock']
+		self.create_timers(labels)
+		self.time_loop = 0.0
 		
 	class LockDetect(object):
 		def __init__(self, fs, thresh = 1E-3):
@@ -109,13 +139,14 @@ class CostasLoop(object):
 		def work(self, in_phase, qu_phase):
 			in_phase = self.in_phase_lp.work(in_phase**2)
 			qu_phase = self.qu_phase_lp.work(qu_phase**2)
+			
 			if in_phase > self.thresh and qu_phase < self.thresh:
 				return True
 			return False
 
 	# Values are determined experimentally by updating, running, and repeating
 	class LoopIntegrator(object):
-		def __init__(self, k1=2.0/3.0, k2=1.0/4.0, k3=1.0/16.0):
+		def __init__(self, k1=1.0/3.0, k2=1.0/4.0, k3=1.0/16.0):
 			self.k1 = k1
 			self.k2 = k2
 			self.k3 = k3
@@ -123,88 +154,115 @@ class CostasLoop(object):
 			self.integrator2 = Integrator()
 			self.last_s3 = 0
 
-		def work(self, signal):
-			s1 = signal
+		def work(self, s1):
 			s3 = self.k1*s1 + self.integrator1.work(s1*self.k1*self.k2+self.integrator2.work(s1*self.k1*self.k2*self.k3))
 			self.last_s3 = s3
 			return s3
 
 		def value(self):
 			return self.last_s3
-		
-	def generate_wavelet(self, vco_phase):
-		fc = fround(self.freq_filter.y1, self.fs)
-		print 'Generating Wavelet with fc = %.3f Hz'%fc
-		offset = vco_phase - float(int(vco_phase/(2.0*pi)))
-		n = int(self.fs/fc)
-		phases = 2.0*pi*np.arange(n)/self.fs + offset
-		self.cos_wavelet = cos(phases)
-		self.sin_wavelet = sin(phases) 
-		self.wavelet_ind = 1
-		self.wavelet_n   = n
 	
-	def next_cos(self):
-		val = self.cos_wavelet[self.wavelet_ind]	
-		self.wavelet_ind = (self.wavelet_ind + 1) % self.wavelet_n
-		return val
+	def create_timers(self, labels):
+		self.times = np.zeros(len(labels), np.float)
+		self.labels = labels
+		self.current_timer = 0
+	
+	def print_times(self):
+		total = 0.0
+		for n in range(0, len(self.labels)):
+			label = self.labels[n]
+			delta = self.times[n]*1E6
+			print '%s:\t%.3f [us]'%(label, delta)
+			total+= delta
+		print 'total:\t%.3f [us]'%total
 
-	def next_sin(self):
-		val = self.sin_wavelet[self.wavelet_ind]	
-		self.wavelet_ind = (self.wavelet_ind + 1) % self.wavelet_n
-		return val
+	def tstart(self):
+		self.time_start = time()
 	
+	def tstop(self):
+		delta = time()-self.time_start
+		self.times[self.current_timer] += delta
+		self.times[self.current_timer] /= 2.0
+		self.current_timer = (self.current_timer + 1)%len(self.times)
+
 	# Main work function
 	def work(self, input):
+		#loop_start = time()
+
 		real_input = input
 
-		# Saturator, if the input rises beyond +/- will be
-		# Thrown out of lock
+		# Hard Limit
 		if input > 1:
 			input = 1
 		elif input < -1:
 			input = -1
-		
+
+		# Phase Generator
 		# vco_phase is a constantly increasing phase value
-		vco_phase = self.phase_integrator.value() + 2.0*pi*self.vco_integrator.value()	
-		self.freq_filter.work((vco_phase - self.last_vco_phase)/(2.0*pi)*self.fs)
-		self.last_vco_phase = vco_phase
-		cos_vco = 0
-		sin_vco = 0
-		if not self.osc_lock:
-			cos_vco = cos(vco_phase)
-			sin_vco =-sin(vco_phase)
+		# vco_phase = self.phase_integrator.value() + 2.0*pi*self.vco_integrator.value()	
+		#self.tstart()
+		vco_phase = self.phase_integrator.value() + self.vco_integrator.value()
+		#self.tstop()
 
-			#if self.lock:
-			#	self.osc_lock = True
-			#	self.generate_wavelet(vco_phase)
-			#	print 'Oscillator Locked'
-		else:
-			cos_vco = self.next_cos()
-			sin_vco =-self.next_sin()
+		# Frequency Est.
+		# self.freq_filter.work((vco_phase - self.last_vco_phase)/(2.0*pi)*self.fs)
+		#self.tstart()
+		#self.freq_filter.work((vco_phase - self.last_vco_phase)*self.fs)
+		#self.last_vco_phase = vco_phase
+		#self.tstop()
 
-		cos_error = input * cos_vco
-		sin_error = input * sin_vco
-		in_phase  = self.ilp.work(cos_error)
-		qu_phase  = self.qlp.work(sin_error)
+		# Oscillator	
+		#self.tstart()
+		vco_radians = 2.0*pi*vco_phase
+		cos_vco = cos(vco_radians)
+		sin_vco =-sin(vco_radians)
+		#cos_vco = self.squ_cos(vco_phase)
+		#sin_vco =-self.squ_sin(vco_phase)
+		#self.tstop()
 
-		lock = self.lock_detect.work(in_phase, qu_phase)
+		# Error Generator
+		#self.tstart()
+		in_phase  = self.ilp.work(input * cos_vco)
+		qu_phase  = self.qlp.work(input * sin_vco)
+		error = in_phase * qu_phase
+		#self.tstop()
+
+		# Update Loop Integrators
+		#self.tstart()
+		self.phase_integrator.work(error) 
+		self.vco_integrator.work(1.0)
+		#self.tstop()
+
+		# Downconvert analog
+		#self.tstart()
+		in_phase_signal = 2.0*self.ilp_signal.work(real_input * cos_vco)
+		#qu_phase_signal = 2.0*self.qlp_signal.work(real_input * sin_vco)
+		#self.tstop()
+
+		# Lock Detector
+		#self.tstart()
+		#lock = self.lock_detect.work(in_phase_signal, qu_phase_signal)
+		#self.tstop()
 
 		#if self.lock != lock:
 		#	self.lock = lock
-		#	self.osc_lock = False
 		#	print 'Lock State: ' + str(lock)
-
-		error = in_phase * qu_phase
-		
-		if not self.lock:
-			self.phase_integrator.work(error) 
-
-		self.vco_integrator.work(1.0) 
-		in_phase_signal = 2.0*self.ilp_signal.work(real_input * cos_vco)
+		#	print 'frequency : %.3f'%self.freq_filter.y1
+			#cycles = vco_phase/(2.0*pi)
+			#print 'Cycles: %.3f'%cycles
+		#	if lock:
+		#		print 'vco_phase : %.3f'%vco_phase
+		#		offset = (cycles - np.floor(cycles))*2.0*pi
+		#		print 'est offset: %.3f'%offset
+		#		print 'Locking Oscillator'
+		#		self.locked_error = error 
+		#	print ''
+		#time_loop = time() - loop_start
+		#self.time_loop += time_loop
+		#self.time_loop /= 2.0
 
 		if self.debug:
-			qu_phase_signal = 2.0*self.qlp_signal.work(real_input * sin_vco)
-			return (self.phase_integrator.value(), error, in_phase_signal, qu_phase_signal, cos_vco, sin_vco, self.freq_filter.y1)
+			return (vco_phase, error, in_phase_signal, qu_phase_signal, cos_vco, sin_vco, self.freq_filter.y1, lock)
 		else:
 			return in_phase_signal
 
