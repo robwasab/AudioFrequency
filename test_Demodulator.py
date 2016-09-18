@@ -32,8 +32,33 @@ source = StdinS(main = True)
 prefix = Prefix(main = True, debug = False )
 pshape = Pulses(main = True, debug = False, M = 101, beta = 0.5)
 mfilte = FastFi(main = True, debug = False, bcoef = pshape.ps)
-modula = Modula(main = True, debug = False, fs = fs, fc = 12E3) 
-demodu = Demodu(main = True, debug = True , fs = fs, fc = fround(10E3), plt = plt)
+class TesMod(Modula):
+	def __init__(self, *args, **kwargs):
+		kwargs['fc'] = 4E3 #Dummy
+		Modula.__init__(self,*args, **kwargs)
+		kwargs['fc'] = 6E3
+		self.mod1 = Modula(*args, **kwargs) 
+		kwargs['fc'] = 7E3
+		self.mod2 = Modula(*args, **kwargs)
+		kwargs['fc'] = 6E3
+		self.mod3 = Modula(*args, **kwargs)
+		kwargs['fc'] = 5E3
+		self.mod4 = Modula(*args, **kwargs)
+	
+	def process(self, data):
+		data1 = np.copy(data)
+		data2 = np.copy(data)
+		data3 = np.copy(data)
+		data4 = np.copy(data)
+		data1 = self.mod1.process(data1)
+		data2 = self.mod2.process(data2)
+		data3 = self.mod3.process(data3)
+		data4 = self.mod4.process(data4)
+		return np.append(data1, np.append(data2, np.append(data3, data4))) 
+
+modula = TesMod(main = True, debug = False, fs = fs)
+
+demodu = Demodu(main = True, debug = True , fs = fs, fc = fround(5E3), plt = plt)
 stdsin = Stdout(main = True, debug = False )
 specan = Plotsp(main = True, debug = True , fs = fs, plt = plt)
 plot1  = PlotSi(main = True, debug = False, plt = plt, stem = False, persist = False)

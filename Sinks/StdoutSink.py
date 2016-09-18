@@ -6,6 +6,8 @@ import os
 class StdoutSink(Sink):
 	def __init__(self, *args, **kwargs):
 		Sink.__init__(self, *args, **kwargs)
+		self.data = ''
+		self.done = False
 			
 	def process(self, data):
 		readable, writeable, exceptional = select.select([], [sys.stdout.fileno()], [])
@@ -18,4 +20,5 @@ class StdoutSink(Sink):
 			header += self.ENDC + '\n>> '
 			#os.write(fd,  header + str(data) + '\n')
 			self.log('[Receiving data!]\n'+header+str(data))
-	
+			self.data = data
+			self.done = True
