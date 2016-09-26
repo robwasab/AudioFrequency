@@ -8,9 +8,13 @@ import pdb
 
 class RandomSource(Source):
 	def __init__(self, *args, **kwargs):
-		Source.__init__(self, *args, **kwargs)
 		self.num = 5000 
 		self.data = ''
+		if len(args) > 0:
+			self.num = int(args[0])
+			args = args[1:]
+
+		Source.__init__(self, *args, **kwargs)
 
 	def read(self):
 		readable, writeable, execeptional = select.select([sys.stdin.fileno()], [], [], 1.0)

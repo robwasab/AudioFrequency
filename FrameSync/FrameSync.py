@@ -10,25 +10,31 @@ def pam2letters(pam):
 class FrameSync(FastFilter):
 	def __init__(self, *args, **kwargs):
 		try:
-			self.prefix  = np.fliplr([kwargs['prefix']])[0]
-			self.prefix /= float(len(self.prefix))
-			kwargs['bcoef'] = self.prefix
+			corr_prefix  = np.fliplr([kwargs['prefix']])[0]
+			corr_prefix /= np.sum(corr_prefix**2)
+			kwargs['bcoef'] = corr_prefix
 			FastFilter.__init__(self, *args, **kwargs)
+
 		except KeyError as ke:
 			print self.FAIL + 'Key word argument \'prefix\' required' + self.ENDC
 			raise(ke)
-	
-	def process(self, data):
-		index, sign = self.conv_chunk(data, fsync_hack = True)
-		self.reset()
-		if index == -1:
-			print self.FAIL + 'Could not find start index...' + self.ENDC
-			return data
-		
-		payload = [quantize(d) for d in sign*data[index + 1:]]
-		
-		# Beastly one-liner
-		num_bytes,= unpack('H', pam2letters(payload[:8]))
-		num_bytes+= 1
-		return pam2letters(payload[8:8+(4*num_bytes)])
 
+	def process(self, data):
+		index, s = self.conv_chunk(data, fsync_hack = True)
+
+		if index == -1:
+			self.log('Not passing any more data')
+			return None 
+
+		self.log('Got a start index')
+
+		# reset after you actually got a start index
+		self.reset()
+		payload = [quantize(d) for d in s*data[index + 1:]]
+
+		num_bytes,= unpack('H', pam2letters(payload[:8]))
+
+		self.log('num_bytes: %d'%num_bytes)
+		num_bytes+= 1
+		letters = pam2letters(payload[8:8+(4*num_bytes)])
+		return letters

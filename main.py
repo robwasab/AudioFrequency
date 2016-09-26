@@ -29,11 +29,11 @@ def connect(modules):
 	modules[-1].fig = len(modules)-1
 
 source = StdinS(main = True)
-ransrc = Random()
+#ransrc = Random()
 prefix = Prefix(main = False, debug = False )
 pshape = Pulses(main = False, debug = False, M = 101, beta = 0.5)
-modula = Modula(main = False, debug = False, fs = fs, fc = 10E3)
-demodu = Demodu(main = False, debug = False, fs = fs, fc = fround(10E3), plt = plt)
+modula = Modula(main = False, debug = False, fs = fs, fc = 7E3)
+demodu = Demodu(main = False, debug = False, fs = fs, fc = 6E3, plt = plt)
 mfilte = FastFi(main = False, debug = False, bcoef = pshape.ps)
 trecov = Timing(main = False, debug = False, M = 101)
 frsync = FrameS(main = False, debug = False, prefix = prefix.prefix)
@@ -42,17 +42,18 @@ specan = Plotsp(main = True , debug = False, plt = plt, fs = fs)
 plot1  = PlotSi(main = True , debug = False, plt = plt, stem = False, persist = False)
 plot2  = PlotSi(main = True , debug = False ,plt = plt, stem = False, persist = False)
 plot3  = PlotSi(main = True , debug = False, plt = plt, stem = False, persist = False)
-modules = [ransrc, prefix, pshape, modula, demodu, mfilte, trecov, plot1, frsync, stdsin]
+modules = [source, prefix, pshape, mfilte, modula, plot1, demodu, plot2, trecov, frsync, stdsin]
 connect(modules)
 
 try:
 	modules[0].start()
 	while True:
-		#source.work()
+		source.work()
 		plot1.work()
+		plot2.work()
 		stdsin.work()
 		if stdsin.done:
-			stdsin.log('Pass: ' + str(ransrc.data==stdsin.data))
+			#stdsin.log('Pass: ' + str(ransrc.data==stdsin.data))
 			stdsin.done = False
 except KeyboardInterrupt:
 	print 'quitting all threads!'

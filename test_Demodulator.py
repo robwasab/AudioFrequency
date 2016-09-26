@@ -36,11 +36,11 @@ class TesMod(Modula):
 	def __init__(self, *args, **kwargs):
 		kwargs['fc'] = 4E3 #Dummy
 		Modula.__init__(self,*args, **kwargs)
-		kwargs['fc'] = 6E3
-		self.mod1 = Modula(*args, **kwargs) 
 		kwargs['fc'] = 7E3
+		self.mod1 = Modula(*args, **kwargs) 
+		kwargs['fc'] = 5E3
 		self.mod2 = Modula(*args, **kwargs)
-		kwargs['fc'] = 6E3
+		kwargs['fc'] = 7E3
 		self.mod3 = Modula(*args, **kwargs)
 		kwargs['fc'] = 5E3
 		self.mod4 = Modula(*args, **kwargs)
@@ -58,7 +58,7 @@ class TesMod(Modula):
 
 modula = TesMod(main = True, debug = False, fs = fs)
 
-demodu = Demodu(main = True, debug = False, fs = fs, fc = 5E3, plt = plt)
+demodu = Demodu(main = True, debug = False, fs = fs, fc = 6E3, plt = plt)
 stdsin = Stdout(main = True, debug = False )
 specan = Plotsp(main = True, debug = True , fs = fs, plt = plt)
 plot1  = PlotSi(main = True, debug = False, plt = plt, stem = False, persist = False)

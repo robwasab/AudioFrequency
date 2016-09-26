@@ -8,6 +8,7 @@ class TimingRecovery(Module):
 		self.alphabet = [-3, -1, 1, 3]
 		try:
 			self.M = int(kwargs['M'])
+			self.log('M: %d'%self.M)
 		except KeyError as ke:
 			print self.FAIL+'You must pass ' + str(ke) + ' as key word argument'
 			raise ke

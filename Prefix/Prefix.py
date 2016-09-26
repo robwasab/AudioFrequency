@@ -6,9 +6,13 @@ import pdb
 class Prefix(Module):
 	def __init__(self, *args, **kwargs):
 		Module.__init__(self, *args, **kwargs)
-		self.prsize = 2**8
 		self.maxbyt = 2**16
-		self.prefix = maximumlength(8) 
+		bits = 8 
+		for kw in kwargs:
+			if kw == 'bits':
+				bits = int(kwargs[kw])
+		self.prefix = maximumlength(bits) 
+		self.log('Prefix Length: %d'%len(self.prefix))
 	
 	def process(self, byte_data):
 		ret = None
