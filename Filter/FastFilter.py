@@ -29,6 +29,7 @@ class FastFilter(FirFilter):
 		self.chunklen = 2 
 		while self.chunklen < len(self.bcoef):
 			self.chunklen *= 2
+		self.chunklen *= 2
 
 	def process(self, signal):
 		#self.log('input signal length: %6d'%len(signal))
@@ -59,6 +60,16 @@ class FastFilter(FirFilter):
 			self.log(' len(data)+padding: %d'%len(sig))
 			self.log('(len(data)+padding)%%read size: %d'%(len(sig)%size))
 			self.log(' ncycles   : %d'%ncyc)
+			self.plt.figure(self.fig)
+			self.plt.gcf().clf()
+			self.plt.subplot(211)
+			self.plt.plot(self.bcoef)
+			self.plt.ylim((-2,2))
+			self.plt.title('Reference')
+			self.plt.subplot(212)
+			self.plt.plot(data)
+			self.plt.title('Data')
+			self.plt.show(block=True)
 			self.save_handle = None
 			self.raw_handle = None
 		
@@ -78,7 +89,7 @@ class FastFilter(FirFilter):
 					self.plt.subplot(211)
 					self.save_handle, = self.plt.plot(self.save)
 					self.plt.title('save')
-					#self.plt.ylim((-1.5,1.5))
+					self.plt.ylim((-20,20))
 				else:
 					self.save_handle.set_ydata(self.save)
 
@@ -87,7 +98,7 @@ class FastFilter(FirFilter):
 					self.plt.subplot(212)
 					self.raw_handle, = self.plt.plot(raw)
 					self.plt.title('raw')
-					self.plt.ylim((-1.5, 1.5))
+					self.plt.ylim((-3, 3))
 					self.plt.show(block = False)
 				else:
 					self.raw_handle.set_ydata(raw)
@@ -99,7 +110,7 @@ class FastFilter(FirFilter):
 			if fsync_hack:
 				raw_abs = np.abs(raw)
 				idx = np.argmax(raw_abs)
-				if raw_abs[idx] > 0.75: 
+				if raw_abs[idx] > 0.5: 
 					start_idx = k*size + idx
 					if debug:
 						self.log('k       : %d'%k)

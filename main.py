@@ -50,14 +50,14 @@ plot1  = PlotSi(main = True , debug = False, plt = plt, stem = False, persist = 
 plot2  = PlotSi(main = True , debug = False ,plt = plt, stem = False, persist = False)
 plot3  = PlotSi(main = True , debug = False, plt = plt, stem = True , persist = False)
 stdsin = Stdout(main = True , debug = False )
-modules = [source, prefix, pshape, modula, channe, demodu, equali, mfilte, interp, trecov, plot3, frsync, stdsin]
+modules = [source, prefix, pshape, modula, plot1, channe, demodu, equali, mfilte, interp, trecov, plot3, frsync, stdsin]
 connect(modules)
 
 try:
 	modules[0].start()
 	while True:
 		source.work()
-		#plot1.work()
+		plot1.work()
 		#plot2.work()
 		plot3.work()
 		stdsin.work()

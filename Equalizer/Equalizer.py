@@ -8,16 +8,28 @@ from   numpy.linalg import inv
 from   numpy.fft import fft
 import numpy as np
 
-class Equalizer(FrameSync):
+class Equalizer(FastFilter):
 	def __init__(self, *args, **kwargs):
-		FrameSync.__init__(self, *args, **kwargs)
-		self.delay = 3 
-		self.eqlen = 21 
-		self.train = kwargs['prefix'][self.eqlen-1-self.delay:-self.delay]
-		default_eq = np.zeros(self.eqlen)
-		default_eq[0] = 1.0
-		self.equal = FastFilter(bcoef = default_eq)
-		self.chan_resp = None
+		kw = ''
+		try:
+			kw = 'prefix'
+			corr_prefix  = np.fliplr([kwargs[kw]])[0]
+			corr_prefix /= np.sum(corr_prefix**2)
+			kwargs['bcoef'] = corr_prefix
+			FastFilter.__init__(self, *args, **kwargs)
+
+			self.delay = 3 
+			self.eqlen = 21 
+			self.train = kwargs[kw][self.eqlen-1-self.delay:-self.delay]
+			default_eq = np.zeros(self.eqlen)
+			default_eq[0] = 1.0
+		
+			self.equal = FastFilter(bcoef = default_eq)
+			self.chan_resp = None
+		except KeyError as ke:
+			self.print_kw_error(kw)
+			raise(ke)
+
 		for kw in kwargs:
 			if kw == 'channel':
 				channel = kwargs[kw]
@@ -25,6 +37,13 @@ class Equalizer(FrameSync):
 				channel = np.append(channel, pad)
 				self.chan_resp = np.abs(fft(channel))
 		if self.debug:
+			if self.plt != None:
+				self.plt.figure(self.fig)
+				self.plt.gcf().clf()
+				self.plt.plot(self.train)
+				self.plt.title('Initializiation: Equalizer Training Header')
+				self.plt.show(block = False)
+
 			self.eq_plt = None
 			self.xaxis  = None
 			N = 8 
@@ -38,6 +57,7 @@ class Equalizer(FrameSync):
 		if index == -1:
 			self.log('Could not find start index')
 			return None
+		self.log('index: %d'%index)
 		self.reset()
 		fir = self.equalizer(data[:index]).tolist()
 		self.equal.set_bcoef(fir)
@@ -59,7 +79,7 @@ class Equalizer(FrameSync):
 				self.plt.gcf().clf()
 				#self.eq_plt, = self.plt.plot(self.xaxis, freq_resp)
 				self.plt.plot(self.xaxis, freq_resp)
-				if self.chan_resp != None:
+				if self.chan_resp is None:
 					self.plt.plot(self.xaxis, self.chan_resp, 'r-')
 				self.plt.title('Equalizer Response')
 				self.plt.show(block=False)
