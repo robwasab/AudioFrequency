@@ -5,6 +5,7 @@ from   struct            import pack
 import itertools
 import numpy as np
 import pdb
+
 class Prefix(Module):
 	def __init__(self, *args, **kwargs):
 		Module.__init__(self, *args, **kwargs)
@@ -54,11 +55,12 @@ class Prefix(Module):
 			else:
 				text   = pack('H', len(byte_data)-1) + byte_data
 				numb   = self.text2num(text)
-				self.log('payload including length: ' + str(numb))
+				self.log('payload with length: ' + str(numb))
 				scram  = self.whiten.process(numb)
-				self.log('payload post whitening: ' + str(scram))
+				self.log('payload post whiten: ' + str(scram))
 				pam    = self.num2pam(scram)
-				self.log('payload post pam: ' + str(pam))
+				self.print_pam(pam)
+
 				packet = np.append(self.prepam, pam)
 				done   = True
 

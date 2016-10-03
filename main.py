@@ -1,17 +1,18 @@
 from   Sources.StdinSource   import StdinSource   as StdinS
 from   Sources.RandomSource  import RandomSource  as Random
 from   Prefix.Prefix         import Prefix        as Prefix
-from   Filter.FastFilter     import FastFilter    as FastFi
 from   Pulseshape.Pulseshape import Pulseshape    as Pulses
+from   Filter.FastFilter     import FastFilter    as FastFi
 from   Modulator.Modulator   import Modulator     as Modula
+from   AutoGain.AutoGain     import AutoGain      as AutoGa
 from   Demodulator.Demodulator import Demodulator as Demodu
-from   Equalizer.Equalizer           import Equalizer      as Equali
 from   Interpolator.Interpolator     import Interpolator   as Interp
+from   Equalizer.Equalizer           import Equalizer      as Equali
 from   TimingRecovery.TimingRecovery import TimingRecovery as Timing
 from   FrameSync.FrameSync           import FrameSync      as FrameS
-from   Sinks.StdoutSink              import StdoutSink     as Stdout
-from   Sinks.Plotspec                import Plotspec       as Plotsp
-from   Sinks.PlotSink                import PlotSink       as PlotSi
+from   Sinks.StdoutSink import StdoutSink         as Stdout
+from   Sinks.Plotspec   import Plotspec           as Plotsp
+from   Sinks.PlotSink   import PlotSink           as PlotSi
 import matplotlib.pyplot as plt
 import numpy as np
 import traceback
@@ -21,8 +22,8 @@ fs = 44.1E3
 
 def fround(fc):
 	n = np.round(float(fs)/float(fc))
+	print 'fc: %.1f -> %.1f'%(fc,fs/n)
 	return fs/n
-
 
 def connect(modules):
 	for i in range(0, len(modules)-1):
@@ -31,26 +32,27 @@ def connect(modules):
 	modules[-1].fig = len(modules)-1
 
 source = StdinS(main = True)
-#ransrc = Random()
-prefix = Prefix(main = False, debug = False, bits = 8)
-pshape = Pulses(main = False, debug = False, M = 18, beta = 0.5)
-modula = Modula(main = False, debug = False, fs = fs, fc = 14.7E3)
-distor = [0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
-noloss = [1.0, 0.0]
-train  = (pshape.process(prefix.prefix))[:-4*pshape.M]
-channe = FastFi(main = False, debug = False, plt = plt, bcoef = distor)
-demodu = Demodu(main = False, debug = False, plt = plt, fs = fs, fc = 15.0E3)
-equali = Equali(main = False, debug = False, plt = plt, prefix = train, channel=distor, passthrough=False)
-mfilte = FastFi(main = False, debug = False, plt = plt, bcoef = pshape.ps)
-interp = Interp(main = False, debug = False, plt = plt, numtaps = 20, L = 4)
-trecov = Timing(main = False, debug = False, plt = plt, M = pshape.M*interp.L)
-frsync = FrameS(main = False, debug = False, plt = plt, prefix = prefix.prefix)
-specan = Plotsp(main = True , debug = False, plt = plt, fs = fs)
-plot1  = PlotSi(main = True , debug = False, plt = plt, stem = False, persist = False)
-plot2  = PlotSi(main = True , debug = False ,plt = plt, stem = False, persist = False)
-plot3  = PlotSi(main = True , debug = False, plt = plt, stem = True , persist = False)
-stdsin = Stdout(main = True , debug = False )
-modules = [source, prefix, pshape, modula, plot1, channe, demodu, equali, mfilte, interp, trecov, plot3, frsync, stdsin]
+ransrc = Random(100, main = True)
+prefix = Prefix(main = False, debug = False, plt=plt, bits=9)
+pshape = Pulses(main = False, debug = False, plt=plt, M=18, beta = 0.5) 
+modula = Modula(main = False, debug = False, plt=plt, fs=fs, fc = 14.7E3)
+distor = 0.1*np.array([0.1, 0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1])
+noloss = [1, 0.0]
+channe = FastFi(main = False, debug = False, plt=plt, bcoef = distor)
+autoga = AutoGa(main = False, debug = False, plt=plt, passthrough=False)
+demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 14.0E3)
+train  = (pshape.process(prefix.prepam))[:-4*pshape.M]
+equali = Equali(main = False, debug = False, plt=plt, prefix = train, channel=distor, passthrough=False)
+mfilte = FastFi(main = False, debug = False, plt=plt, bcoef = pshape.ps)
+interp = Interp(main = False, debug = False, plt=plt, numtaps = 20, L = 4)
+trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M*interp.L)
+frsync = FrameS(main = False, debug = False, plt=plt, cipher = prefix.cipher, prefix = prefix.prepam)
+plot1  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
+plot2  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
+plot3  = PlotSi(main = True, debug = False, plt=plt, stem = True , persist = False)
+stdsin = Stdout(main = True)
+
+modules = [source, prefix, pshape, modula, channe, autoga, plot1, demodu, plot2, equali, mfilte, interp, trecov, plot3, frsync, stdsin]
 connect(modules)
 
 try:
@@ -58,7 +60,7 @@ try:
 	while True:
 		source.work()
 		plot1.work()
-		#plot2.work()
+		plot2.work()
 		plot3.work()
 		stdsin.work()
 		if stdsin.done:

@@ -13,7 +13,8 @@ class TimingRecovery(Module):
 			print self.FAIL+'You must pass ' + str(ke) + ' as key word argument'
 			raise ke
 
-		self.offset = int(np.random.rand()*2*self.M)
+		#self.offset = int(np.random.rand()*2*self.M)
+		self.offset = int(self.M/2)
 
 
 	def process(self, data):
@@ -34,5 +35,6 @@ class TimingRecovery(Module):
 			self.offset += step * dy_doffset
 
 		#print self.BLUE + 'down_samples_index [%d/%d]'%(down_samples_index, len(data)/self.M)
-		self.log('adaptation offset: %.3f'%self.offset)
+		if self.debug:
+			self.log('adaptation offset: %.3f'%self.offset)
 		return down_samples[0:down_samples_index]

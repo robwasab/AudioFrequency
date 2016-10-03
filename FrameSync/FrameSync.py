@@ -41,9 +41,6 @@ class FrameSync(FastFilter):
 			self.log('Not passing any more data')
 			return None 
 
-		self.log('Got a start index')
-		self.log('index: %d'%index)
-
 		# reset after you actually got a start index
 		self.reset()
 
@@ -65,7 +62,7 @@ class FrameSync(FastFilter):
 			self.plt.show(block=False)
 
 		payload = [quantize(d) for d in s*data[index + 1:]]
-		self.log('full scrambled payload : ' + str(payload))
+		self.print_pam(payload)
 		num_bytes = self.whiten.process(self.pam2num(payload[:8]))
 		num_bytes = (num_bytes[1] << 8) + num_bytes[0]	+ 1
 		self.log('num_bytes: %d'%num_bytes)
@@ -75,8 +72,9 @@ class FrameSync(FastFilter):
 			return None
 
 		payload = payload[8:8+(num_bytes*4)]
+		payload = self.pam2num(payload)
 		self.log('payload before whitening: ' + str(payload))
-		payload = self.whiten.process(self.pam2num(payload))
+		payload = self.whiten.process(payload)
 		self.log('payload after  whitening: ' + str(payload))
 		text = self.num2text(payload)	
 		return text 

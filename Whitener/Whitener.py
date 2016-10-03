@@ -13,7 +13,6 @@ class Whitener(Module):
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise(kw)
-		self.log(self.cipher)
 	
 	def reset(self):
 		Module.reset(self)

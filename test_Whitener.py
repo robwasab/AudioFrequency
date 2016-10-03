@@ -32,7 +32,7 @@ def connect(modules):
 
 source = StdinS(main = True)
 ransrc = Random(100, main = True)
-prefix = Prefix(main = True, debug = False, plt=plt, bits = 9)
+prefix = Prefix(main = True, debug = False, plt=plt, bits = 8)
 pshape = Pulses(main = True, debug = False, M = 18, beta = 0.5) 
 modula = Modula(main = True, debug = False, fs = fs, fc = 14.7E3)
 distor = [0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
@@ -44,7 +44,7 @@ equali = Equali(main = True, debug = False, plt=plt, prefix = train, channel=dis
 mfilte = FastFi(main = True, debug = False, plt=plt, bcoef = pshape.ps)
 interp = Interp(main = True, debug = False, plt=plt, numtaps = 20, L = 4)
 trecov = Timing(main = True, debug = False, plt=plt, M=pshape.M*interp.L)
-frsync = FrameS(main = True, debug = True,  plt=plt, cipher = prefix.cipher, prefix = prefix.prepam)
+frsync = FrameS(main = True, debug = False, plt=plt, cipher = prefix.cipher, prefix = prefix.prepam)
 plot1  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
 plot2  = PlotSi(main = True, debug = False, plt=plt, stem = True, persist = False)
 stdsin = Stdout(main = True)

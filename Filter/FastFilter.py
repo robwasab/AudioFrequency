@@ -119,8 +119,6 @@ class FastFilter(FirFilter):
 						self.log('slen    : %d'%self.slen)
 						self.log('k*size+size+idx = %d'%start_idx)
 					s = np.sign(raw[idx])
-					self.log('Sign of correlation:')
-					self.log(s)
 					return (start_idx, s)
 			#else:
 			#	self.log('[%d/%d] raw len: %d slen: %d'%(k,len(sig)/size, len(raw), self.slen))

@@ -1,6 +1,7 @@
 from   Utility.PlotClient import PlotClient
 from   threading import Thread, Lock 
 from   time import time,sleep
+import numpy as np
 import traceback
 import Queue
 import sys
@@ -124,3 +125,18 @@ class Module(Thread):
 	
 	def print_kw_error(self, arg_name):
 		print Module.FAIL + self.__class__.__name__ + ' requires key word argument %s!'%arg_name + Module.ENDC
+
+	def print_pam(self, pam):
+		msg = '\n'
+		count = 0
+		byte = np.zeros(4)
+		for p in pam:
+			byte[count%4] = p
+			count+=1
+			if count%4 == 0:
+				msg += '%d: [%2d %2d %2d %2d]\n'%(count/4, byte[0], byte[1], byte[2], byte[3])
+
+		if count%4 > 0:
+			msg += '%d: ['%(1+count/4) + ('%2d '*(count%4))%tuple(byte[:count%4]) + '...\n'
+		
+		self.log(msg)

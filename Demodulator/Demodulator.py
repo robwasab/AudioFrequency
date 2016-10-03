@@ -85,7 +85,7 @@ class Demodulator(Module):
 
 		duration = time() - start
 		avg_loop = duration / float(len(data))*1E6
-		self.log('Avg Loop Duration:\t%.3f [us]'%avg_loop)
-		self.log('%.3f Hz Sample Period:\t%.3f [us]'%(self.fs, 1E6/self.fs))
+		self.log('Avg Loop time: %.3f [us]'%avg_loop)
+		self.log('Time to beat : %.3f [us]'%(1E6/self.fs))
 		self.costa.reset()
 		return data

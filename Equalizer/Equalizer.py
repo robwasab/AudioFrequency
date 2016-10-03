@@ -57,7 +57,8 @@ class Equalizer(FastFilter):
 		if index == -1:
 			self.log('Could not find start index')
 			return None
-		self.log('index: %d'%index)
+		if self.debug:
+			self.log('index: %d'%index)
 		self.reset()
 		fir = self.equalizer(data[:index]).tolist()
 		self.equal.set_bcoef(fir)
@@ -71,7 +72,8 @@ class Equalizer(FastFilter):
 		S = np.matrix(self.train).getT()
 		fir = inv(R.getT()*R)*R.getT()*S
 		Jmin = (S.getT()*S-S.getT()*R*fir)[0,0]
-		self.log('Delay: %d, Jmin: %f'%(self.delay, Jmin))
+		if self.debug:
+			self.log('Delay: %d, Jmin: %f'%(self.delay, Jmin))
 		if self.debug:
 			freq_resp = np.abs(fft(np.append(fir.tolist(),self.pad)))
 			if self.eq_plt == None:
