@@ -1,9 +1,10 @@
 from   Utility.PlotClient import PlotClient
-from   threading import Thread, Lock 
+from   threading import Thread, Lock
+from   threading import Semaphore
+from   Queue import Queue, Full, Empty
 from   time import time,sleep
 import numpy as np
 import traceback
-import Queue
 import sys
 import pdb
 
@@ -22,9 +23,8 @@ class Module(Thread):
 	def reset(self):
 		return
 
-	def __init__(self, next_module = None, **kwargs):
+	def __init__(self, next_module=None, **kwargs):
 		Thread.__init__(self)
-		self.input  = Queue.Queue()
 		self.output = next_module
 		self.mutex  = Lock()
 		self.stop   = False	
@@ -34,10 +34,9 @@ class Module(Thread):
 		self.passthrough = False
 		self.main   = False
 		self.debug  = False
+		self.input  = Queue()
 		for key in kwargs:
-			if   key == 'port':
-				self.server_port = int(kwargs[key])
-			elif key == 'fig' :
+			if key == 'fig' :
 				self.fig = int(kwargs[key])
 			elif key == 'passthrough':
 				self.passthrough = bool(kwargs[key])
@@ -47,6 +46,7 @@ class Module(Thread):
 				self.main = bool(kwargs[key])
 			elif key == 'debug':
 				self.debug = bool(kwargs[key])
+	
 	def work(self):
 		if not self.input.empty():
 			in_data = self.input.get()
@@ -114,13 +114,13 @@ class Module(Thread):
 		print self.__class__.__name__,' quitting'
 		Module.print_lock.release()
 
-	def process(self, input_data):
-		return input_data
+	def process(self):
+		return None
 	
 	def log(self, msg):
 		if type(msg) != str:
 			msg = str(msg)
-		msg = self.GREEN + self.__class__.__name__ + ': '+ self.ENDC + msg
+		msg = self.GREEN + self.__class__.__name__ + ':\t'+ self.ENDC + msg
 		print msg
 	
 	def print_kw_error(self, arg_name):
@@ -140,3 +140,78 @@ class Module(Thread):
 			msg += '%d: ['%(1+count/4) + ('%2d '*(count%4))%tuple(byte[:count%4]) + '...\n'
 		
 		self.log(msg)
+
+class MyQueue(object):
+	def __init__(self, memory_type, memory_size = 1024):
+		self.memory_size = memory_size
+		self.memory = np.zeros(self.memory_size, memory_type)
+		self.quhead = 0
+		self.qutail = 0
+		self.qusize = 0
+		self.queue_mutex = Lock()
+
+	def resize(self, size):
+		self.queue_mutex.acquire()
+		self.memory_size = size
+		self.memory = np.zeros(self.memory_size)
+		self.quhead = 0
+		self.qutail = 0
+		self.qusize = 0
+		self.queue_mutex.release()
+
+	def size(self):
+		self.queue_mutex.acquire()
+		size = self.qusize
+		self.queue_mutex.release()
+		return size
+
+	def put(self, data):
+		self.queue_mutex.acquire()
+
+		room = len(data) > self.memory_size - self.qusize;
+
+		self.queue_mutex.release()
+
+		if room:
+			raise Full("Not enough room in queue")
+		
+		self.queue_mutex.acquire()
+
+		indexes = (self.qutail + np.arange(len(data)))%self.memory_size
+		self.memory[indexes] = data
+		self.qusize += len(data)
+		
+		self.queue_mutex.release()
+		
+		self.qutail += len(data)
+
+	def read(self, amt):
+		if amt > self.size():
+			raise Empty("Not enough data to read from")
+		
+		self.queue_mutex.acquire()
+
+		indexes = (self.quhead + np.arange(amt))%self.memory_size
+		self.qusize -= amt
+		retreive = self.memory[indexes]
+		self.quhead  = (self.quhead + amt)%self.memory_size
+		read = self.memory[indexes]
+
+		self.queue_mutex.release()
+		return read
+
+	def print_memory(self):
+		self.queue_mutex.acquire()
+		colsize = int(np.sqrt(len(self.memory)))
+		rowsize = len(self.memory_size)/colsize;
+
+		print "col x row = %d"%(colsize*rowsize)
+
+		for y in range(rowsize-1, -1, -1):
+			line = '%4d: ['%(y*colsize)
+			for x in range(0, colsize):
+				line += '\t%5.3f\t'%self.memory[y*colsize + x]
+			line += ']\n'
+			print line
+		self.queue_mutex.release()
+

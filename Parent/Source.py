@@ -6,7 +6,7 @@ class Source(Module):
 
 	def work(self):
 		data = self.read()
-		if data != None:
+		if data is not None:
 			self.output.input.put(data)
 			return True
 		return False

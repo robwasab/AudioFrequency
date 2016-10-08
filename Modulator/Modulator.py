@@ -15,9 +15,9 @@ class Modulator(Module):
 			fc = float(kwargs['fc'])
 			self.n  = int(np.round(self.fs/fc))
 			self.fc = self.fs/self.n
-			self.log('User fc: %.3f -> %.3f'%(fc,self.fc))
+			#self.log('User fc: %.3f -> %.3f'%(fc,self.fc))
 			del kwargs['fc']
-			
+
 			self.offset = 0
 			if kwargs.has_key('offset'):
 				self.offset = float(kwargs['offset'])

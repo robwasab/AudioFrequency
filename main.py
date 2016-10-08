@@ -40,13 +40,14 @@ distor = 0.1*np.array([0.1, 0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1])
 noloss = [1, 0.0]
 channe = FastFi(main = False, debug = False, plt=plt, bcoef = distor)
 autoga = AutoGa(main = False, debug = False, plt=plt, passthrough=False)
-demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 14.0E3)
-train  = (pshape.process(prefix.prepam))[:-4*pshape.M]
+demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 13.0E3)
+train_pam = prefix.prepam[len(prefix.prepam)/2:]
+train  = (pshape.process(train_pam))[:-4*pshape.M]
 equali = Equali(main = False, debug = False, plt=plt, prefix = train, channel=distor, passthrough=False)
 mfilte = FastFi(main = False, debug = False, plt=plt, bcoef = pshape.ps)
 interp = Interp(main = False, debug = False, plt=plt, numtaps = 20, L = 4)
 trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M*interp.L)
-frsync = FrameS(main = False, debug = False, plt=plt, cipher = prefix.cipher, prefix = prefix.prepam)
+frsync = FrameS(main = False, debug = False, plt=plt, cipher = prefix.cipher, prefix = train_pam)
 plot1  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
 plot2  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
 plot3  = PlotSi(main = True, debug = False, plt=plt, stem = True , persist = False)

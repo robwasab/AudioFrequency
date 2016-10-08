@@ -27,9 +27,12 @@ class FastFilter(FirFilter):
 		self.slen  = len(self.bcoef) - 1
 		self.save  = np.zeros(self.slen)
 		self.chunklen = 2 
-		while self.chunklen < len(self.bcoef):
+		efficiency = (self.chunklen - self.slen)/float(self.chunklen)
+
+		while efficiency < 0.75:
 			self.chunklen *= 2
-		self.chunklen *= 2
+			efficiency = (self.chunklen - self.slen)/float(self.chunklen)
+		self.log('Efficiency: %%%3.3f\tChunk Len: %5d\tSave Len: %4d'%(100.0*efficiency, self.chunklen, self.slen))
 
 	def process(self, signal):
 		#self.log('input signal length: %6d'%len(signal))
@@ -72,7 +75,7 @@ class FastFilter(FirFilter):
 			self.plt.show(block=True)
 			self.save_handle = None
 			self.raw_handle = None
-		
+	
 		for k in range(0, ncyc):
 		#	if not fsync_hack:
 		#		self.log('[%d/%d]:'%(k,ncyc))

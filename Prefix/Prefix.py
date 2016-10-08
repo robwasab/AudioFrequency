@@ -25,7 +25,7 @@ class Prefix(Module):
 			self.plt.show(block=False)
 		# formats the maximum length sequence as little endian
 		self.whiten = Whitener(cipher = self.cipher)
-	
+
 	def make_cipher(self):
 		prefix = np.append(self.prefix, self.prefix[0])
 		return [np.sum([bit<<n for n,bit in enumerate([int(b) for b in (1.0+byte)/2.0])]) for byte in np.reshape(prefix, (len(prefix)/8, 8))]
@@ -40,6 +40,7 @@ class Prefix(Module):
 		return list(itertools.chain(*[[int(pair[0] + pair[1],2)*2-3 for pair in np.reshape(list('{:08b}'.format(b)),(4,2))] for b in numbers]))
 
 	def process(self, byte_data):
+		self.log(byte_data)
 		ret = None
 		done = False
 		self.whiten.reset()

@@ -20,7 +20,7 @@ def test_modulator():
 				nsamp = np.arange(0, y+int(mod.fs/ftest))
 				waveform = np.cos(2.0*np.pi*ftest*nsamp/mod.fs)
 
-				answer   = waveform * np.sin(2.0*np.pi*mod.fc*np.arange(0,len(waveform))/mod.fs)
+				answer = waveform * np.sin(2.0*np.pi*mod.fc*np.arange(0,len(waveform))/mod.fs)
 
 				half = len(waveform)/2 + x
 

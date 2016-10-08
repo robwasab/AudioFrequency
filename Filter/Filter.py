@@ -3,14 +3,15 @@ import numpy as np
 
 class FirFilter(Module):
 	def __init__(self, *args, **kwargs):
-		Module.__init__(self, *args, **kwargs)
+		kw = ''
 		try:
-			self.bcoef = np.array(kwargs['bcoef'])
+			kw = 'bcoef'
+			self.bcoef = np.array(kwargs[kw])
 		except KeyError as kerr:
-			print Module.FAIL + self.__class__.__name__ + ' requires key word argument bcoef!' + Module.ENDC
+			self.print_kw_error(kw)
 			raise kerr
-
 		self.history = np.zeros(len(self.bcoef))
+		Module.__init__(self, *args, **kwargs)
 
 	def process(self, signal):
 		for n in xrange(0,len(signal)):

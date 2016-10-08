@@ -1,5 +1,6 @@
-from Parent.Source  import Source
 from Functions.util import letters2pam
+from Parent.Source  import Source
+import numpy as np
 import select
 import sys
 import os
