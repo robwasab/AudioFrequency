@@ -1,7 +1,6 @@
-from   Utility.PlotClient import PlotClient
+from   Queue import Queue, Full, Empty
 from   threading import Thread, Lock
 from   threading import Semaphore
-from   Queue import Queue, Full, Empty
 from   time import time,sleep
 import numpy as np
 import traceback
@@ -35,6 +34,8 @@ class Module(Thread):
 		self.main   = False
 		self.debug  = False
 		self.input  = Queue()
+		self.input_size_thresh = 1
+
 		for key in kwargs:
 			if key == 'fig' :
 				self.fig = int(kwargs[key])
@@ -46,7 +47,10 @@ class Module(Thread):
 				self.main = bool(kwargs[key])
 			elif key == 'debug':
 				self.debug = bool(kwargs[key])
-	
+
+	def request_input(self, size):
+		self.input_size_thresh = size
+
 	def work(self):
 		if not self.input.empty():
 			in_data = self.input.get()
@@ -61,11 +65,9 @@ class Module(Thread):
 			if self.output is not None:
 				if out_dat is not None:
 					self.output.input.put(out_dat)
-				else:
-					self.output.input.put(in_data)
 			return True
 		else:
-			return False
+			return True 
 			
 
 	def quit(self, all = False):

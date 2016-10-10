@@ -119,34 +119,24 @@ def experiment():
 		out1 = convolve(sig, fir)
 		tim1 = time() - begi
 
-		#plt.figure(1)
-		#plot_helper(sig, fir, out1)
+		plt.figure(1)
+		plot_helper(sig, fir, out1)
 
-		#out2 = conv(sig, fir)
-		#plt.figure(2)
-		#plot_helper(sig, fir, out2, False)
+		out2 = conv(sig, fir)
+		plt.figure(2)
+		plot_helper(sig, fir, out2, False)
 
-		#plt.figure(3)
+		plt.figure(3)
 		begi = time()
 		out3 = conv_chunk(sig, fir)
 		tim3 = time() - begi
-		#plt.figure(4)
-		#plt.plot(out3)
-		#plt.plot(out3[:-(len(fir)-1)])
+		plot_helper(sig, fir, out3, True)
 
-		#pdb.set_trace()
 		diff = out1-out3 
-		if show:
-			plt.figure(1)
-			plt.subplot(311)
-			plt.plot(out1)
-			plt.subplot(312)
-			plt.plot(out3)
-			plt.subplot(313)
-			plt.plot(diff)
-			plt.show()
-
 		return max(diff), tim1, tim3
+
+	test(100, True)
+	return
 
 	total = 10000
 	rands = [int(f) for f in np.round(1.0 + total*1.0*random(total))]

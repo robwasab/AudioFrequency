@@ -11,6 +11,7 @@ class Interpolator(FastFilter):
 			kw = 'L'
 			self.L = int(kwargs[kw])
 			kwargs['bcoef'] = firwin(self.numtaps, 1.0/self.L)
+			kwargs['flush'] = False
 			FastFilter.__init__(self, *args, **kwargs)
 		except KeyError:
 			self.print_kw_error(kw)
@@ -19,7 +20,7 @@ class Interpolator(FastFilter):
 		zero_pad = np.zeros(self.L*len(data))
 		zero_pad[np.arange(len(data))*self.L] = data
 		zero_pad *= self.L
-		interpolated = FastFilter.process(self, zero_pad)
+		interpolated = FastFilter.conv_chunk_chunk(self, zero_pad)
 		if self.debug:
 			self.plt.figure(self.fig)
 			self.plt.subplot(311)

@@ -2,7 +2,7 @@ from   numpy import cos, sin, pi
 from   LowPass import LowPass
 import numpy as np
 
-class CostasLoop(object):
+class PythonCostasLoop(object):
 	def __init__(self, fc, fs=44.1E3, debug = False):
 		self.fs = fs
 		self.fc = fc

@@ -4,6 +4,8 @@ from   Prefix.Prefix         import Prefix        as Prefix
 from   Pulseshape.Pulseshape import Pulseshape    as Pulses
 from   Filter.FastFilter     import FastFilter    as FastFi
 from   Modulator.Modulator   import Modulator     as Modula
+from   Filter.Channel        import Channel       as Channe
+from   Microphone.Microphone import Microphone    as Microp
 from   AutoGain.AutoGain     import AutoGain      as AutoGa
 from   Demodulator.Demodulator import Demodulator as Demodu
 from   Interpolator.Interpolator     import Interpolator   as Interp
@@ -37,23 +39,23 @@ prefix = Prefix(main = False, debug = False, plt=plt, bits=9)
 pshape = Pulses(main = False, debug = False, plt=plt, M=18, beta = 0.5) 
 modula = Modula(main = False, debug = False, plt=plt, fs=fs, fc = 14.7E3)
 distor = 0.1*np.array([0.1, 0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1])
-noloss = [1, 0.0]
-channe = FastFi(main = False, debug = False, plt=plt, bcoef = distor)
+channe = Channe(main = False, debug = False, plt=plt, bcoef = distor, passthrough=False)
+microp = Microp(main = False, debug = False, plt=plt, passthrough=False)
 autoga = AutoGa(main = False, debug = False, plt=plt, passthrough=False)
 demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 13.0E3)
 train_pam = prefix.prepam[len(prefix.prepam)/2:]
 train  = (pshape.process(train_pam))[:-4*pshape.M]
 equali = Equali(main = False, debug = False, plt=plt, prefix = train, channel=distor, passthrough=False)
 mfilte = FastFi(main = False, debug = False, plt=plt, bcoef = pshape.ps)
-interp = Interp(main = False, debug = False, plt=plt, numtaps = 20, L = 4)
-trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M*interp.L)
-frsync = FrameS(main = False, debug = False, plt=plt, cipher = prefix.cipher, prefix = train_pam)
+interp = Interp(main = False, debug = False, plt=plt, numtaps = 20, L = 4, passthrough=False)
+trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M*interp.L, passthrough=False)
+frsync = FrameS(main = False, debug = False, plt=plt, cipher = prefix.cipher, prefix = train_pam, passthrough = False)
 plot1  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
 plot2  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
-plot3  = PlotSi(main = True, debug = False, plt=plt, stem = True , persist = False)
+plot3  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
 stdsin = Stdout(main = True)
 
-modules = [source, prefix, pshape, modula, channe, autoga, plot1, demodu, plot2, equali, mfilte, interp, trecov, plot3, frsync, stdsin]
+modules = [source, prefix, pshape, modula, channe, plot1, microp, plot3, autoga, demodu, equali, mfilte, interp, trecov, frsync, stdsin]
 connect(modules)
 
 try:
@@ -61,7 +63,7 @@ try:
 	while True:
 		source.work()
 		plot1.work()
-		plot2.work()
+		#plot2.work()
 		plot3.work()
 		stdsin.work()
 		if stdsin.done:

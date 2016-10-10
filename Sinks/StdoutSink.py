@@ -22,3 +22,4 @@ class StdoutSink(Sink):
 			self.log('[Receiving data!]\n'+header+str(data))
 			self.data = data
 			self.done = True
+		return data

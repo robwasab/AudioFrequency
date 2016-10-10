@@ -1,7 +1,8 @@
-from   CostasLoop import CostasLoop
+from   PythonCostasLoop import PythonCostasLoop as CostasLoop
 from   Parent.Module import Module
 from   LowPass import LowPass
 from   time import time
+import CostasLoopC
 import numpy as np
 
 def fround(fc, fs):
@@ -19,6 +20,7 @@ class Demodulator(Module):
 			elif key == 'fs':
 				self.fs = float(kwargs['fs'])
 
+		CostasLoopC.init(self.fc, self.fs)
 		self.costa = CostasLoop(self.fc, self.fs, self.debug)
 		if self.debug:
 			self.ip_lp = LowPass(10, self.fs)
@@ -29,6 +31,18 @@ class Demodulator(Module):
 		self.loop_time = 0
 	
 	def process(self, data):
+		return self.C_process(data)
+	
+	def C_process(self, data):
+		start = time()
+		ret = CostasLoopC.process(np.array(data, dtype=np.float32))
+		duration = time() - start
+		avg_loop = duration / float(len(data))*1E6
+		self.log('Avg Loop time: %.3f [us]'%avg_loop)
+		self.log('Time to beat : %.3f [us]'%(1E6/self.fs))
+		return ret 
+
+	def Python_process(self, data):
 		if self.debug:
 			self.phase = np.zeros(len(data))
 			self.error = np.zeros(len(data))

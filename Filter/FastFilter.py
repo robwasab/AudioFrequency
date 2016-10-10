@@ -21,6 +21,10 @@ class FastFilter(FirFilter):
 	def __init__(self, *args, **kwargs):
 		FirFilter.__init__(self, *args, **kwargs)
 		self.set_bcoef(self.bcoef)
+		self.flush = False 
+		for kw in kwargs:
+			if kw == 'flush':
+				self.flush = kwargs[kw]
 	
 	def set_bcoef(self, bcoef):
 		self.bcoef = bcoef
@@ -33,8 +37,10 @@ class FastFilter(FirFilter):
 			self.chunklen *= 2
 			efficiency = (self.chunklen - self.slen)/float(self.chunklen)
 		self.log('Efficiency: %%%3.3f\tChunk Len: %5d\tSave Len: %4d'%(100.0*efficiency, self.chunklen, self.slen))
+		self.periodic_mode = False
 
 	def process(self, signal):
+		return self.conv_chunk_chunk(signal, False, self.flush)
 		#self.log('input signal length: %6d'%len(signal))
 		outp = self.conv_chunk(signal)
 		#self.log('outpu signal length: %6d'%len(outp))
@@ -48,11 +54,29 @@ class FastFilter(FirFilter):
 	def reset(self):
 		self.save = np.zeros(self.slen)
 
+	def conv_chunk_chunk(self, data, fsync_hack=False, flush=False):
+		signal = np.append(self.save, data)
+		if flush:
+			signal = np.append(signal, np.zeros(self.slen))
+
+		filtered = peri_convo(signal, self.bcoef)[self.slen:]
+
+		self.save= signal[-self.slen:]
+
+		if fsync_hack:
+			filtered_abs = np.abs(filtered)
+			idx = np.argmax(filtered_abs)
+			if filtered_abs[idx] > 0.5: 
+				s = np.sign(filtered[idx])
+				return idx
+			return -1 
+		return filtered
+
 	def conv_chunk(self,data,fsync_hack=False, debug=False):
 		size = self.chunklen - self.slen  # size sig chunk + slen = pwr of 2
-		pad  = [0] * (self.chunklen - ((self.slen+len(data))%size)) # pad make sig integer number of size
+		pad  = np.zeros(self.chunklen - ((self.slen+len(data))%size)) # pad make sig integer number of size
 		sig  = np.append(data, pad)
-		outp = []
+		outp = np.zeros(len(data) + len(pad) + self.slen)
 		ncyc = len(sig)/size
 		if debug:
 			self.log(' len(data) : %d' % len(data))
@@ -125,11 +149,14 @@ class FastFilter(FirFilter):
 					return (start_idx, s)
 			#else:
 			#	self.log('[%d/%d] raw len: %d slen: %d'%(k,len(sig)/size, len(raw), self.slen))
-			outp.extend(raw.tolist())
+			outp[k*size:(k+1)*size] = raw
 			self.save = self.save[-self.slen:]
 		if fsync_hack:
 			self.log('return -1')
 			return -1, 0 
 		else:
 		#	self.log('pre trim outp length: %d'%len(outp))
-			return outp[:len(sig)-len(pad)+self.slen]
+			if self.periodic_mode:
+				return outp[:len(sig)-len(pad)]
+			else:
+				return outp[:len(sig)-len(pad)+self.slen]

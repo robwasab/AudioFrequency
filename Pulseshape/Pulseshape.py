@@ -43,6 +43,7 @@ class Pulseshape(FastFilter):
 		self.M = M
 		self.ps = ps
 		kwargs['bcoef'] = ps
+		kwargs['flush'] = True
 		FastFilter.__init__(self, *args, **kwargs)
 
 	def process(self, signal):

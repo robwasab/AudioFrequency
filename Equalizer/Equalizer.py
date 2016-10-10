@@ -1,12 +1,14 @@
 from   Pulseshape.Pulseshape import Pulseshape
 from   FrameSync.FrameSync   import FrameSync
 from   Filter.FastFilter     import FastFilter
+from   Queue import Empty, Full
 # toeplitz is for equalizer algorithm
 from   scipy.linalg import toeplitz
 # inv is for inverting a matrix in the equalizer
 from   numpy.linalg import inv
 from   numpy.fft import fft
 import numpy as np
+import pdb
 
 class Equalizer(FastFilter):
 	def __init__(self, *args, **kwargs):
@@ -18,13 +20,16 @@ class Equalizer(FastFilter):
 			kwargs['bcoef'] = corr_prefix
 			FastFilter.__init__(self, *args, **kwargs)
 
+			self.buffer= np.zeros(len(corr_prefix))
+			self.tail  = 0
+
 			self.delay = 3 
 			self.eqlen = 21 
 			self.train = kwargs[kw][self.eqlen-1-self.delay:-self.delay]
 			default_eq = np.zeros(self.eqlen)
 			default_eq[0] = 1.0
 		
-			self.equal = FastFilter(bcoef = default_eq)
+			self.equal = FastFilter(bcoef = default_eq, flush=False)
 			self.chan_resp = None
 		except KeyError as ke:
 			self.print_kw_error(kw)
@@ -51,19 +56,29 @@ class Equalizer(FastFilter):
 			self.pad = np.zeros(num-self.eqlen)
 			self.xaxis = np.arange(num)/float(num)
 			
+	def put(self, data):
+		indexes = (self.tail+np.arange(len(data)))%len(self.buffer)
+		self.tail = (self.tail + len(data))%len(self.buffer)
+		self.buffer[indexes] = data
+
+	def read_all(self):
+		indexes = np.arange(self.tail-len(self.buffer), self.tail)%len(self.buffer)
+		return self.buffer[indexes]
 
 	def process(self, data):
-		index, s = self.conv_chunk(data, fsync_hack=True, debug=False)
+		index = self.conv_chunk_chunk(data, fsync_hack=True, flush=False)
 		if index == -1:
-			self.log('Could not find start index')
-			return None
+			self.put(data)
+			return self.equal.conv_chunk_chunk(data)
+
+		self.put(data[:index])
+		self.log('index found..')
 		if self.debug:
 			self.log('index: %d'%index)
-		self.reset()
-		fir = self.equalizer(data[:index]).tolist()
+
+		fir = self.equalizer(self.read_all()).tolist()
 		self.equal.set_bcoef(fir)
-		self.equal.reset()
-		return self.equal.conv_chunk(data)	
+		return self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)	
 
 	def equalizer(self, r):
 		toe_row = r[-len(self.train):]
@@ -93,3 +108,4 @@ class Equalizer(FastFilter):
 
 	def dim(self, m):
 		self.log('rows: %d\ncols: %d'%(len(m[:,0]), len(m[0,:])))
+	
