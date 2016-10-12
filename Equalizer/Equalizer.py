@@ -1,9 +1,9 @@
 from   Pulseshape.Pulseshape import Pulseshape
 from   FrameSync.FrameSync   import FrameSync
 from   Filter.FastFilter     import FastFilter
-from   Queue import Empty, Full
 # toeplitz is for equalizer algorithm
 from   scipy.linalg import toeplitz
+from   Queue import Empty, Full
 # inv is for inverting a matrix in the equalizer
 from   numpy.linalg import inv
 from   numpy.fft import fft
@@ -16,7 +16,9 @@ class Equalizer(FastFilter):
 		try:
 			kw = 'prefix'
 			corr_prefix  = np.fliplr([kwargs[kw]])[0]
-			corr_prefix /= np.sum(corr_prefix**2)
+			corr_prefix_power = np.sum(corr_prefix**2)
+			corr_prefix /= corr_prefix_power
+			self.corr_prefix_power = corr_prefix_power
 			kwargs['bcoef'] = corr_prefix
 			FastFilter.__init__(self, *args, **kwargs)
 
@@ -31,6 +33,7 @@ class Equalizer(FastFilter):
 		
 			self.equal = FastFilter(bcoef = self.default_eq, flush=False)
 			self.chan_resp = None
+			self.sign = 1
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise(ke)
@@ -65,11 +68,17 @@ class Equalizer(FastFilter):
 		indexes = np.arange(self.tail-len(self.buffer), self.tail)%len(self.buffer)
 		return self.buffer[indexes]
 
+
 	def process(self, data):
 		index, s = self.conv_chunk_chunk(data, fsync_hack=True, flush=False)
 		if index == -1 :
 			self.put(data)
 			return self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)
+
+		# so, if the sign is found to be -1, it means all of the data we have been previously filtering
+		# is inversed
+		# the equalizer will thus try to invert the data, which we get back
+		# if we multiply the fir coefficients by the -1, we retain the previous state of the filter
 
 		self.reset()
 		self.put(data[:index])
@@ -78,7 +87,8 @@ class Equalizer(FastFilter):
 			self.log('index: %d'%index)
 
 		fir = self.equalizer(self.read_all()).tolist()
-		self.equal.set_bcoef(fir)
+		self.equal.set_bcoef(s*np.array(fir))
+
 		return self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)	
 
 	def equalizer(self, r):

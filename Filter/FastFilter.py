@@ -66,6 +66,7 @@ class FastFilter(FirFilter):
 		if fsync_hack:
 			filtered_abs = np.abs(filtered)
 			idx = np.argmax(filtered_abs)
+			self.log('idx: %d, filtered[idx]: %f'%(idx, filtered_abs[idx]))
 			if filtered_abs[idx] > 0.5: 
 				s = np.sign(filtered[idx])
 				self.log('sign: %d'%s)

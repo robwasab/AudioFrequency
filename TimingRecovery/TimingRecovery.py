@@ -26,6 +26,7 @@ class TimingRecovery(Module):
 
 		k = 0
 		if self.offset == 0:
+			self.log('using saved data, offset 0')
 			self.save3 = data[1]
 			self.save2 = data[0]
 			dy_doffset = (quantize(self.save2, self.alphabet) - self.save2)*(self.save3 - self.save1)
@@ -33,6 +34,7 @@ class TimingRecovery(Module):
 			down_samples[0] = data[0]
 			k = 1
 		elif self.offset == -1:
+			self.log('using saved data, offset -1')
 			self.save3 = data[0]
 			dy_doffset = (quantize(self.save2, self.alphabet) - self.save2)*(self.save3 - self.save1)
 			self.offset += step * dy_doffset

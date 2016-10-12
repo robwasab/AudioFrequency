@@ -31,13 +31,15 @@ class Microphone(Module):
 		np.savetxt('microphone_data.gz', data)
 
 	def process(self, data):
-		self.save_data(data)
+		#self.save_data(data)
 		pad = np.zeros((self.chunk_size - len(data)%self.chunk_size))
 		data = np.append(data, pad)
 		self.log('len(data): %d'%len(data))
 
 		N = int(len(data)/self.chunk_size)
 		self.log('Breaking into %d chunks'%N)
+		#noise = 1.0*(np.random.rand(1024)-0.5)
+		#self.output.input.put(noise)
 		for n in xrange(0,N):
 			self.output.input.put(data[n*self.chunk_size:(n+1)*self.chunk_size])
 		return None

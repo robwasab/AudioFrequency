@@ -12,7 +12,9 @@ class FrameSync(FastFilter):
 		try:
 			kw = 'prefix'
 			corr_prefix  = np.fliplr([kwargs[kw]])[0].astype(float)
-			corr_prefix /= np.sum(corr_prefix**2)
+			corr_prefix_power = np.sum(corr_prefix**2)
+			corr_prefix /= corr_prefix_power
+			self.corr_prefix_power = corr_prefix_power
 
 			kwargs['bcoef'] = corr_prefix
 			FastFilter.__init__(self, *args, **kwargs)
@@ -43,7 +45,7 @@ class FrameSync(FastFilter):
 		if index != -1:
 			self.state = 'read_payload_len'
 			self.inv = s
-			self.queue.put(data[index+1:])
+			self.queue.put(self.inv*data[index+1:])
 			self.whiten.reset()
 			self.log('found a header!')
 

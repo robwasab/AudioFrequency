@@ -55,7 +55,7 @@ plot2  = PlotSi(main = True, debug = False, plt=plt, stem = True, persist = Fals
 plot3  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
 stdsin = Stdout(main = True)
 
-modules = [source, prefix, pshape, modula, channe, autoga, plot1, demodu, equali, mfilte, microp, interp, trecov, plot2, frsync, stdsin]
+modules = [source, prefix, pshape, modula, channe, microp, autoga, plot1, demodu, equali, mfilte, interp, trecov, plot2, frsync, stdsin]
 connect(modules)
 
 try:
@@ -66,12 +66,12 @@ try:
 		pshape.work()
 		modula.work()
 		channe.work()
+		microp.work()
 		autoga.work()
 		plot1.work()
 		demodu.work()
 		equali.work()
 		mfilte.work()
-		microp.work()
 		interp.work()
 		trecov.work()
 		plot2.work()
