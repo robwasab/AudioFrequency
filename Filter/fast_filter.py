@@ -119,26 +119,26 @@ def experiment():
 		out1 = convolve(sig, fir)
 		tim1 = time() - begi
 
-		plt.figure(1)
-		plot_helper(sig, fir, out1)
+#		plt.figure(1)
+#		plot_helper(sig, fir, out1)
 
 		out2 = conv(sig, fir)
-		plt.figure(2)
-		plot_helper(sig, fir, out2, False)
+#		plt.figure(2)
+#		plot_helper(sig, fir, out2, False)
 
-		plt.figure(3)
+#		plt.figure(3)
 		begi = time()
 		out3 = conv_chunk(sig, fir)
 		tim3 = time() - begi
-		plot_helper(sig, fir, out3, True)
+#		plot_helper(sig, fir, out3, True)
 
 		diff = out1-out3 
 		return max(diff), tim1, tim3
 
-	test(100, True)
-	return
+#	test(100, True)
+#	return
 
-	total = 10000
+	total = 1000
 	rands = [int(f) for f in np.round(1.0 + total*1.0*random(total))]
 	tim1s = [0]*total
 	tim3s = [0]*total

@@ -26,10 +26,10 @@ class Equalizer(FastFilter):
 			self.delay = 3 
 			self.eqlen = 21 
 			self.train = kwargs[kw][self.eqlen-1-self.delay:-self.delay]
-			default_eq = np.zeros(self.eqlen)
-			default_eq[0] = 1.0
+			self.default_eq = np.zeros(self.eqlen)
+			self.default_eq[0] = 1.0
 		
-			self.equal = FastFilter(bcoef = default_eq, flush=False)
+			self.equal = FastFilter(bcoef = self.default_eq, flush=False)
 			self.chan_resp = None
 		except KeyError as ke:
 			self.print_kw_error(kw)
@@ -55,7 +55,7 @@ class Equalizer(FastFilter):
 			num = 2**N
 			self.pad = np.zeros(num-self.eqlen)
 			self.xaxis = np.arange(num)/float(num)
-			
+	
 	def put(self, data):
 		indexes = (self.tail+np.arange(len(data)))%len(self.buffer)
 		self.tail = (self.tail + len(data))%len(self.buffer)
@@ -66,11 +66,12 @@ class Equalizer(FastFilter):
 		return self.buffer[indexes]
 
 	def process(self, data):
-		index = self.conv_chunk_chunk(data, fsync_hack=True, flush=False)
-		if index == -1:
+		index, s = self.conv_chunk_chunk(data, fsync_hack=True, flush=False)
+		if index == -1 :
 			self.put(data)
-			return self.equal.conv_chunk_chunk(data)
+			return self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)
 
+		self.reset()
 		self.put(data[:index])
 		self.log('index found..')
 		if self.debug:

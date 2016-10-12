@@ -15,34 +15,72 @@ class TimingRecovery(Module):
 			raise ke
 
 		#self.offset = int(np.random.rand()*2*self.M)
-		self.offset = int(self.M/2)
-		self.start_index = 0
+		self.save1 = 0
+		self.save2 = 0
+		self.save3 = 0
+		self.offset = 1
 
 	def process(self, data):
-		down_samples = np.zeros(10+len(data)/self.M)
-		down_samples_index = 1
-		step = self.M 
-		for skip_by_m in range(self.start_index, len(data), self.M):
-			#print self.offset
-			n = int(round(skip_by_m + self.offset))
-			if n >= len(data):
-				self.start_index = n - len(data)
-				self.offset = 0
-				break
-			down_samples[down_samples_index] = data[n]
-			down_samples_index += 1
-			if down_samples_index >= len(down_samples):
-				#shouldn't get here
-				raise Exception('TimingRecovery: Shouldn\'t get here...')
-				break
+		down_samples = np.zeros(2+len(data)/self.M)
+		step = self.M/2 
 
-			dy_doffset = (quantize(data[n], self.alphabet) - data[n]) * (data[n+1] - data[n-1])
+		k = 0
+		if self.offset == 0:
+			self.save3 = data[1]
+			self.save2 = data[0]
+			dy_doffset = (quantize(self.save2, self.alphabet) - self.save2)*(self.save3 - self.save1)
 			self.offset += step * dy_doffset
-		
+			down_samples[0] = data[0]
+			k = 1
+		elif self.offset == -1:
+			self.save3 = data[0]
+			dy_doffset = (quantize(self.save2, self.alphabet) - self.save2)*(self.save3 - self.save1)
+			self.offset += step * dy_doffset
+			down_samples[0] = self.save2
+			k = 1
+
+		while True:
+			n = int(round(self.M*k + self.offset))
+			if n + 1 == len(data):
+				self.save2 = data[n]
+				self.save1 = data[n-1]
+				self.offset= -1
+				break
+			elif n == len(data):
+				self.save1 = data[n-1]
+				self.offset= 0
+				break
+			elif n > len(data):
+				self.offset= n - len(data)
+				break
+			down_samples[k] = data[n]
+			k += 1
+			dy_doffset = (quantize(data[n], self.alphabet) - data[n])*(data[n+1] - data[n-1])
+			self.offset += step * dy_doffset
+
+		return down_samples[:k]
+
+		#for skip_by_m in range(self.start_index, len(data), self.M):
+		#	#print self.offset
+		#	n = int(round(skip_by_m + self.offset))
+		#	if n >= len(data)-1:
+		#		self.start_index = n - len(data)+1
+		#		self.offset = 0
+		#		break
+		#	down_samples[down_samples_index] = data[n]
+		#	down_samples_index += 1
+		#	if down_samples_index >= len(down_samples):
+		#		#shouldn't get here
+		#		raise Exception('TimingRecovery: Shouldn\'t get here...')
+		#		break
+
+		#	dy_doffset = (quantize(data[n], self.alphabet) - data[n]) * (data[n+1] - data[n-1])
+		#	self.offset += step * dy_doffset
+		#
 		#print self.BLUE + 'down_samples_index [%d/%d]'%(down_samples_index, len(data)/self.M)
-		if self.debug:
-			self.log('adaptation offset: %.3f'%self.offset)
-		return down_samples[1:down_samples_index]
+		#if self.debug:
+		#	self.log('adaptation offset: %.3f'%self.offset)
+		#return down_samples[1:down_samples_index]
 
 class Queue(object):
 	def __init__(self, memory_type = np.float16, memory_size = 1024):

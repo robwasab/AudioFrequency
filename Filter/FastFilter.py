@@ -68,8 +68,9 @@ class FastFilter(FirFilter):
 			idx = np.argmax(filtered_abs)
 			if filtered_abs[idx] > 0.5: 
 				s = np.sign(filtered[idx])
-				return idx
-			return -1 
+				self.log('sign: %d'%s)
+				return (idx,s)
+			return (-1, 1) 
 		return filtered
 
 	def conv_chunk(self,data,fsync_hack=False, debug=False):

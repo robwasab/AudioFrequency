@@ -6,7 +6,7 @@ import numpy as np
 class Microphone(Module):
 	def __init__(self, *args, **kwargs):
 		Module.__init__(self, *args, **kwargs)
-		self.chunk_size = 1024
+		self.chunk_size = 2**10 
 		for kw in kwargs:
 			if kw == 'chunk_size':
 				self.chunk_size = kwargs[kw]
@@ -26,17 +26,18 @@ class Microphone(Module):
 			return True
 		else:
 			return False
+	
+	def save_data(self, data):
+		np.savetxt('microphone_data.gz', data)
 
 	def process(self, data):
-		if self.save is not None:
-			data = np.append(self.save, data)
+		self.save_data(data)
+		pad = np.zeros((self.chunk_size - len(data)%self.chunk_size))
+		data = np.append(data, pad)
+		self.log('len(data): %d'%len(data))
 
-		if len(data) > self.chunk_size:
-			N = int(len(data)/self.chunk_size)
-			for n in xrange(0,N):
-				self.output.input.put(data[n*self.chunk_size:(n+1)*self.chunk_size])
-
-			self.save = data[-(len(data)%self.chunk_size):]
-		else:
-			self.save = data
+		N = int(len(data)/self.chunk_size)
+		self.log('Breaking into %d chunks'%N)
+		for n in xrange(0,N):
+			self.output.input.put(data[n*self.chunk_size:(n+1)*self.chunk_size])
 		return None

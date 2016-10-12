@@ -22,12 +22,13 @@ class FrameSync(FastFilter):
 
 			self.queue = Queue(np.float64, 1024)
 			self.state = 'look_for_header'
-
+			
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise(ke)
 
 		self.whiten = Whitener(cipher = self.cipher)
+		self.inv = 1
 
 	def pam2num(self, pam):
 		return [n for n in [np.sum(quad << np.arange(len(quad)-1,-1,-1)*2) for quad in np.reshape((np.array(pam)+3)/2,(len(pam)/4,4))]]
@@ -36,10 +37,12 @@ class FrameSync(FastFilter):
 		return ''.join([chr(b) for b in num])
 
 	def process(self, data):
-		index = self.conv_chunk_chunk(data, fsync_hack=True, flush=False)
+		index, s = self.conv_chunk_chunk(data, fsync_hack=True, flush=False)
+		self.log(index)
 
 		if index != -1:
 			self.state = 'read_payload_len'
+			self.inv = s
 			self.queue.put(data[index+1:])
 			self.whiten.reset()
 			self.log('found a header!')
@@ -50,8 +53,7 @@ class FrameSync(FastFilter):
 			# All other states add data to queue
 			else:
 				self.log('storing data');
-				self.log(data)
-				self.queue.put(data)
+				self.queue.put(data*self.inv)
 
 		if self.state == 'read_payload_len':
 			if self.queue.size() > 8:
@@ -60,17 +62,20 @@ class FrameSync(FastFilter):
 				self.num_bytes = (num_bytes[1] << 8) + num_bytes[0] + 1
 				self.log('num_bytes: %d'%self.num_bytes)
 				self.state = 'read_payload'
+				self.log('queue.size() = %d'%self.queue.size())
+				self.log('need %d pam'%(4*self.num_bytes))
 		
 		if self.state == 'read_payload':
 			if self.queue.size() >= 4 * self.num_bytes:
 				pam = [quantize(d) for d in self.queue.read(4*self.num_bytes)]
-				
 				payload = self.pam2num(pam)
 				self.log('payload before whitening: ' + str(payload))
 				payload = self.whiten.process(payload)
 				self.log('payload after  whitening: ' + str(payload))
 				text = self.num2text(payload)	
 				self.state = 'look_for_header'
+
+				self.queue.read(self.queue.size())
 				return text
 		return None 
 
@@ -92,6 +97,11 @@ class Queue(object):
 	def size(self):
 		size = self.qusize
 		return size
+
+	def reset(self):
+		self.quhead = 0
+		self.qutail = 0
+		self.qusize = 0
 
 	def put(self, data):
 		room = len(data) > self.memory_size - self.qusize;
