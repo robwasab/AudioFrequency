@@ -60,7 +60,7 @@ class Module(Thread):
 			start = time()
 			out_dat = self.process(in_data)
 			stop  = time()
-			print self.YELLOW + self.__class__.__name__+':\t [%4.3f ms]'%(1000.0*(stop-start))+self.ENDC
+			#print self.YELLOW + self.__class__.__name__+':\t [%4.3f ms]'%(1000.0*(stop-start))+self.ENDC
 
 			if self.output is not None:
 				if out_dat is not None:

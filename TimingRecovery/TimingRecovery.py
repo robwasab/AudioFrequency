@@ -21,8 +21,8 @@ class TimingRecovery(Module):
 		self.offset = 1
 
 	def process(self, data):
-		down_samples = np.zeros(2+len(data)/self.M)
-		step = self.M/2 
+		down_samples = np.zeros(2*len(data)/self.M)
+		step = self.M 
 
 		k = 0
 		if self.offset == 0:

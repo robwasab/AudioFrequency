@@ -34,6 +34,7 @@ class Equalizer(FastFilter):
 			self.equal = FastFilter(bcoef = self.default_eq, flush=False)
 			self.chan_resp = None
 			self.sign = 1
+			self.thresh = 0.9
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise(ke)
@@ -80,7 +81,7 @@ class Equalizer(FastFilter):
 		# the equalizer will thus try to invert the data, which we get back
 		# if we multiply the fir coefficients by the -1, we retain the previous state of the filter
 
-		self.reset()
+		#self.reset()
 		self.put(data[:index])
 		self.log('index found..')
 		if self.debug:
@@ -89,7 +90,9 @@ class Equalizer(FastFilter):
 		fir = self.equalizer(self.read_all()).tolist()
 		self.equal.set_bcoef(s*np.array(fir))
 
-		return self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)	
+		equalized_header = self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)	
+		self.reset()
+		return equalized_header
 
 	def equalizer(self, r):
 		toe_row = r[-len(self.train):]

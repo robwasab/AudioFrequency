@@ -4,10 +4,14 @@
 #include <math.h>
 #include "Integrator.h"
 #include "LowPass.h"
+#include "LockDetector.h"
 #define PI M_PI
 
-static double fc, fs, F;
+static double fc, fs, F, gain, step;
 static float last_vco_phase;
+static float rc_tau;
+static float rc_constant;
+static float ref;
 static Integrator * vco_integrator;
 static LoopIntegrator * phase_integrator;
 static LowPass * ilp;
@@ -15,6 +19,7 @@ static LowPass * qlp;
 static LowPass * ilp_signal;
 static LowPass * qlp_signal;
 static LowPass * freq_filter;
+static LockDetector * lock_detector;
 
 static PyObject * init(PyObject * self, PyObject * args)
 {
@@ -22,6 +27,11 @@ static PyObject * init(PyObject * self, PyObject * args)
 		return NULL;
 		
 	F = fc/fs;
+	gain = 1.0;
+	step = 0.01;
+	rc_tau = 0.05;
+	ref = 1.0;
+	rc_constant = rc_tau*fs;
 	vco_integrator = Integrator_create(F);
 	
 	// for estimating the frequency
@@ -40,14 +50,30 @@ static PyObject * init(PyObject * self, PyObject * args)
 	// Low Pass Filters for filtering the output signal
 	ilp_signal = LowPass_create(fc > 2E3 ? 2E3 : fc, fs);
 	qlp_signal = LowPass_create(fc > 2E3 ? 2E3 : fc, fs);
-
+	lock_detector = LockDetector_create(fs);
 	return Py_None;
+}
+
+static float rc_filter(float sig)
+{
+	static float rc_sig = 0.0;
+	rc_sig = (sig + rc_constant*rc_sig)/(1.0+rc_constant);
+	return rc_sig;
 }
 
 inline static float work(float input)
 {
-	float real_input = input;
+	static int locked = 0;
+	static float real_input;
+	static float power;
 
+	input *= gain;
+	if(!locked) {
+		power = rc_filter(input*input);
+		gain = gain - step * (power - ref) * power/gain;
+	}
+	real_input = input;
+	
 	// Hard limit
 	if (input > 1.0)
 		input = 1.0;
@@ -73,7 +99,28 @@ inline static float work(float input)
 	// Downconvert analog
 	float in_phase_signal = 2.0*ilp_signal->work(ilp_signal, real_input*cos_vco);
 
-	return in_phase_signal;	
+	float qu_phase_signal = 2.0*qlp_signal->work(qlp_signal, real_input*sin_vco);
+
+	locked = lock_detector->work(lock_detector, in_phase_signal, qu_phase_signal);
+
+	static int foo = 0;
+	static int bar = 0;
+	if (locked) {
+		if (!foo) {
+			printf("Locked...\n");
+			foo = 1;
+		}
+		bar = 0;
+	}
+	else {
+		if (!bar) {
+			printf("Unlocked...\n");
+			bar = 1;
+		}
+		foo = 0;
+	}
+	
+	return 0.5*in_phase_signal;	
 }
 
 static PyObject * process(PyObject * self, PyObject * args)

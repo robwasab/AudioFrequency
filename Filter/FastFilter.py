@@ -22,6 +22,7 @@ class FastFilter(FirFilter):
 		FirFilter.__init__(self, *args, **kwargs)
 		self.set_bcoef(self.bcoef)
 		self.flush = False 
+		self.thresh = 0.9
 		for kw in kwargs:
 			if kw == 'flush':
 				self.flush = kwargs[kw]
@@ -36,7 +37,7 @@ class FastFilter(FirFilter):
 		while efficiency < 0.75:
 			self.chunklen *= 2
 			efficiency = (self.chunklen - self.slen)/float(self.chunklen)
-		self.log('Efficiency: %%%3.3f\tChunk Len: %5d\tSave Len: %4d'%(100.0*efficiency, self.chunklen, self.slen))
+		#self.log('Efficiency: %%%3.3f\tChunk Len: %5d\tSave Len: %4d'%(100.0*efficiency, self.chunklen, self.slen))
 		self.periodic_mode = False
 
 	def process(self, signal):
@@ -66,10 +67,10 @@ class FastFilter(FirFilter):
 		if fsync_hack:
 			filtered_abs = np.abs(filtered)
 			idx = np.argmax(filtered_abs)
-			self.log('idx: %d, filtered[idx]: %f'%(idx, filtered_abs[idx]))
-			if filtered_abs[idx] > 0.5: 
+			self.log('idx: %d filtered_abs[idx]: %f'%(idx, filtered_abs[idx]))
+			if filtered_abs[idx] > self.thresh: 
 				s = np.sign(filtered[idx])
-				self.log('sign: %d'%s)
+				#self.log('sign: %d'%s)
 				return (idx,s)
 			return (-1, 1) 
 		return filtered
@@ -139,7 +140,7 @@ class FastFilter(FirFilter):
 			if fsync_hack:
 				raw_abs = np.abs(raw)
 				idx = np.argmax(raw_abs)
-				if raw_abs[idx] > 0.5: 
+				if raw_abs[idx] > self.thresh: 
 					start_idx = k*size + idx
 					if debug:
 						self.log('k       : %d'%k)

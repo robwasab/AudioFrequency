@@ -15,8 +15,11 @@ class Prefix(Module):
 			if kw == 'bits':
 				bits = int(kwargs[kw])
 		self.prefix = maximumlength(bits) 
-		self.cipher = self.make_cipher()
-		self.prepam = self.num2pam(self.cipher)
+		#self.cipher = self.make_cipher()
+		#self.prepam = self.num2pam(self.cipher)
+		#self.log(self.prepam)	
+		#self.log(self.prefix)
+		#self.prepam = self.prefix
 		if self.debug and self.plt is not None:
 			self.plt.figure(self.fig)
 			self.plt.gcf().clf()
@@ -24,7 +27,7 @@ class Prefix(Module):
 			self.plt.title('Initialization: Prefix PAM Header')
 			self.plt.show(block=False)
 		# formats the maximum length sequence as little endian
-		self.whiten = Whitener(cipher = self.cipher)
+		#self.whiten = Whitener(cipher = self.cipher, disable = True)
 
 	def make_cipher(self):
 		prefix = np.append(self.prefix, self.prefix[0])
@@ -43,26 +46,30 @@ class Prefix(Module):
 		self.log(byte_data)
 		ret = None
 		done = False
-		self.whiten.reset()
+		#self.whiten.reset()
 		while not done:
 			packet = None
 			if self.maxbyt < len(byte_data):
 				text   = pack('H',self.maxbyt-1) + byte_data[:self.maxbyt]
 				numb   = self.text2num(text)
-				scram  = self.whiten.process(numb)
-				pam    = self.num2pam(scram) 
-				packet = np.append(self.prepam, pam)
+				#scram  = self.whiten.process(numb)
+				#pam    = self.num2pam(scram) 
+				pam    = self.num2pam(numb)
+				#packet = np.append(self.prepam, pam)
+				packet = np.append(self.prefix, pam)
 				byte_data = byte_data[self.maxbyt:]
 			else:
 				text   = pack('H', len(byte_data)-1) + byte_data
 				numb   = self.text2num(text)
 				self.log('payload with length: ' + str(numb))
-				scram  = self.whiten.process(numb)
-				self.log('payload post whiten: ' + str(scram))
-				pam    = self.num2pam(scram)
+				#scram  = self.whiten.process(numb)
+				#self.log('payload post whiten: ' + str(scram))
+				#pam    = self.num2pam(scram)
+				pam = self.num2pam(numb)
 				self.print_pam(pam)
 
-				packet = np.append(self.prepam, pam)
+				#packet = np.append(self.prepam, pam)
+				packet = np.append(self.prefix, pam)
 				done   = True
 
 			if ret is None:

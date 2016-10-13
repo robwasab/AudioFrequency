@@ -32,14 +32,15 @@ class Demodulator(Module):
 	
 	def process(self, data):
 		return self.C_process(data)
+		return self.Python_process(data)
 	
 	def C_process(self, data):
 		start = time()
 		ret = CostasLoopC.process(np.array(data, dtype=np.float32))
 		duration = time() - start
 		avg_loop = duration / float(len(data))*1E6
-		self.log('Avg Loop time: %.3f [us]'%avg_loop)
-		self.log('Time to beat : %.3f [us]'%(1E6/self.fs))
+		#self.log('Avg Loop time: %.3f [us]'%avg_loop)
+		#self.log('Time to beat : %.3f [us]'%(1E6/self.fs))
 		return ret 
 
 	def Python_process(self, data):
@@ -101,5 +102,4 @@ class Demodulator(Module):
 		avg_loop = duration / float(len(data))*1E6
 		self.log('Avg Loop time: %.3f [us]'%avg_loop)
 		self.log('Time to beat : %.3f [us]'%(1E6/self.fs))
-		self.costa.reset()
 		return data

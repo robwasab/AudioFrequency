@@ -36,6 +36,12 @@ class PythonCostasLoop(object):
 
 		# State Variable
 		self.lock = False
+
+		self.rc_sig = 0
+		self.rc_tau = 0.005
+		self.gain = 1.0
+		self.ref  = 0.6
+		self.step = 0.01
 	
 	def reset(self):
 		self.vco_integrator.reset()
@@ -48,12 +54,19 @@ class PythonCostasLoop(object):
 		self.freq_filter.reset()
 		self.lock_detect.reset()
 		self.lock = False
-		
+
+	def rc_filter(self, sig):
+		self.rc_sig = (sig + self.rc_tau*self.fs*self.rc_sig)/(1+self.rc_tau*self.fs)
+		return self.rc_sig	
 
 	# Main work function
 	def work(self, input):
 		#loop_start = time()
-
+		input *= self.gain
+		if not self.lock:
+			power = self.rc_filter(input**2)
+			self.gain  = self.gain - self.step * (power - self.ref) * power/self.gain
+		
 		real_input = input
 
 		# Hard Limit
@@ -82,12 +95,21 @@ class PythonCostasLoop(object):
 		# Downconvert analog
 		in_phase_signal = 2.0*self.ilp_signal.work(real_input * cos_vco)
 
-		if self.debug:
-			qu_phase_signal = 2.0*self.qlp_signal.work(real_input * sin_vco)
+		qu_phase_signal = 2.0*self.qlp_signal.work(real_input * sin_vco)
 
-			# Lock Detector
-			lock = self.lock_detect.work(in_phase_signal, qu_phase_signal)
+		# Lock Detector
+		lock = self.lock_detect.work(in_phase_signal, qu_phase_signal)
+
+		if lock and not self.lock:
+			print 'Locked..'
+			print 'Autogain %f'%self.gain
+			self.lock = True
 	
+		elif not lock and self.lock:
+			print 'Unlocked..'
+			self.lock = False
+	
+		if self.debug:
 			# Frequency Est.
 			self.freq_filter.work((vco_phase - self.last_vco_phase)*self.fs/(2.0*pi))
 			self.last_vco_phase = vco_phase
@@ -97,10 +119,11 @@ class PythonCostasLoop(object):
 
 			return (vco_phase, error, in_phase_signal, qu_phase_signal, cos_vco, sin_vco, self.freq_filter.y1, lock)
 		else:
-			return in_phase_signal
+			#scale the signal back to the original size
+			return in_phase_signal*0.6
 
 class LockDetect(object):
-	def __init__(self, fs, thresh = 1E-3):
+	def __init__(self, fs, thresh = 1E-2):
 		# Intentionally a ridiculously low frequency
 		# Because we are basically trying to measure DC component
 		self.in_phase_lp = LowPass(10, fs)

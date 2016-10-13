@@ -4,12 +4,16 @@ import numpy as np
 class Whitener(Module):
 	def __init__(self, *args, **kwargs):
 		Module.__init__(self, *args, **kwargs)
+		self.disable = False
 		kw = ''
 		try:
 			kw = 'cipher'
 			self.cipher = kwargs[kw]
 			self.n = len(self.cipher)
 			self.incomplete = 0
+			for kw in kwargs:
+				if kw == 'disable':
+					self.disable = kwargs[kw]
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise(kw)
@@ -19,6 +23,8 @@ class Whitener(Module):
 		self.incomplete = 0
 	
 	def process(self, data):
+		if self.disable:
+			return data
 		if self.incomplete > 0:
 			if self.incomplete > len(data):
 				offset = self.n - self.incomplete

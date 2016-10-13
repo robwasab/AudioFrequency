@@ -19,17 +19,18 @@ class FrameSync(FastFilter):
 			kwargs['bcoef'] = corr_prefix
 			FastFilter.__init__(self, *args, **kwargs)
 
-			kw = 'cipher'
-			self.cipher = kwargs[kw]
+			#kw = 'cipher'
+			#self.cipher = kwargs[kw]
 
 			self.queue = Queue(np.float64, 1024)
 			self.state = 'look_for_header'
+			self.thresh = 0.75
 			
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise(ke)
 
-		self.whiten = Whitener(cipher = self.cipher)
+		#self.whiten = Whitener(cipher = self.cipher, diable = True)
 		self.inv = 1
 
 	def pam2num(self, pam):
@@ -40,13 +41,14 @@ class FrameSync(FastFilter):
 
 	def process(self, data):
 		index, s = self.conv_chunk_chunk(data, fsync_hack=True, flush=False)
-		self.log(index)
 
 		if index != -1:
 			self.state = 'read_payload_len'
 			self.inv = s
+			self.queue.read(self.queue.size())
 			self.queue.put(self.inv*data[index+1:])
-			self.whiten.reset()
+			self.reset()
+			#self.whiten.reset()
 			self.log('found a header!')
 
 		elif index == -1:
@@ -60,20 +62,22 @@ class FrameSync(FastFilter):
 		if self.state == 'read_payload_len':
 			if self.queue.size() > 8:
 				pam = [quantize(d) for d in self.queue.read(8)]
-				num_bytes = self.whiten.process(self.pam2num(pam))
+				#num_bytes = self.whiten.process(self.pam2num(pam))
+				num_bytes = self.pam2num(pam)
 				self.num_bytes = (num_bytes[1] << 8) + num_bytes[0] + 1
 				self.log('num_bytes: %d'%self.num_bytes)
 				self.state = 'read_payload'
 				self.log('queue.size() = %d'%self.queue.size())
 				self.log('need %d pam'%(4*self.num_bytes))
+				self.print_pam(pam)
 		
 		if self.state == 'read_payload':
 			if self.queue.size() >= 4 * self.num_bytes:
 				pam = [quantize(d) for d in self.queue.read(4*self.num_bytes)]
 				payload = self.pam2num(pam)
 				self.log('payload before whitening: ' + str(payload))
-				payload = self.whiten.process(payload)
-				self.log('payload after  whitening: ' + str(payload))
+				#payload = self.whiten.process(payload)
+				#self.log('payload after  whitening: ' + str(payload))
 				text = self.num2text(payload)	
 				self.state = 'look_for_header'
 

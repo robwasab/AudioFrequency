@@ -35,7 +35,7 @@ def connect(modules):
 
 source = StdinS(main = True)
 ransrc = Random(100, main = True)
-prefix = Prefix(main = True, debug = False, plt=plt, bits=9)
+prefix = Prefix(main = True, debug = False, plt=plt, bits=7)
 pshape = Pulses(main = True, debug = False, plt=plt, M=18, beta = 0.5) 
 modula = Modula(main = True, debug = False, plt=plt, fs=fs, fc = 14.7E3)
 distor = 0.1*np.array([0.1, 0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1])
@@ -43,19 +43,19 @@ channe = Channe(main = True, debug = False, plt=plt, bcoef = distor, passthrough
 microp = Microp(main = True, debug = False, plt=plt, passthrough=False)
 autoga = AutoGa(main = True, debug = False, plt=plt, passthrough=True)
 demodu = Demodu(main = True, debug = False, plt=plt, fs = fs, fc = 14.0E3)
-train_pam = prefix.prepam[len(prefix.prepam)/2:]
+train_pam = prefix.prefix[len(prefix.prefix)/2:]
 train  = (pshape.process(train_pam))[:-4*pshape.M]
 equali = Equali(main = True, debug = False, plt=plt, prefix = train, channel=distor, passthrough=False)
 mfilte = FastFi(main = True, debug = False, plt=plt, bcoef = pshape.ps)
 interp = Interp(main = True, debug = False, plt=plt, numtaps = 20, L = 4, passthrough=False)
 trecov = Timing(main = True, debug = False, plt=plt, M=pshape.M*interp.L, passthrough=False)
-frsync = FrameS(main = True, debug = False, plt=plt, cipher = prefix.cipher, prefix = train_pam, autogain=autoga, equalizer=equali, passthrough = False)
+frsync = FrameS(main = True, debug = False, plt=plt, prefix = train_pam, passthrough = False)
 plot1  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
 plot2  = PlotSi(main = True, debug = False, plt=plt, stem = True, persist = False)
 plot3  = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
 stdsin = Stdout(main = True)
 
-modules = [source, prefix, pshape, modula, channe, microp, autoga, plot1, demodu, equali, mfilte, interp, trecov, plot2, frsync, stdsin]
+modules = [source, prefix, pshape, modula, channe, microp, demodu, plot1, equali, mfilte, interp, trecov, plot2, frsync, stdsin]
 connect(modules)
 
 try:
@@ -66,11 +66,10 @@ try:
 		pshape.work()
 		modula.work()
 		channe.work()
-		microp.work()
-		autoga.work()
-		plot1.work()
 		demodu.work()
+		plot1.work()
 		equali.work()
+		microp.work()
 		mfilte.work()
 		interp.work()
 		trecov.work()
