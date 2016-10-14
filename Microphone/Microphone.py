@@ -44,6 +44,7 @@ class Microphone(Module):
 		self.log('Breaking into %d chunks'%N)
 		noise = 0.1 * (np.random.rand(len(data))-0.5)
 		data = noise + data
+		data *= 0.1
 		for n in xrange(0,N):
 			self.output.input.put(data[n*self.chunk_size:(n+1)*self.chunk_size])
 		return None

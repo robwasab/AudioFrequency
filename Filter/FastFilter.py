@@ -22,7 +22,9 @@ class FastFilter(FirFilter):
 		FirFilter.__init__(self, *args, **kwargs)
 		self.set_bcoef(self.bcoef)
 		self.flush = False 
-		self.thresh = 0.9
+		self.thresh = 0.75
+		self.last_der = 0
+		self.last_max = 0
 		for kw in kwargs:
 			if kw == 'flush':
 				self.flush = kwargs[kw]
@@ -67,11 +69,21 @@ class FastFilter(FirFilter):
 		if fsync_hack:
 			filtered_abs = np.abs(filtered)
 			idx = np.argmax(filtered_abs)
-			self.log('idx: %d filtered_abs[idx]: %f'%(idx, filtered_abs[idx]))
-			if filtered_abs[idx] > self.thresh: 
+			der = filtered_abs[idx] - self.last_max
+			self.last_max = filtered_abs[idx]
+			der_scale = 0
+			if self.last_der < 1E-6:
+				self.last_der = der
+			else:
+				der_scale = der-self.last_der
+				self.last_der = der
+
+			#self.log(der)
+			if filtered_abs[idx] > self.thresh or der_scale > 2.5: 
 				s = np.sign(filtered[idx])
-				#self.log('sign: %d'%s)
+				self.log('correlation: %s%f%s'%(self.CYAN, filtered_abs[idx], self.ENDC))
 				return (idx,s)
+			#self.log('correlation: %f'%(filtered_abs[idx]))
 			return (-1, 1) 
 		return filtered
 

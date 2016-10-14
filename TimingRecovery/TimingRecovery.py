@@ -21,12 +21,12 @@ class TimingRecovery(Module):
 		self.offset = 1
 
 	def process(self, data):
-		down_samples = np.zeros(2*len(data)/self.M)
+		down_samples = np.zeros(10*len(data)/self.M)
 		step = self.M 
 
 		k = 0
 		if self.offset == 0:
-			self.log('using saved data, offset 0')
+			#self.log('using saved data, offset 0')
 			self.save3 = data[1]
 			self.save2 = data[0]
 			dy_doffset = (quantize(self.save2, self.alphabet) - self.save2)*(self.save3 - self.save1)
@@ -34,7 +34,7 @@ class TimingRecovery(Module):
 			down_samples[0] = data[0]
 			k = 1
 		elif self.offset == -1:
-			self.log('using saved data, offset -1')
+			#self.log('using saved data, offset -1')
 			self.save3 = data[0]
 			dy_doffset = (quantize(self.save2, self.alphabet) - self.save2)*(self.save3 - self.save1)
 			self.offset += step * dy_doffset
@@ -59,6 +59,11 @@ class TimingRecovery(Module):
 			k += 1
 			dy_doffset = (quantize(data[n], self.alphabet) - data[n])*(data[n+1] - data[n-1])
 			self.offset += step * dy_doffset
+			if self.offset > self.M:
+				self.offset = self.M
+			elif self.offset < -self.M:
+				self.offset = -self.M
+			#self.log(self.offset)
 
 		return down_samples[:k]
 

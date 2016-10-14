@@ -61,12 +61,12 @@ class Prefix(Module):
 			else:
 				text   = pack('H', len(byte_data)-1) + byte_data
 				numb   = self.text2num(text)
-				self.log('payload with length: ' + str(numb))
+				#self.log('payload with length: ' + str(numb))
 				#scram  = self.whiten.process(numb)
 				#self.log('payload post whiten: ' + str(scram))
 				#pam    = self.num2pam(scram)
 				pam = self.num2pam(numb)
-				self.print_pam(pam)
+				#self.print_pam(pam)
 
 				#packet = np.append(self.prepam, pam)
 				packet = np.append(self.prefix, pam)

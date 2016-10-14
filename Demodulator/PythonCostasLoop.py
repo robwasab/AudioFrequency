@@ -41,7 +41,7 @@ class PythonCostasLoop(object):
 		self.rc_tau = 0.005
 		self.gain = 1.0
 		self.ref  = 0.6
-		self.step = 0.01
+		self.step = 0.05
 	
 	def reset(self):
 		self.vco_integrator.reset()

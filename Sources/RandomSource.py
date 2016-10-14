@@ -23,5 +23,6 @@ class RandomSource(Source):
 			print self.YELLOW + 'Creating random data..' + self.ENDC
 			self.data = ''.join([chr(int(r)+ord('a')) for r in np.round(25*np.random.rand(self.num))])
 			self.log('\n>> '+self.data)
-			data = [ord(d) for d in data]
+			#self.data = [ord(d) for d in self.data]
+			#print self.data
 			return self.data

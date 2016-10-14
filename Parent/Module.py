@@ -10,6 +10,7 @@ import pdb
 class Module(Thread):
 	HEADER = '\033[95m'
 	BLUE = '\033[94m'
+	CYAN = '\033[36m'
 	GREEN = '\033[92m'
 	YELLOW = '\033[93m'
 	FAIL = '\033[91m'
@@ -18,6 +19,8 @@ class Module(Thread):
 	UNDERLINE = '\033[4m'
 	print_lock = Lock()
 	
+	def start(self):
+		Thread.start(self)
 	
 	def reset(self):
 		return
@@ -53,6 +56,7 @@ class Module(Thread):
 
 	def work(self):
 		if not self.input.empty():
+			#self.log('Queue size: %d'%len(self.input.queue))
 			in_data = self.input.get()
 			if self.passthrough == True:
 				self.output.input.put(in_data)
@@ -92,12 +96,15 @@ class Module(Thread):
 		base = time()
 		try:
 			while True:
+				self.mutex.acquire()
 				busy = self.work()
+				self.mutex.release()
 				if busy:
 					base = time()
 				else:
 					if time() - base > 5.0:
-						sleep(0.5)
+						#sleep(0.5)
+						pass
 
 				self.mutex.acquire()
 				if self.stop:

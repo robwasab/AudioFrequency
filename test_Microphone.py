@@ -13,7 +13,7 @@ mic = Microphone()
 plot1 = PlotSi(main = True, debug = False, plt=plt, stem = False, persist = False)
 
 modules = [mic, plot1]
-connect(modules)
+onnect(modules)
 
 try:
 	modules[0].start()

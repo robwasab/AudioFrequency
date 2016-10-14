@@ -22,9 +22,9 @@ class FrameSync(FastFilter):
 			#kw = 'cipher'
 			#self.cipher = kwargs[kw]
 
-			self.queue = Queue(np.float64, 1024)
+			self.queue = Queue(np.float64, 2**12)
 			self.state = 'look_for_header'
-			self.thresh = 0.75
+			self.thresh = 0.5
 			
 		except KeyError as ke:
 			self.print_kw_error(kw)
@@ -49,14 +49,16 @@ class FrameSync(FastFilter):
 			self.queue.put(self.inv*data[index+1:])
 			self.reset()
 			#self.whiten.reset()
-			self.log('found a header!')
+			self.log('FOUND START OF PAYLOAD!')
 
 		elif index == -1:
 			if self.state == 'look_for_header':
 				return None
 			# All other states add data to queue
 			else:
-				self.log('storing data');
+				#self.log('storing data...');
+				if self.queue.memory_size - self.queue.size() < len(data):
+					self.queue.read(self.queue.size())
 				self.queue.put(data*self.inv)
 
 		if self.state == 'read_payload_len':
@@ -66,16 +68,15 @@ class FrameSync(FastFilter):
 				num_bytes = self.pam2num(pam)
 				self.num_bytes = (num_bytes[1] << 8) + num_bytes[0] + 1
 				self.log('num_bytes: %d'%self.num_bytes)
-				self.state = 'read_payload'
-				self.log('queue.size() = %d'%self.queue.size())
-				self.log('need %d pam'%(4*self.num_bytes))
+				self.log('bytes in queue: %f'%(self.queue.size()/4.0))
 				self.print_pam(pam)
+				self.state = 'read_payload'
 		
 		if self.state == 'read_payload':
 			if self.queue.size() >= 4 * self.num_bytes:
 				pam = [quantize(d) for d in self.queue.read(4*self.num_bytes)]
 				payload = self.pam2num(pam)
-				self.log('payload before whitening: ' + str(payload))
+				#self.log('payload before whitening: ' + str(payload))
 				#payload = self.whiten.process(payload)
 				#self.log('payload after  whitening: ' + str(payload))
 				text = self.num2text(payload)	

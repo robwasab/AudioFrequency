@@ -34,7 +34,8 @@ class Equalizer(FastFilter):
 			self.equal = FastFilter(bcoef = self.default_eq, flush=False)
 			self.chan_resp = None
 			self.sign = 1
-			self.thresh = 0.9
+			self.thresh = 0.75
+
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise(ke)
@@ -59,6 +60,13 @@ class Equalizer(FastFilter):
 			num = 2**N
 			self.pad = np.zeros(num-self.eqlen)
 			self.xaxis = np.arange(num)/float(num)
+
+	def work(self):
+		if not self.input.empty():
+			self.log('Queue size: %d'%len(self.input.queue))
+		return FastFilter.work(self)
+
+
 	
 	def put(self, data):
 		indexes = (self.tail+np.arange(len(data)))%len(self.buffer)
@@ -83,7 +91,7 @@ class Equalizer(FastFilter):
 
 		#self.reset()
 		self.put(data[:index])
-		self.log('index found..')
+		self.log('FOUND TRAINING HEADER!')
 		if self.debug:
 			self.log('index: %d'%index)
 

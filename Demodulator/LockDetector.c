@@ -12,7 +12,6 @@ int work(LockDetector * self, float in_phase, float qu_phase)
 	self->qu_phase_lp->work(self->qu_phase_lp, sq(qu_phase));
 	if (in_phase > self->thresh && qu_phase < self->thresh)
 		return true;
-	
 	else
 		return false;
 }
@@ -36,7 +35,7 @@ LockDetector * LockDetector_create(float fs)
 	memset(lock, 0, sizeof(LockDetector));
 	lock->in_phase_lp = LowPass_create(10.0, fs);
 	lock->qu_phase_lp = LowPass_create(10.0, fs);
-	lock->thresh = 1E-2;
+	lock->thresh = 1E-1;
 	lock->reset = reset;
 	lock->work = work;
 	lock->dealloc = dealloc;
