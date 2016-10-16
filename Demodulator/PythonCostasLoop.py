@@ -40,7 +40,7 @@ class PythonCostasLoop(object):
 		self.rc_sig = 0
 		self.rc_tau = 0.005
 		self.gain = 1.0
-		self.ref  = 0.6
+		self.ref  = 1.0 
 		self.step = 0.05
 	
 	def reset(self):
@@ -120,7 +120,7 @@ class PythonCostasLoop(object):
 			return (vco_phase, error, in_phase_signal, qu_phase_signal, cos_vco, sin_vco, self.freq_filter.y1, lock)
 		else:
 			#scale the signal back to the original size
-			return in_phase_signal*0.6
+			return in_phase_signal
 
 class LockDetect(object):
 	def __init__(self, fs, thresh = 1E-2):

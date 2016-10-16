@@ -39,13 +39,13 @@ source = StdinS(main = True)
 ransrc = Random(100, main = True)
 prefix = Prefix(main = False, debug = False, plt=plt, bits=8)
 pshape = Pulses(main = False, debug = False, plt=plt, M=101, beta = 0.5) 
-modula = Modula(main = False, debug = False, plt=plt, fs=fs, fc = 14.7E3)
+modula = Modula(main = False, debug = False, plt=plt, fs=fs, fc = 7350)
 distor = np.array([0.1, 0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1])
 channe = Channe(main = False, debug = False, plt=plt, bcoef = distor, passthrough=False)
 speake = Speake(main = False, debug = False, plt=plt, passthrough=False)
 microp = Microp(main = False, debug = False, plt=plt, passthrough=False)
-bandpa = BandPa(main = False, debug = False, plt=plt, fs = fs, fc = 14.7E3, passthrough=False)
-demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 14.7E3)
+bandpa = BandPa(main = False, debug = False, plt=plt, fs = fs, fc = 7350, passthrough=False)
+demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 7350)
 train_pam = prefix.prefix
 train  = (pshape.process(train_pam))[:-4*pshape.M]
 equali = Equali(main = False, debug = False, plt=plt, prefix = train, passthrough=False)
@@ -54,12 +54,13 @@ interp = Interp(main = False, debug = False, plt=plt, numtaps = 20, L = 4, passt
 trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M*interp.L, passthrough=False)
 frsync = FrameS(main = False, debug = False, plt=plt, prefix = train_pam, passthrough = False)
 plot1  = PlotSi(main = True , debug = False, plt=plt, stem = False, persist = False)
-plot2  = PlotSi(main = True , debug = False, plt=plt, stem = True, persist = False)
-plot3  = PlotSi(main = True , debug = False, plt=plt, stem = False, persist = False)
-speca  = Plotsp(main = True , debug = True , plt=plt, stem = False, persist = False, fs = fs)
+plot2  = PlotSi(main = True , debug = False, plt=plt, stem = False, persist = False)
+plot3  = PlotSi(main = True , debug = False, plt=plt, stem = True, persist = False)
+speca  = Plotsp(main = True , debug = False, plt=plt, stem = True, persist = False, fs = fs)
 stdsin = Stdout(main = True)
 
 #modules = [source, prefix, pshape, modula, channe, microp, bandpa, demodu, equali, mfilte, interp, trecov, frsync, stdsin]
+#modules = [source, prefix, plot1, pshape, modula, channe, bandpa, demodu, plot2, equali, mfilte, interp, trecov, plot3, frsync, stdsin]
 modules = [source, prefix, pshape, modula, speake, microp, bandpa, demodu, equali, mfilte, interp, trecov, frsync, stdsin]
 connect(modules)
 
@@ -82,6 +83,8 @@ try:
 		#trecov.work()
 		#plot2.work()
 		#frsync.work()
+		#plot1.work()
+		#plot2.work()
 		#plot3.work()
 		stdsin.work()
 		#if stdsin.done:

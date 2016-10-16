@@ -38,13 +38,15 @@ class Microphone(Module):
 		#self.save_data(data)
 		pad = np.zeros((self.chunk_size - len(data)%self.chunk_size))
 		data = np.append(data, pad)
+		data = np.append(data, pad)
+		data = np.append(data, pad)
 		self.log('len(data): %d'%len(data))
 
 		N = int(len(data)/self.chunk_size)
 		self.log('Breaking into %d chunks'%N)
-		noise = 0.1 * (np.random.rand(len(data))-0.5)
-		data = noise + data
-		data *= 0.1
+		#noise = 0.1 * (np.random.rand(len(data))-0.5)
+		#data = noise + data
+		#data *= 0.1
 		for n in xrange(0,N):
 			self.output.input.put(data[n*self.chunk_size:(n+1)*self.chunk_size])
 		return None

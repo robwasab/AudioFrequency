@@ -34,7 +34,7 @@ class Equalizer(FastFilter):
 			self.equal = FastFilter(bcoef = self.default_eq, flush=False)
 			self.chan_resp = None
 			self.sign = 1
-			self.thresh = 0.75
+			self.thresh = 0.6
 
 		except KeyError as ke:
 			self.print_kw_error(kw)
@@ -62,8 +62,8 @@ class Equalizer(FastFilter):
 			self.xaxis = np.arange(num)/float(num)
 
 	def work(self):
-		if not self.input.empty():
-			self.log('Queue size: %d'%len(self.input.queue))
+		#if not self.input.empty():
+			#self.log('Queue size: %d'%len(self.input.queue))
 		return FastFilter.work(self)
 
 

@@ -21,7 +21,8 @@ static LowPass * qlp_signal;
 static LowPass * freq_filter;
 static LowPass * input_thresh_lp;
 static LockDetector * lock_detector;
-static float step_table[] = {    1,   .1,  .01,  .001,  .0001};
+//static float step_table[] = {    1,   .1,  .01,  .001,  .0001};
+static float step_table[] = {    10,   1,  .1,  .01,  .001};
 static float step_power[] = {0.001, 0.01, 0.1,    1,    10};
 
 static PyObject * init(PyObject * self, PyObject * args)
@@ -32,7 +33,8 @@ static PyObject * init(PyObject * self, PyObject * args)
 	F = fc/fs;
 	gain = 1.0;
 	rc_tau = 0.05;
-	ref = 0.4;
+	//ref = 0.4;
+	ref = 1.0;
 	rc_constant = rc_tau*fs;
 	vco_integrator = Integrator_create(F);
 	
@@ -91,8 +93,8 @@ inline static float work(float input)
 				break;
 		}
 		power = rc_filter(input*input);
-		gain = gain - 0.0005 * (power - ref) * power/gain;
-		//gain = gain - 100.0 * (power - ref) * power/gain;
+		//gain = gain - 0.0005 * (power - ref) * power/gain;
+		gain = gain - step * (power - ref) * power/gain;
 	}
 	
 	real_input = input;
