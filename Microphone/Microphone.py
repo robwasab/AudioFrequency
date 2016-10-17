@@ -10,7 +10,7 @@ import pdb
 class Microphone(Module):
 	def __init__(self, *args, **kwargs):
 		Module.__init__(self, *args, **kwargs)
-		self.chunk_size = 2**10 
+		self.chunk_size = 2**9
 		for kw in kwargs:
 			if kw == 'chunk_size':
 				self.chunk_size = kwargs[kw]
@@ -31,14 +31,8 @@ class Microphone(Module):
 		else:
 			return False
 
-	def save_data(self, data):
-		np.savetxt('microphone_data.gz', data)
-
 	def process(self, data):
-		#self.save_data(data)
-		pad = np.zeros((self.chunk_size - len(data)%self.chunk_size))
-		data = np.append(data, pad)
-		data = np.append(data, pad)
+		pad = np.zeros((self.chunk_size - (len(data)%self.chunk_size)))
 		data = np.append(data, pad)
 		self.log('len(data): %d'%len(data))
 
@@ -50,36 +44,3 @@ class Microphone(Module):
 		for n in xrange(0,N):
 			self.output.input.put(data[n*self.chunk_size:(n+1)*self.chunk_size])
 		return None
-
-	def visualize(self):
-		CHUNK = 2**12
-		FORMAT = pyaudio.paInt16
-		CHANNELS = 1
-		RATE = 44100
-		p = pyaudio.PyAudio()
-		stream = p.open(format=FORMAT, 
-				channels=CHANNELS,
-				rate=RATE,
-				input=True,
-				frames_per_buffer=CHUNK)
-		
-		buffer = np.zeros(CHUNK*4)
-		tail = 0
-		plt.figure(1)
-		handle, = plt.plot(buffer)
-		plt.gcf().gca().set_ylim((2**15-1,-2**15))
-		plt.show(block=False)
-		try:
-			while True:
-				data = np.fromstring(stream.read(CHUNK),dtype=np.int16)
-				indecies = np.arange(tail, tail+len(data)) % len(buffer)
-				tail = indecies[-1]
-				buffer[indecies] = data
-				#handle.set_ydata(buffer)	
-				#plt.gcf().canvas.draw()
-
-		except KeyboardInterrupt:
-			stream.stop_stream()
-			stream.close()
-			p.terminate()
-

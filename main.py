@@ -9,6 +9,7 @@ from   Filter.Channel        import Channel       as Channe
 from   Hardware.Hardware     import Microphone    as Microp
 from   Hardware.Hardware     import Speaker       as Speake
 from   Filter.BandPassFilter import BandPassFilter as BandPa
+from   Autogain.Autogain     import Autogain      as Autoga
 from   Demodulator.Demodulator import Demodulator as Demodu
 from   Interpolator.Interpolator     import Interpolator   as Interp
 from   Equalizer.Equalizer           import Equalizer      as Equali
@@ -37,31 +38,34 @@ def connect(modules):
 
 source = StdinS(main = True)
 ransrc = Random(100, main = True)
-prefix = Prefix(main = False, debug = False, plt=plt, bits=8)
+prefix = Prefix(main = False, debug = False, plt=plt, bits=9)
 pshape = Pulses(main = False, debug = False, plt=plt, M=101, beta = 0.5) 
-modula = Modula(main = False, debug = False, plt=plt, fs=fs, fc = 7350)
-distor = np.array([0.1, 0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1])
-channe = Channe(main = False, debug = False, plt=plt, bcoef = distor, passthrough=False)
+modula = Modula(main = False, debug = False, plt=plt, fs=fs, fc = 8820)
+distor = np.array([0.1, 0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1]) * 0.1
+channe = Channe(main = False, debug = False, plt=plt, bcoef=distor, passthrough=False)
 speake = Speake(main = False, debug = False, plt=plt, passthrough=False)
 microp = Microp(main = False, debug = False, plt=plt, passthrough=False)
-bandpa = BandPa(main = False, debug = False, plt=plt, fs = fs, fc = 7350, passthrough=False)
-demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 7350)
-train_pam = prefix.prefix
-train  = (pshape.process(train_pam))[:-4*pshape.M]
+bandpa = BandPa(main = False, debug = False, plt=plt, fs = fs, fc = 8820, taps=256, passthrough=False)
+autoga = Autoga(main = False, debug = False, plt=plt, fs = fs, M=pshape.M, passthrough=False)
+demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 8820)
+train_pam = prefix.prepam
+#train  = (pshape.process(train_pam))[:-4*pshape.M]
+train  = (pshape.process(train_pam))
+train  = train[(-len(train)/2):(-4*pshape.M)]
 equali = Equali(main = False, debug = False, plt=plt, prefix = train, passthrough=False)
 mfilte = FastFi(main = False, debug = False, plt=plt, bcoef = pshape.ps)
-interp = Interp(main = False, debug = False, plt=plt, numtaps = 20, L = 4, passthrough=False)
-trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M*interp.L, passthrough=False)
-frsync = FrameS(main = False, debug = False, plt=plt, prefix = train_pam, passthrough = False)
+#interp = Interp(main = False, debug = False, plt=plt, numtaps = 10, L = 2, passthrough=False)
+#trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M*interp.L, passthrough=False)
+trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M, passthrough=False)
+frsync = FrameS(main = False, debug = False, plt=plt, cipher=prefix.cipher, prefix=train_pam, passthrough = False)
 plot1  = PlotSi(main = True , debug = False, plt=plt, stem = False, persist = False)
 plot2  = PlotSi(main = True , debug = False, plt=plt, stem = False, persist = False)
 plot3  = PlotSi(main = True , debug = False, plt=plt, stem = True, persist = False)
 speca  = Plotsp(main = True , debug = False, plt=plt, stem = True, persist = False, fs = fs)
-stdsin = Stdout(main = True)
+stdsin = Stdout(main = False)
 
-#modules = [source, prefix, pshape, modula, channe, microp, bandpa, demodu, equali, mfilte, interp, trecov, frsync, stdsin]
-#modules = [source, prefix, plot1, pshape, modula, channe, bandpa, demodu, plot2, equali, mfilte, interp, trecov, plot3, frsync, stdsin]
-modules = [source, prefix, pshape, modula, speake, microp, bandpa, demodu, equali, mfilte, interp, trecov, frsync, stdsin]
+#modules = [source, prefix, pshape, modula, channe, microp, bandpa, autoga, demodu, equali, mfilte, trecov, plot3, frsync, stdsin]
+modules = [source, prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
 connect(modules)
 
 try:
@@ -75,18 +79,16 @@ try:
 		#channe.work()
 		#microp.work()
 		#bandpa.work()
+		#autoga.work()
 		#demodu.work()
-		#plot1.work()
 		#equali.work()
 		#mfilte.work()
 		#interp.work()
 		#trecov.work()
-		#plot2.work()
+		plot1.work()
 		#frsync.work()
-		#plot1.work()
-		#plot2.work()
 		#plot3.work()
-		stdsin.work()
+		#stdsin.work()
 		#if stdsin.done:
 		#	stdsin.log('Pass: ' + str(ransrc.data==stdsin.data))
 		#	stdsin.done = False

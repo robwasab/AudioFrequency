@@ -60,13 +60,6 @@ class Equalizer(FastFilter):
 			num = 2**N
 			self.pad = np.zeros(num-self.eqlen)
 			self.xaxis = np.arange(num)/float(num)
-
-	def work(self):
-		#if not self.input.empty():
-			#self.log('Queue size: %d'%len(self.input.queue))
-		return FastFilter.work(self)
-
-
 	
 	def put(self, data):
 		indexes = (self.tail+np.arange(len(data)))%len(self.buffer)
@@ -89,7 +82,6 @@ class Equalizer(FastFilter):
 		# the equalizer will thus try to invert the data, which we get back
 		# if we multiply the fir coefficients by the -1, we retain the previous state of the filter
 
-		#self.reset()
 		self.put(data[:index])
 		self.log('FOUND TRAINING HEADER!')
 		if self.debug:
@@ -99,7 +91,6 @@ class Equalizer(FastFilter):
 		self.equal.set_bcoef(s*np.array(fir))
 
 		equalized_header = self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)	
-		self.reset()
 		return equalized_header
 
 	def equalizer(self, r):

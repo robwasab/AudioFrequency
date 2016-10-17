@@ -49,11 +49,8 @@ class Microphone(Module):
 	
 	def callback(self, in_data, frame_count, time_info, status):
 		audio = np.fromstring(in_data, dtype=np.float32)
-		#resp = np.abs(fft(audio))
-		#handle.set_ydata(resp/float(2**10))
-		#plt.gcf().canvas.draw()
 		power = np.sum(audio**2)
-		if self.output is not None:
+		if self.output is not None and power > 1:
 			self.output.input.put(audio)
 		return (audio, pyaudio.paContinue)
 	
@@ -83,7 +80,6 @@ class Speaker(Module):
 				output=True)
 
 	def process(self, data):
-		data *= 1.25
 		self.stream.write(data.astype(np.float32).tostring())
 		return None
 	

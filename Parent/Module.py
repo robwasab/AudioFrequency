@@ -56,7 +56,7 @@ class Module(Thread):
 
 	def work(self):
 		if not self.input.empty():
-			#self.log('Queue size: %d'%len(self.input.queue))
+			self.log('Queue size: %d'%len(self.input.queue))
 			in_data = self.input.get()
 			if self.passthrough == True:
 				self.output.input.put(in_data)
@@ -64,7 +64,7 @@ class Module(Thread):
 			start = time()
 			out_dat = self.process(in_data)
 			stop  = time()
-			#print self.YELLOW + self.__class__.__name__+':\t [%4.3f ms]'%(1000.0*(stop-start))+self.ENDC
+			print self.YELLOW + self.__class__.__name__+':\t [%4.3f ms]'%(1000.0*(stop-start))+self.ENDC
 
 			if self.output is not None:
 				if out_dat is not None:

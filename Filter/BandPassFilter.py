@@ -26,18 +26,17 @@ class BandPassFilter(FastFilter):
 			self.fs = kwargs[kw]
 			for kw in kwargs:
 				if kw == 'taps':
-					self.taps = kwargs[taps]
+					self.taps = kwargs[kw]
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise(ke)
 
-		self.fir_lp = signal.firwin(self.taps, 3E3/(self.fs/2.0))
+		self.fir_lp = 2.0*signal.firwin(self.taps, 3E3/(self.fs/2.0))
 		self.set_fc(self.fc)
 	
 	def process(self, audio):
 		power = np.sum(audio**2)
-		if power > 0.5:
-			#self.log(power)
+		if power > 0.05:
 			return FastFilter.process(self, audio)
 
 	def set_fc(self, fc):

@@ -1,71 +1,85 @@
-from sys import float_info
 from Parent.Module import Module
 import numpy as np
 
-class Autogain(Module):
+class Comparator(object):
+	def __init__(self, thresh, high, low=0.0):
+		self.thresh = thresh
+		self.low = low
+		self.high = high
 
+	def work(self, input):
+		return self.low if input>self.thresh else self.high
+
+class LowPass(object):
+	def __init__(self, tau, fs=44.1E3):
+		self.tau = tau
+		self.rc_sig = 0
+		self.fs = fs
+
+	def work(self, sig):
+		self.rc_sig = (sig + self.tau*self.fs*self.rc_sig)/(1+self.tau*self.fs)
+		return self.rc_sig	
+
+class PeakDetect(LowPass):
+	def __init__(self, *args):
+		LowPass.__init__(self, *args)
+	
+	def work(self, sig):
+		if np.abs(sig) > self.rc_sig:
+			self.rc_sig = np.abs(sig)
+			return self.rc_sig
+		return LowPass.work(self, sig)
+
+class Autogain(Module):
 	def __init__(self, *args, **kwargs):
 		Module.__init__(self, *args, **kwargs)
-		self.gain = 1.0
-		self.step = 1E-4
-		self.pwrs = [1, 9]
-		self.hist = np.zeros(5)
-	
-	def error(self, input_pwr):
-		min_error = float_info.max 
-		ref_pwr = -1
-		for pwr in self.pwrs:
-			error = input_pwr - pwr 	
-			if np.abs(error) < min_error:
-				min_error = error
-				ref_pwr = pwr
-		return min_error, ref_pwr
+		fs = 44.1E3
+		M = kwargs['M'] 
+		self.gain = 30.0
+		peak_tau  = M*300.0/fs
+		lowp_tau  = M*300.0/fs
+		self.peak = PeakDetect(peak_tau, fs)
+		self.comp = Comparator(0.625, self.gain, 0.0)
+		self.lowp = LowPass(lowp_tau, fs)
 		
+	def process(self, data):
+		if self.debug and self.plt is not None:
+			self.peaks = np.zeros(len(data))
+			self.compa = np.zeros(len(data))
+			self.lowpa = np.zeros(len(data))
 
-	def process(self, signal):
-		if self.debug:
-			self.powers = np.zeros(len(signal))
-			self.quanti = np.zeros(len(signal))
-			self.gains  = np.zeros(len(signal))
-			self.errors = np.zeros(len(signal))
-			matlab = '['
-			for s in signal:
-				matlab += '%f,'%s
-			matlab += ']'
-			self.log(matlab)
+		for n in xrange(len(data)):
+			recv = self.gain*data[n]
+			peak = self.peak.work(recv)
+			comp = self.comp.work(peak)
+			lowp = self.lowp.work(comp)
+			self.gain = lowp
+			data[n] = recv
+			if self.debug and self.plt is not None:
+				self.peaks[n] = peak
+				self.compa[n] = comp
+				self.lowpa[n] = lowp
 
-		for n in xrange(0,len(signal)):
-			x = self.gain * signal[n]
-			signal[n] = x
-			self.hist[1:] = self.hist[0:-1]
-			self.hist[0] = x
-			pwr = np.sum(self.hist**2)/float(len(self.hist))
-			print pwr
-			error, ref_pwr = self.error(pwr)
-			if error > 20:
-				break
-			dy_dgain = 1000.0*error*pwr/self.gain
-			self.gain -= self.step*dy_dgain
-			if self.debug:
-				self.powers[n] = pwr 
-				self.gains[n]  = self.gain
-				self.errors[n] = error
-				self.quanti[n] = ref_pwr
 		if self.debug and self.plt is not None:
 			self.plt.figure(self.fig)
 			self.plt.gcf().clf()
 			self.plt.subplot(411)
-			self.plt.plot(self.powers)
-			self.plt.title('Autogain Power')
+			self.plt.plot(data)
+			self.plt.title('data')
+
 			self.plt.subplot(412)
-			self.plt.plot(self.quanti)
-			self.plt.title('Reference Powers')
-			self.plt.ylim(0,10)
+			self.plt.plot(self.peaks)
+			self.plt.title('peaks')
+
 			self.plt.subplot(413)
-			self.plt.plot(self.gains)
-			self.plt.title('Gains')
+			self.plt.plot(self.compa)
+			self.plt.title('compa')
+			self.plt.gca().set_ylim((-1,6))
+
 			self.plt.subplot(414)
-			self.plt.plot(self.errors)
-			self.plt.title('Errors')
-			self.plt.show(block=False)
-		return signal
+			self.plt.plot(self.lowpa)
+			self.plt.title('low pass')
+
+			self.plt.show()
+		#self.log('gain: %f'%self.gain)
+		return data

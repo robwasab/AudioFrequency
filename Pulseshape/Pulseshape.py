@@ -63,4 +63,4 @@ class Pulseshape(FastFilter):
 			self.plt.xlim((-1, len(signal) + 1))
 			self.plt.ylim((-3.5, 3.5))
 
-		return analog_signal
+		return np.append(analog_signal, np.zeros(2*self.M))

@@ -21,9 +21,6 @@ static LowPass * qlp_signal;
 static LowPass * freq_filter;
 static LowPass * input_thresh_lp;
 static LockDetector * lock_detector;
-//static float step_table[] = {    1,   .1,  .01,  .001,  .0001};
-static float step_table[] = {    10,   1,  .1,  .01,  .001};
-static float step_power[] = {0.001, 0.01, 0.1,    1,    10};
 
 static PyObject * init(PyObject * self, PyObject * args)
 {
@@ -31,11 +28,6 @@ static PyObject * init(PyObject * self, PyObject * args)
 		return NULL;
 		
 	F = fc/fs;
-	gain = 1.0;
-	rc_tau = 0.05;
-	//ref = 0.4;
-	ref = 1.0;
-	rc_constant = rc_tau*fs;
 	vco_integrator = Integrator_create(F);
 	
 	// for estimating the frequency
@@ -55,55 +47,14 @@ static PyObject * init(PyObject * self, PyObject * args)
 	ilp_signal = LowPass_create(fc > 2E3 ? 2E3 : fc, fs);
 	qlp_signal = LowPass_create(fc > 2E3 ? 2E3 : fc, fs);
 	lock_detector = LockDetector_create(fs);
-	input_thresh_lp = LowPass_create(10.0, fs);
 	return Py_None;
 }
 
-static float rc_filter(float sig)
-{
-	static float rc_sig = 0.0;
-	rc_sig = (sig + rc_constant*rc_sig)/(1.0+rc_constant);
-	return rc_sig;
-}
-
-static float rc_filter2(float sig)
-{
-	static float rc_sig = 0.0;
-	rc_sig = (sig + rc_constant*rc_sig)/(1.0+rc_constant);
-	return rc_sig;
-}
 inline static float work(float input)
 {
 	static int locked = 0;
 	static float real_input;
-	static float power;
-	static float step;
-	static int n;
-	static float input_power;
-
-        input_power = rc_filter2(input*input);
-	input *= gain;
-		
-	//printf("input: %f gain: %f power: %f\n", input_power, gain, power);
-	if(!locked && input_power > .01) {
-		
-		for (n = 0; n<sizeof(step_table)/sizeof(step_table[0]); n++) {
-			step = step_table[n];
-			if (power < step_power[n])
-				break;
-		}
-		power = rc_filter(input*input);
-		//gain = gain - 0.0005 * (power - ref) * power/gain;
-		gain = gain - step * (power - ref) * power/gain;
-	}
-	
 	real_input = input;
-	
-	// Hard limit
-	if (input > 0.5)
-		input = 0.5;
-	else if (input < -0.5)
-		input = -0.5;
 
 	// Phase Generator
 	// vco_phase is a constantly increasing phase value
@@ -133,8 +84,6 @@ inline static float work(float input)
 	if (locked) {
 		if (!foo) {
 			printf("Locked...\n");
-			printf("Gain: %f\n", gain);
-			printf("Power: %f\n", power);
 			foo = 1;
 		}
 		bar = 0;
@@ -147,7 +96,7 @@ inline static float work(float input)
 		foo = 0;
 	}
 	
-	return 0.25*in_phase_signal;	
+	return 0.7*in_phase_signal;	
 }
 
 static PyObject * process(PyObject * self, PyObject * args)
