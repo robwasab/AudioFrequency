@@ -55,6 +55,10 @@ inline static float work(float input)
 	static int locked = 0;
 	static float real_input;
 	real_input = input;
+	if (input > 1.0)
+		input = 1.0;
+	else if (input < -1.0)
+		input = -1.0;
 
 	// Phase Generator
 	// vco_phase is a constantly increasing phase value

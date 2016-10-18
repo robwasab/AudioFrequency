@@ -1,4 +1,5 @@
 from Parent.Module import Module
+from time import time
 import numpy as np
 
 class Comparator(object):
@@ -13,12 +14,15 @@ class Comparator(object):
 class LowPass(object):
 	def __init__(self, tau, fs=44.1E3):
 		self.tau = tau
-		self.rc_sig = 0
 		self.fs = fs
+		self.rc_sig = 0
 
 	def work(self, sig):
 		self.rc_sig = (sig + self.tau*self.fs*self.rc_sig)/(1+self.tau*self.fs)
 		return self.rc_sig	
+
+	def reset(self):
+		self.rc_sig = 0
 
 class PeakDetect(LowPass):
 	def __init__(self, *args):
@@ -36,13 +40,21 @@ class Autogain(Module):
 		fs = 44.1E3
 		M = kwargs['M'] 
 		self.gain = 30.0
-		peak_tau  = M*300.0/fs
-		lowp_tau  = M*300.0/fs
+		peak_tau  = M*200.0/fs
+		lowp_tau  = M*400.0/fs
 		self.peak = PeakDetect(peak_tau, fs)
-		self.comp = Comparator(0.625, self.gain, 0.0)
+		self.comp = Comparator(1.0, self.gain, 0.0)
 		self.lowp = LowPass(lowp_tau, fs)
+		self.init = time()
+		self.timeout = 10.0
+		self.rssi = 0
 		
 	def process(self, data):
+		if time() > self.init + self.timeout:
+			self.peak.reset()
+			self.lowp.reset()
+			self.log('resetting...')
+
 		if self.debug and self.plt is not None:
 			self.peaks = np.zeros(len(data))
 			self.compa = np.zeros(len(data))
@@ -51,6 +63,7 @@ class Autogain(Module):
 		for n in xrange(len(data)):
 			recv = self.gain*data[n]
 			peak = self.peak.work(recv)
+			self.rssi = peak
 			comp = self.comp.work(peak)
 			lowp = self.lowp.work(comp)
 			self.gain = lowp
@@ -81,5 +94,7 @@ class Autogain(Module):
 			self.plt.title('low pass')
 
 			self.plt.show()
-		#self.log('gain: %f'%self.gain)
-		return data
+		self.log('gain: %f'%self.gain)
+		self.log('rssi: %f'%self.rssi)
+		self.init = time()
+		return data/2.0
