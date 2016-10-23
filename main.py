@@ -18,11 +18,12 @@ from   FrameSync.FrameSync           import FrameSync      as FrameS
 from   Sinks.StdoutSink import StdoutSink         as Stdout
 from   Sinks.Plotspec   import Plotspec           as Plotsp
 from   Sinks.PlotSink   import PlotSink           as PlotSi
+from   Controller.Controller import Controller
 import matplotlib.pyplot as plt
 import numpy as np
 import traceback
 import pdb
-
+import os
 fs = 44.1E3
 
 def fround(fc):
@@ -40,14 +41,14 @@ source = StdinS(main = True)
 ransrc = Random(100, main = True)
 prefix = Prefix(main = False, debug = False, plt=plt, bits=9)
 pshape = Pulses(main = False, debug = False, plt=plt, M=101, beta = 0.5) 
-modula = Modula(main = False, debug = False, plt=plt, fs=fs, fc = 8820)
+modula = Modula(main = False, debug = False, plt=plt, fs=fs, fc = 11025)
 distor = 0.25*np.array([0.1, 0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1]) 
 channe = Channe(main = False, debug = False, plt=plt, bcoef=distor, passthrough=False)
 speake = Speake(main = False, debug = False, plt=plt, passthrough=False)
 microp = Microp(main = False, debug = False, plt=plt, passthrough=True)
-bandpa = BandPa(main = False, debug = False, plt=plt, fs = fs, fc = 8820, taps=256, passthrough=False)
+bandpa = BandPa(main = False, debug = False, plt=plt, fs = fs, fc = 11025, taps=256, passthrough=False)
 autoga = Autoga(main = False, debug = False, plt=plt, fs = fs, M=pshape.M, passthrough=False)
-demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 8820)
+demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 11025)
 train_pam = prefix.prepam
 #train  = (pshape.process(train_pam))[:-4*pshape.M]
 train  = (pshape.process(train_pam))
@@ -68,11 +69,16 @@ stdsin = Stdout(main = False)
 modules = [source, prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
 connect(modules)
 
+controller = Controller(modules, 1, 0)
+controller.draw()
+
 try:
 	modules[0].start()
 	while True:
 		#ransrc.work()
-		source.work()
+		#source.work()
+		if not controller.work():
+			break
 		#prefix.work()
 		#pshape.work()
 		#modula.work()
@@ -99,3 +105,4 @@ except Exception:
 	print modules[0].FAIL + 'Got Exception in main!' + modules[0].ENDC
 	traceback.print_exc()
 modules[0].quit(True)
+controller.reset_terminal()

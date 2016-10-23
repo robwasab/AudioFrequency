@@ -1,13 +1,14 @@
 from   Queue import Queue, Full, Empty
-from   threading import Thread, Lock
 from   threading import Semaphore
 from   time import time,sleep
+from   threading import Lock
+from   Box import Box
 import numpy as np
 import traceback
 import sys
 import pdb
 
-class Module(Thread):
+class Module(Box):
 	HEADER = '\033[95m'
 	BLUE = '\033[94m'
 	CYAN = '\033[36m'
@@ -19,14 +20,11 @@ class Module(Thread):
 	UNDERLINE = '\033[4m'
 	print_lock = Lock()
 	
-	def start(self):
-		Thread.start(self)
-	
 	def reset(self):
 		return
 
 	def __init__(self, next_module=None, **kwargs):
-		Thread.__init__(self)
+		Box.__init__(self, 0, 0, 0, 0)
 		self.output = next_module
 		self.mutex  = Lock()
 		self.stop   = False	
@@ -37,7 +35,6 @@ class Module(Thread):
 		self.main   = False
 		self.debug  = False
 		self.input  = Queue()
-		self.input_size_thresh = 1
 
 		for key in kwargs:
 			if key == 'fig' :
@@ -50,9 +47,24 @@ class Module(Thread):
 				self.main = bool(kwargs[key])
 			elif key == 'debug':
 				self.debug = bool(kwargs[key])
+		self.header = [
+		[self.box_title],
+		[self.box_queue_size],
+		[self.box_queue_bar ],
+		[self.box_label, 'log: ']]
 
-	def request_input(self, size):
-		self.input_size_thresh = size
+	def box_title(self, line, offset, *args):
+		Module.box_label(self,
+		line, offset, self.__class__.__name__)
+	
+	def box_queue_size(self, line, offset, *args):
+		txt = 'queue size %d'%len(self.input.queue)
+		Module.box_label(self,
+		line, offset, txt)
+	
+	def box_queue_bar(self, line, offset, *args):
+		size = len(self.input.queue)
+		Module.box_bar(self,line,offset,size)
 
 	def work(self):
 		if not self.input.empty():
@@ -85,13 +97,14 @@ class Module(Thread):
 
 	def start(self):
 		if not self.main:
-			Thread.start(self)
+			Box.start(self)
 		if self.output != None:
 			self.output.start()
 		
 	def run(self):
 		Module.print_lock.acquire()
-		print self.__class__.__name__,' starting'
+		self.box_log(
+		self.__class__.__name__+' starting')
 		Module.print_lock.release()
 		base = time()
 		try:
@@ -115,12 +128,13 @@ class Module(Thread):
 
 		except Exception as e:
 			Module.print_lock.acquire()
-			print self.FAIL + 'Exception in ' + self.__class__.__name__ + self.ENDC
+			self.box_log(self.FAIL + 'Exception in ' + self.__class__.__name__ + self.ENDC)
 			traceback.print_exc()
 			Module.print_lock.release()
 
 		Module.print_lock.acquire()
-		print self.__class__.__name__,' quitting'
+		self.box_log(
+		self.__class__.__name__+' quitting')
 		Module.print_lock.release()
 
 	def process(self):
@@ -130,10 +144,11 @@ class Module(Thread):
 		if type(msg) != str:
 			msg = str(msg)
 		msg = self.GREEN + self.__class__.__name__ + ':\t'+ self.ENDC + msg
-		print msg
 	
 	def print_kw_error(self, arg_name):
-		print Module.FAIL + self.__class__.__name__ + ' requires key word argument %s!'%arg_name + Module.ENDC
+		msg = Module.FAIL + self.__class__.__name__ + ' requires key word argument %s!'%arg_name + Module.ENDC
+		print msg
+		self.box_log(msg)
 
 	def print_pam(self, pam):
 		msg = '\n'
