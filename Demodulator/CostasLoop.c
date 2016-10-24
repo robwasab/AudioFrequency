@@ -87,14 +87,14 @@ inline static float work(float input)
 	static int bar = 0;
 	if (locked) {
 		if (!foo) {
-			printf("Locked...\n");
+			//fprintf(stderr, "Locked...\r\n");
 			foo = 1;
 		}
 		bar = 0;
 	}
 	else {
 		if (!bar) {
-			printf("Unlocked...\n");
+			//fprintf(stderr, "Unlocked...\r\n");
 			bar = 1;
 		}
 		foo = 0;

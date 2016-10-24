@@ -1,0 +1,3389 @@
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.004775
+[92mDemodulator:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mAutogain:	[0mresetting...
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.001034
+[92mDemodulator:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.002148
+[92mAutogain:	[0mQueue size: 1
+[92mDemodulator:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.003950
+[92mAutogain:	[0mQueue size: 1
+[92mDemodulator:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 2.892444
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mrssi: 0.005232
+[92mDemodulator:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.007553
+[92mDemodulator:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.008861
+[92mDemodulator:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.011221
+[92mAutogain:	[0mQueue size: 1
+[92mDemodulator:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 5.506014
+[92mAutogain:	[0mrssi: 0.012703
+[92mDemodulator:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 6.119042
+[92mAutogain:	[0mrssi: 0.013648
+[92mAutogain:	[0mQueue size: 1
+[92mDemodulator:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 6.716728
+[92mAutogain:	[0mrssi: 0.014615
+[92mDemodulator:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 7.299455
+[92mAutogain:	[0mrssi: 0.021512
+[92mDemodulator:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 10
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 2
+[92mAutogain:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 7.867597
+[92mAutogain:	[0mrssi: 0.020449
+[92mDemodulator:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 2
+[92mBandPassFilter:	[0mQueue size: 2
+[92mAutogain:	[0mgain: 8.421520
+[92mAutogain:	[0mrssi: 0.019438
+[92mDemodulator:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 2
+[92mAutogain:	[0mgain: 8.961580
+[92mAutogain:	[0mrssi: 0.021890
+[92mAutogain:	[0mQueue size: 1
+[92mDemodulator:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 9.488123
+[92mAutogain:	[0mrssi: 0.020808
+[92mAutogain:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 10.001488
+[92mAutogain:	[0mrssi: 0.019779
+[92mDemodulator:	[0mQueue size: 1
+[92mDemodulator:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 10.502005
+[92mAutogain:	[0mrssi: 0.018802
+[92mDemodulator:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 15
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 14
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 13
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 12
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 11
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 10
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 9
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 8
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 7
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 6
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 5
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 4
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 3
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 2
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mBandPassFilter:	[0mQueue size: 1
+[92mAutogain:	[0mQueue size: 1
+[92mAutogain:	[0mgain: 10.681203
+[92mAutogain:	[0mrssi: 2.141971
+[92mDemodulator:	[0mQueue size: 1
+[92mEqualizer:	[0mQueue size: 1
+[92mFastFilter:	[0mQueue size: 1
+[92mTimingRecovery:	[0mQueue size: 1
+[92mFrameSync:	[0mQueue size: 1
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.010885
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.010347
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.009836
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.009350
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.008888
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.008448
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.008031
+[92mAutogain:	[0mgain: 5.506014
+[92mAutogain:	[0mrssi: 0.007634
+[92mAutogain:	[0mgain: 6.119042
+[92mAutogain:	[0mrssi: 0.007256
+[92mAutogain:	[0mgain: 6.716728
+[92mAutogain:	[0mrssi: 0.006898
+[92mAutogain:	[0mgain: 7.299455
+[92mAutogain:	[0mrssi: 0.006557
+[92mAutogain:	[0mgain: 7.867597
+[92mAutogain:	[0mrssi: 0.008384
+[92mAutogain:	[0mgain: 8.421520
+[92mAutogain:	[0mrssi: 0.007969
+[92mAutogain:	[0mgain: 8.961580
+[92mAutogain:	[0mrssi: 0.008756
+[92mAutogain:	[0mgain: 9.488123
+[92mAutogain:	[0mrssi: 0.011080
+[92mAutogain:	[0mgain: 10.001488
+[92mAutogain:	[0mrssi: 0.078436
+[92mAutogain:	[0mgain: 10.502005
+[92mAutogain:	[0mrssi: 0.074559
+[92mAutogain:	[0mgain: 10.989995
+[92mAutogain:	[0mrssi: 0.070873
+[92mAutogain:	[0mgain: 11.465772
+[92mAutogain:	[0mrssi: 0.067370
+[92mAutogain:	[0mgain: 11.929641
+[92mAutogain:	[0mrssi: 0.064040
+[92mAutogain:	[0mgain: 12.381901
+[92mAutogain:	[0mrssi: 0.060875
+[92mAutogain:	[0mgain: 12.822841
+[92mAutogain:	[0mrssi: 0.057866
+[92mAutogain:	[0mgain: 13.252746
+[92mAutogain:	[0mrssi: 0.055006
+[92mAutogain:	[0mgain: 13.671891
+[92mAutogain:	[0mrssi: 0.052287
+[92mAutogain:	[0mgain: 14.080546
+[92mAutogain:	[0mrssi: 0.049702
+[92mAutogain:	[0mgain: 14.478974
+[92mAutogain:	[0mrssi: 0.047245
+[92mAutogain:	[0mgain: 14.867429
+[92mAutogain:	[0mrssi: 0.044910
+[92mAutogain:	[0mgain: 15.246163
+[92mAutogain:	[0mrssi: 0.057575
+[92mAutogain:	[0mgain: 15.615417
+[92mAutogain:	[0mrssi: 0.054730
+[92mAutogain:	[0mgain: 15.975431
+[92mAutogain:	[0mrssi: 0.052024
+[92mAutogain:	[0mgain: 16.326433
+[92mAutogain:	[0mrssi: 0.049452
+[92mAutogain:	[0mgain: 16.668651
+[92mAutogain:	[0mrssi: 0.047008
+[92mAutogain:	[0mgain: 17.002304
+[92mAutogain:	[0mrssi: 0.044685
+[92mAutogain:	[0mgain: 17.327607
+[92mAutogain:	[0mrssi: 0.042476
+[92mAutogain:	[0mgain: 17.644768
+[92mAutogain:	[0mrssi: 0.040377
+[92mAutogain:	[0mgain: 17.953991
+[92mAutogain:	[0mrssi: 0.038381
+[92mAutogain:	[0mgain: 17.916566
+[92mAutogain:	[0mrssi: 2.555804
+[92mAutogain:	[0mgain: 17.468156
+[92mAutogain:	[0mrssi: 2.429579
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.003468
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.039111
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.084827
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.061542
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.058500
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.055609
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.052860
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.050247
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.047763
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.045403
+[92mAutogain:	[0mgain: 5.506014
+[92mAutogain:	[0mrssi: 0.043159
+[92mAutogain:	[0mgain: 6.119042
+[92mAutogain:	[0mrssi: 0.041025
+[92mAutogain:	[0mgain: 6.716728
+[92mAutogain:	[0mrssi: 0.069325
+[92mAutogain:	[0mgain: 7.299455
+[92mAutogain:	[0mrssi: 0.065898
+[92mAutogain:	[0mgain: 7.867597
+[92mAutogain:	[0mrssi: 0.062641
+[92mAutogain:	[0mgain: 8.421520
+[92mAutogain:	[0mrssi: 0.059545
+[92mAutogain:	[0mgain: 8.961580
+[92mAutogain:	[0mrssi: 0.056601
+[92mAutogain:	[0mgain: 9.488123
+[92mAutogain:	[0mrssi: 0.053804
+[92mAutogain:	[0mgain: 10.001488
+[92mAutogain:	[0mrssi: 0.051144
+[92mAutogain:	[0mgain: 10.502005
+[92mAutogain:	[0mrssi: 0.048617
+[92mAutogain:	[0mgain: 10.989995
+[92mAutogain:	[0mrssi: 0.046214
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mpayload with length: [10, 0, 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
+[92mPrefix:	[0mpayload post whiten: [21, 130, 227, 188, 219, 42, 85, 44, 81, 56, 73, 34, 78]
+[92mPrefix:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+3: [ 3  1 -3  3]
+4: [ 1  3  3 -3]
+5: [ 3 -1  1  3]
+6: [-3  1  1  1]
+7: [-1 -1 -1 -1]
+8: [-3  1  3 -3]
+9: [-1 -1 -3 -1]
+10: [-3  3  1 -3]
+11: [-1 -3  1 -1]
+12: [-3  1 -3  1]
+13: [-1 -3  3  1]
+
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 11.421251
+[92mAutogain:	[0mrssi: 2.496431
+[92mAutogain:	[0mgain: 11.135404
+[92mAutogain:	[0mrssi: 2.698620
+[92mAutogain:	[0mgain: 10.856710
+[92mAutogain:	[0mrssi: 2.749011
+[92mAutogain:	[0mgain: 10.584991
+[92mAutogain:	[0mrssi: 2.975319
+[92mAutogain:	[0mgain: 10.320073
+[92mAutogain:	[0mrssi: 3.036513
+[92mAutogain:	[0mgain: 10.061786
+[92mAutogain:	[0mrssi: 2.886408
+[92mAutogain:	[0mgain: 9.809962
+[92mAutogain:	[0mrssi: 2.743763
+[92mAutogain:	[0mgain: 9.564442
+[92mAutogain:	[0mrssi: 2.656540
+[92mAutogain:	[0mgain: 9.325066
+[92mAutogain:	[0mrssi: 2.525091
+[92mAutogain:	[0mgain: 9.091681
+[92mAutogain:	[0mrssi: 2.400379
+[92mAutogain:	[0mgain: 8.864137
+[92mAutogain:	[0mrssi: 2.503322
+[92mAutogain:	[0mgain: 8.642288
+[92mAutogain:	[0mrssi: 2.379561
+[92mAutogain:	[0mgain: 8.425991
+[92mAutogain:	[0mrssi: 2.261983
+[92mAutogain:	[0mgain: 8.215108
+[92mAutogain:	[0mrssi: 2.393864
+[92mAutogain:	[0mgain: 8.009503
+[92mAutogain:	[0mrssi: 2.275433
+[92mAutogain:	[0mgain: 7.809043
+[92mAutogain:	[0mrssi: 2.163027
+[92mAutogain:	[0mgain: 7.613601
+[92mAutogain:	[0mrssi: 2.077626
+[92mAutogain:	[0mgain: 7.423050
+[92mAutogain:	[0mrssi: 2.080151
+[92mAutogain:	[0mgain: 7.237268
+[92mAutogain:	[0mrssi: 1.977335
+[92mAutogain:	[0mgain: 7.056136
+[92mAutogain:	[0mrssi: 1.879605
+[92mAutogain:	[0mgain: 6.879537
+[92mAutogain:	[0mrssi: 1.786748
+[92mAutogain:	[0mgain: 6.707358
+[92mAutogain:	[0mrssi: 1.812700
+[92mAutogain:	[0mgain: 6.539488
+[92mAutogain:	[0mrssi: 1.723087
+[92mAutogain:	[0mgain: 6.375820
+[92mAutogain:	[0mrssi: 1.637991
+[92mAutogain:	[0mgain: 6.216248
+[92mAutogain:	[0mrssi: 1.859748
+[92mAutogain:	[0mgain: 6.060669
+[92mAutogain:	[0mrssi: 1.784945
+[92mAutogain:	[0mgain: 5.908985
+[92mAutogain:	[0mrssi: 1.696791
+[92mAutogain:	[0mgain: 5.761096
+[92mAutogain:	[0mrssi: 1.632830
+[92mAutogain:	[0mgain: 5.616909
+[92mAutogain:	[0mrssi: 1.552069
+[92mAutogain:	[0mgain: 5.476331
+[92mAutogain:	[0mrssi: 1.475400
+[92mAutogain:	[0mgain: 5.339271
+[92mAutogain:	[0mrssi: 1.402451
+[92mAutogain:	[0mgain: 5.205641
+[92mAutogain:	[0mrssi: 1.333146
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mpayload with length: [10, 0, 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
+[92mPrefix:	[0mpayload post whiten: [21, 130, 227, 188, 219, 42, 85, 44, 81, 56, 73, 34, 78]
+[92mPrefix:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+3: [ 3  1 -3  3]
+4: [ 1  3  3 -3]
+5: [ 3 -1  1  3]
+6: [-3  1  1  1]
+7: [-1 -1 -1 -1]
+8: [-3  1  3 -3]
+9: [-1 -1 -3 -1]
+10: [-3  3  1 -3]
+11: [-1 -3  1 -1]
+12: [-3  1 -3  1]
+13: [-1 -3  3  1]
+
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.151597
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.314545
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.511045
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.714160
+[92mAutogain:	[0mgain: 3.523398
+[92mAutogain:	[0mrssi: 1.007200
+[92mAutogain:	[0mgain: 4.081607
+[92mAutogain:	[0mrssi: 0.957410
+[92mAutogain:	[0mgain: 4.509814
+[92mAutogain:	[0mrssi: 1.006261
+[92mAutogain:	[0mgain: 4.663217
+[92mAutogain:	[0mrssi: 1.208612
+[92mAutogain:	[0mgain: 4.546507
+[92mAutogain:	[0mrssi: 1.148810
+[92mAutogain:	[0mgain: 4.432719
+[92mAutogain:	[0mrssi: 1.092068
+[92mAutogain:	[0mgain: 4.321778
+[92mAutogain:	[0mrssi: 1.143976
+[92mAutogain:	[0mgain: 4.213614
+[92mAutogain:	[0mrssi: 1.087418
+[92mAutogain:	[0mgain: 4.108157
+[92mAutogain:	[0mrssi: 1.033688
+[92mAutogain:	[0mgain: 4.047324
+[92mAutogain:	[0mrssi: 1.161564
+[92mAutogain:	[0mgain: 3.946029
+[92mAutogain:	[0mrssi: 1.104099
+[92mAutogain:	[0mgain: 3.847269
+[92mAutogain:	[0mrssi: 1.082011
+[92mAutogain:	[0mgain: 3.750981
+[92mAutogain:	[0mrssi: 1.059028
+[92mAutogain:	[0mgain: 3.657102
+[92mAutogain:	[0mrssi: 1.080370
+[92mAutogain:	[0mgain: 3.565574
+[92mAutogain:	[0mrssi: 1.026969
+[92mAutogain:	[0mgain: 3.835794
+[92mAutogain:	[0mrssi: 0.976210
+[92mAutogain:	[0mgain: 3.902415
+[92mAutogain:	[0mrssi: 1.041621
+[92mAutogain:	[0mgain: 3.804746
+[92mAutogain:	[0mrssi: 1.092119
+[92mAutogain:	[0mgain: 3.709522
+[92mAutogain:	[0mrssi: 1.038130
+[92mAutogain:	[0mgain: 3.790678
+[92mAutogain:	[0mrssi: 0.988458
+[92mAutogain:	[0mgain: 3.795886
+[92mAutogain:	[0mrssi: 1.178187
+[92mAutogain:	[0mgain: 3.700883
+[92mAutogain:	[0mrssi: 1.183245
+[92mAutogain:	[0mgain: 3.608259
+[92mAutogain:	[0mrssi: 1.124803
+[92mAutogain:	[0mgain: 3.517952
+[92mAutogain:	[0mrssi: 1.069191
+[92mAutogain:	[0mgain: 3.429906
+[92mAutogain:	[0mrssi: 1.016308
+[92mAutogain:	[0mgain: 3.692795
+[92mAutogain:	[0mrssi: 1.004515
+[92mAutogain:	[0mgain: 4.109762
+[92mAutogain:	[0mrssi: 1.126731
+[92mAutogain:	[0mgain: 4.006904
+[92mAutogain:	[0mrssi: 1.071051
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.045811
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mpayload with length: [10, 0, 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
+[92mPrefix:	[0mpayload post whiten: [21, 130, 227, 188, 219, 42, 85, 44, 81, 56, 73, 34, 78]
+[92mPrefix:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+3: [ 3  1 -3  3]
+4: [ 1  3  3 -3]
+5: [ 3 -1  1  3]
+6: [-3  1  1  1]
+7: [-1 -1 -1 -1]
+8: [-3  1  3 -3]
+9: [-1 -1 -3 -1]
+10: [-3  3  1 -3]
+11: [-1 -3  1 -1]
+12: [-3  1 -3  1]
+13: [-1 -3  3  1]
+
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.316201
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.502765
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.687798
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.891660
+[92mAutogain:	[0mgain: 4.100458
+[92mAutogain:	[0mrssi: 1.156565
+[92mAutogain:	[0mgain: 3.997833
+[92mAutogain:	[0mrssi: 1.099396
+[92mAutogain:	[0mgain: 3.897777
+[92mAutogain:	[0mrssi: 1.045066
+[92mAutogain:	[0mgain: 3.819473
+[92mAutogain:	[0mrssi: 1.042727
+[92mAutogain:	[0mgain: 3.857245
+[92mAutogain:	[0mrssi: 0.991129
+[92mAutogain:	[0mgain: 4.404799
+[92mAutogain:	[0mrssi: 1.090361
+[92mAutogain:	[0mgain: 4.294557
+[92mAutogain:	[0mrssi: 1.162576
+[92mAutogain:	[0mgain: 4.187074
+[92mAutogain:	[0mrssi: 1.105104
+[92mAutogain:	[0mgain: 4.082281
+[92mAutogain:	[0mrssi: 1.050497
+[92mAutogain:	[0mgain: 3.980111
+[92mAutogain:	[0mrssi: 1.158189
+[92mAutogain:	[0mgain: 3.880498
+[92mAutogain:	[0mrssi: 1.100885
+[92mAutogain:	[0mgain: 3.783378
+[92mAutogain:	[0mrssi: 1.066293
+[92mAutogain:	[0mgain: 3.688689
+[92mAutogain:	[0mrssi: 1.061335
+[92mAutogain:	[0mgain: 3.596370
+[92mAutogain:	[0mrssi: 1.079993
+[92mAutogain:	[0mgain: 3.506361
+[92mAutogain:	[0mrssi: 1.026613
+[92mAutogain:	[0mgain: 3.783198
+[92mAutogain:	[0mrssi: 0.975873
+[92mAutogain:	[0mgain: 3.849679
+[92mAutogain:	[0mrssi: 1.068851
+[92mAutogain:	[0mgain: 3.753331
+[92mAutogain:	[0mrssi: 1.082298
+[92mAutogain:	[0mgain: 3.659393
+[92mAutogain:	[0mrssi: 1.028793
+[92mAutogain:	[0mgain: 3.567807
+[92mAutogain:	[0mrssi: 1.001595
+[92mAutogain:	[0mgain: 3.681561
+[92mAutogain:	[0mrssi: 1.162065
+[92mAutogain:	[0mgain: 3.589420
+[92mAutogain:	[0mrssi: 1.151203
+[92mAutogain:	[0mgain: 3.499585
+[92mAutogain:	[0mrssi: 1.094347
+[92mAutogain:	[0mgain: 3.411999
+[92mAutogain:	[0mrssi: 1.040239
+[92mAutogain:	[0mgain: 3.495432
+[92mAutogain:	[0mrssi: 0.988787
+[92mAutogain:	[0mgain: 3.778344
+[92mAutogain:	[0mrssi: 1.010059
+[92mAutogain:	[0mgain: 4.111791
+[92mAutogain:	[0mrssi: 1.128039
+[92mAutogain:	[0mgain: 4.008882
+[92mAutogain:	[0mrssi: 1.076160
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mpayload with length: [10, 0, 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
+[92mPrefix:	[0mpayload post whiten: [21, 130, 227, 188, 219, 42, 85, 44, 81, 56, 73, 34, 78]
+[92mPrefix:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+3: [ 3  1 -3  3]
+4: [ 1  3  3 -3]
+5: [ 3 -1  1  3]
+6: [-3  1  1  1]
+7: [-1 -1 -1 -1]
+8: [-3  1  3 -3]
+9: [-1 -1 -3 -1]
+10: [-3  3  1 -3]
+11: [-1 -3  1 -1]
+12: [-3  1 -3  1]
+13: [-1 -3  3  1]
+
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.162258
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.341200
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.544199
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.761868
+[92mAutogain:	[0mgain: 3.518950
+[92mAutogain:	[0mrssi: 1.067577
+[92mAutogain:	[0mgain: 3.430878
+[92mAutogain:	[0mrssi: 1.014804
+[92mAutogain:	[0mgain: 3.880757
+[92mAutogain:	[0mrssi: 0.964655
+[92mAutogain:	[0mgain: 4.442525
+[92mAutogain:	[0mrssi: 1.274839
+[92mAutogain:	[0mgain: 4.331339
+[92mAutogain:	[0mrssi: 1.211762
+[92mAutogain:	[0mgain: 4.222935
+[92mAutogain:	[0mrssi: 1.151911
+[92mAutogain:	[0mgain: 4.117245
+[92mAutogain:	[0mrssi: 1.182207
+[92mAutogain:	[0mgain: 4.014200
+[92mAutogain:	[0mrssi: 1.123760
+[92mAutogain:	[0mgain: 3.913734
+[92mAutogain:	[0mrssi: 1.068233
+[92mAutogain:	[0mgain: 3.815782
+[92mAutogain:	[0mrssi: 1.178457
+[92mAutogain:	[0mgain: 3.720282
+[92mAutogain:	[0mrssi: 1.120157
+[92mAutogain:	[0mgain: 3.627171
+[92mAutogain:	[0mrssi: 1.064822
+[92mAutogain:	[0mgain: 3.536392
+[92mAutogain:	[0mrssi: 1.055106
+[92mAutogain:	[0mgain: 3.447884
+[92mAutogain:	[0mrssi: 1.075347
+[92mAutogain:	[0mgain: 3.361591
+[92mAutogain:	[0mrssi: 1.022196
+[92mAutogain:	[0mgain: 3.705801
+[92mAutogain:	[0mrssi: 0.971672
+[92mAutogain:	[0mgain: 3.774220
+[92mAutogain:	[0mrssi: 1.064920
+[92mAutogain:	[0mgain: 3.679760
+[92mAutogain:	[0mrssi: 1.107503
+[92mAutogain:	[0mgain: 3.587664
+[92mAutogain:	[0mrssi: 1.052752
+[92mAutogain:	[0mgain: 3.497873
+[92mAutogain:	[0mrssi: 1.005439
+[92mAutogain:	[0mgain: 3.542909
+[92mAutogain:	[0mrssi: 1.156701
+[92mAutogain:	[0mgain: 3.454238
+[92mAutogain:	[0mrssi: 1.155098
+[92mAutogain:	[0mgain: 3.367786
+[92mAutogain:	[0mrssi: 1.098048
+[92mAutogain:	[0mgain: 3.283498
+[92mAutogain:	[0mrssi: 1.043758
+[92mAutogain:	[0mgain: 3.319156
+[92mAutogain:	[0mrssi: 0.992133
+[92mAutogain:	[0mgain: 3.819565
+[92mAutogain:	[0mrssi: 1.036727
+[92mAutogain:	[0mgain: 3.771184
+[92mAutogain:	[0mrssi: 1.060606
+[92mAutogain:	[0mgain: 3.676800
+[92mAutogain:	[0mrssi: 1.023127
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mpayload with length: [10, 0, 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
+[92mPrefix:	[0mpayload post whiten: [21, 130, 227, 188, 219, 42, 85, 44, 81, 56, 73, 34, 78]
+[92mPrefix:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+3: [ 3  1 -3  3]
+4: [ 1  3  3 -3]
+5: [ 3 -1  1  3]
+6: [-3  1  1  1]
+7: [-1 -1 -1 -1]
+8: [-3  1  3 -3]
+9: [-1 -1 -3 -1]
+10: [-3  3  1 -3]
+11: [-1 -3  1 -1]
+12: [-3  1 -3  1]
+13: [-1 -3  3  1]
+
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.159070
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.327580
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.523632
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.722989
+[92mAutogain:	[0mgain: 3.524880
+[92mAutogain:	[0mrssi: 1.008689
+[92mAutogain:	[0mgain: 4.061248
+[92mAutogain:	[0mrssi: 0.958830
+[92mAutogain:	[0mgain: 4.525836
+[92mAutogain:	[0mrssi: 0.996054
+[92mAutogain:	[0mgain: 4.763614
+[92mAutogain:	[0mrssi: 1.316406
+[92mAutogain:	[0mgain: 4.644391
+[92mAutogain:	[0mrssi: 1.251268
+[92mAutogain:	[0mgain: 4.528153
+[92mAutogain:	[0mrssi: 1.189470
+[92mAutogain:	[0mgain: 4.414824
+[92mAutogain:	[0mrssi: 1.212650
+[92mAutogain:	[0mgain: 4.304331
+[92mAutogain:	[0mrssi: 1.152700
+[92mAutogain:	[0mgain: 4.196603
+[92mAutogain:	[0mrssi: 1.095742
+[92mAutogain:	[0mgain: 4.091572
+[92mAutogain:	[0mrssi: 1.194476
+[92mAutogain:	[0mgain: 3.989169
+[92mAutogain:	[0mrssi: 1.135378
+[92mAutogain:	[0mgain: 3.889330
+[92mAutogain:	[0mrssi: 1.079293
+[92mAutogain:	[0mgain: 3.791989
+[92mAutogain:	[0mrssi: 1.088094
+[92mAutogain:	[0mgain: 3.697084
+[92mAutogain:	[0mrssi: 1.115951
+[92mAutogain:	[0mgain: 3.604554
+[92mAutogain:	[0mrssi: 1.060794
+[92mAutogain:	[0mgain: 3.514341
+[92mAutogain:	[0mrssi: 1.008366
+[92mAutogain:	[0mgain: 3.797152
+[92mAutogain:	[0mrssi: 0.984251
+[92mAutogain:	[0mgain: 4.034123
+[92mAutogain:	[0mrssi: 1.151032
+[92mAutogain:	[0mgain: 3.933159
+[92mAutogain:	[0mrssi: 1.094127
+[92mAutogain:	[0mgain: 3.834721
+[92mAutogain:	[0mrssi: 1.061298
+[92mAutogain:	[0mgain: 3.738746
+[92mAutogain:	[0mrssi: 1.182184
+[92mAutogain:	[0mgain: 3.645174
+[92mAutogain:	[0mrssi: 1.159570
+[92mAutogain:	[0mgain: 3.553944
+[92mAutogain:	[0mrssi: 1.102304
+[92mAutogain:	[0mgain: 3.464997
+[92mAutogain:	[0mrssi: 1.047801
+[92mAutogain:	[0mgain: 3.438363
+[92mAutogain:	[0mrssi: 0.995975
+[92mAutogain:	[0mgain: 3.934312
+[92mAutogain:	[0mrssi: 1.060411
+[92mAutogain:	[0mgain: 3.835845
+[92mAutogain:	[0mrssi: 1.065556
+[92mAutogain:	[0mgain: 3.739843
+[92mAutogain:	[0mrssi: 1.030179
+[92mAutogain:	[0mgain: 3.780267
+[92mAutogain:	[0mrssi: 0.992002
+[92mPrefix:	[0mcan you hear me?
+[92mPrefix:	[0mpayload with length: [15, 0, 99, 97, 110, 32, 121, 111, 117, 32, 104, 101, 97, 114, 32, 109, 101, 63]
+[92mPrefix:	[0mpayload post whiten: [16, 130, 232, 184, 217, 102, 67, 99, 83, 119, 83, 43, 75, 28, 206, 147, 216, 204]
+[92mPrefix:	[0m
+1: [-3 -1 -3 -3]
+2: [ 1 -3 -3  1]
+3: [ 3  1  1 -3]
+4: [ 1  3  1 -3]
+5: [ 3 -1  1 -1]
+6: [-1  1 -1  1]
+7: [-1 -3 -3  3]
+8: [-1  1 -3  3]
+9: [-1 -1 -3  3]
+10: [-1  3 -1  3]
+11: [-1 -1 -3  3]
+12: [-3  1  1  3]
+13: [-1 -3  1  3]
+14: [-3 -1  3 -3]
+15: [ 3 -3  3  1]
+16: [ 1 -1 -3  3]
+17: [ 3 -1  1 -3]
+18: [ 3 -3  3 -3]
+
+[92mPrefix:	[0mPacket Length 328
+[92mAutogain:	[0mgain: 4.436487
+[92mAutogain:	[0mrssi: 0.942938
+[92mAutogain:	[0mgain: 4.976944
+[92mAutogain:	[0mrssi: 1.079286
+[92mAutogain:	[0mgain: 4.852382
+[92mAutogain:	[0mrssi: 1.151388
+[92mAutogain:	[0mgain: 4.730938
+[92mAutogain:	[0mrssi: 1.237652
+[92mAutogain:	[0mgain: 4.612534
+[92mAutogain:	[0mrssi: 1.313743
+[92mAutogain:	[0mgain: 4.497093
+[92mAutogain:	[0mrssi: 1.248800
+[92mAutogain:	[0mgain: 4.384541
+[92mAutogain:	[0mrssi: 1.187085
+[92mAutogain:	[0mgain: 4.274806
+[92mAutogain:	[0mrssi: 1.138570
+[92mAutogain:	[0mgain: 4.167817
+[92mAutogain:	[0mrssi: 1.082230
+[92mAutogain:	[0mgain: 4.063506
+[92mAutogain:	[0mrssi: 1.028780
+[92mAutogain:	[0mgain: 3.961806
+[92mAutogain:	[0mrssi: 1.045463
+[92mAutogain:	[0mgain: 3.956809
+[92mAutogain:	[0mrssi: 0.993781
+[92mAutogain:	[0mgain: 4.608610
+[92mAutogain:	[0mrssi: 0.944677
+[92mAutogain:	[0mgain: 5.014784
+[92mAutogain:	[0mrssi: 1.446016
+[92mAutogain:	[0mgain: 4.889276
+[92mAutogain:	[0mrssi: 1.374467
+[92mAutogain:	[0mgain: 4.766908
+[92mAutogain:	[0mrssi: 1.332747
+[92mAutogain:	[0mgain: 4.647604
+[92mAutogain:	[0mrssi: 1.313450
+[92mAutogain:	[0mgain: 4.531285
+[92mAutogain:	[0mrssi: 1.341025
+[92mAutogain:	[0mgain: 4.417877
+[92mAutogain:	[0mrssi: 1.274746
+[92mAutogain:	[0mgain: 4.307308
+[92mAutogain:	[0mrssi: 1.211746
+[92mAutogain:	[0mgain: 4.199506
+[92mAutogain:	[0mrssi: 1.151882
+[92mAutogain:	[0mgain: 4.094402
+[92mAutogain:	[0mrssi: 1.139794
+[92mAutogain:	[0mgain: 3.991928
+[92mAutogain:	[0mrssi: 1.119451
+[92mAutogain:	[0mgain: 3.892019
+[92mAutogain:	[0mrssi: 1.080029
+[92mAutogain:	[0mgain: 3.794611
+[92mAutogain:	[0mrssi: 1.154037
+[92mAutogain:	[0mgain: 3.699641
+[92mAutogain:	[0mrssi: 1.150609
+[92mAutogain:	[0mgain: 3.607047
+[92mAutogain:	[0mrssi: 1.093787
+[92mAutogain:	[0mgain: 3.516771
+[92mAutogain:	[0mrssi: 1.039713
+[92mAutogain:	[0mgain: 3.604965
+[92mAutogain:	[0mrssi: 0.991905
+[92mAutogain:	[0mgain: 3.658441
+[92mAutogain:	[0mrssi: 1.086172
+[92mAutogain:	[0mgain: 3.566879
+[92mAutogain:	[0mrssi: 1.076976
+[92mAutogain:	[0mgain: 3.477608
+[92mAutogain:	[0mrssi: 1.111591
+[92mAutogain:	[0mgain: 3.390572
+[92mAutogain:	[0mrssi: 1.056618
+[92mAutogain:	[0mgain: 3.305713
+[92mAutogain:	[0mrssi: 1.061494
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.003401
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.234098
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.345139
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.432092
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.577763
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.777315
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.738864
+[92mAutogain:	[0mgain: 5.506014
+[92mAutogain:	[0mrssi: 0.907138
+[92mAutogain:	[0mgain: 5.496637
+[92mAutogain:	[0mrssi: 1.021475
+[92mAutogain:	[0mgain: 5.745812
+[92mAutogain:	[0mrssi: 0.996295
+[92mAutogain:	[0mgain: 6.016133
+[92mAutogain:	[0mrssi: 1.060351
+[92mAutogain:	[0mgain: 5.865563
+[92mAutogain:	[0mrssi: 1.124078
+[92mAutogain:	[0mgain: 5.718761
+[92mAutogain:	[0mrssi: 1.072427
+[92mAutogain:	[0mgain: 5.575634
+[92mAutogain:	[0mrssi: 1.019372
+[92mAutogain:	[0mgain: 5.460220
+[92mAutogain:	[0mrssi: 1.072204
+[92mAutogain:	[0mgain: 5.323563
+[92mAutogain:	[0mrssi: 1.019239
+[92mAutogain:	[0mgain: 5.487827
+[92mAutogain:	[0mrssi: 1.047450
+[92mAutogain:	[0mgain: 5.350480
+[92mAutogain:	[0mrssi: 1.038982
+[92mAutogain:	[0mgain: 5.271469
+[92mAutogain:	[0mrssi: 0.996391
+[92mAutogain:	[0mgain: 5.779044
+[92mAutogain:	[0mrssi: 0.963809
+[92mAutogain:	[0mgain: 5.696011
+[92mAutogain:	[0mrssi: 1.024229
+[92mAutogain:	[0mgain: 5.952503
+[92mAutogain:	[0mrssi: 0.973555
+[92mAutogain:	[0mgain: 5.911598
+[92mAutogain:	[0mrssi: 1.127491
+[92mAutogain:	[0mgain: 5.763644
+[92mAutogain:	[0mrssi: 1.109979
+[92mAutogain:	[0mgain: 5.619393
+[92mAutogain:	[0mrssi: 1.104205
+[92mAutogain:	[0mgain: 5.478753
+[92mAutogain:	[0mrssi: 1.097081
+[92mAutogain:	[0mgain: 5.341632
+[92mAutogain:	[0mrssi: 1.074358
+[92mAutogain:	[0mgain: 5.207944
+[92mAutogain:	[0mrssi: 1.021209
+[92mAutogain:	[0mgain: 5.077601
+[92mAutogain:	[0mrssi: 1.003073
+[92mAutogain:	[0mgain: 5.656430
+[92mAutogain:	[0mrssi: 0.954724
+[92mAutogain:	[0mgain: 5.860783
+[92mAutogain:	[0mrssi: 1.077809
+[92mAutogain:	[0mgain: 5.714101
+[92mAutogain:	[0mrssi: 1.037754
+[92mEqualizer:	[0mcorrelation: [36m0.756699[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mEqualizer:	[0mcorrelation: [36m1.242213[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m1.039731[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 75
+[92mFrameSync:	[0mbytes in queue: 2.500000
+[92mFrameSync:	[0m
+1: [-1 -1 -1 -1]
+2: [ 1 -3 -3  1]
+
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.101490
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.214007
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.273674
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.422414
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.602531
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.572724
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.684210
+[92mAutogain:	[0mgain: 5.506014
+[92mAutogain:	[0mrssi: 0.863148
+[92mAutogain:	[0mgain: 6.119042
+[92mAutogain:	[0mrssi: 0.905062
+[92mAutogain:	[0mgain: 6.456383
+[92mAutogain:	[0mrssi: 0.995152
+[92mAutogain:	[0mgain: 6.326667
+[92mAutogain:	[0mrssi: 1.094729
+[92mAutogain:	[0mgain: 6.168325
+[92mAutogain:	[0mrssi: 1.040624
+[92mAutogain:	[0mgain: 6.176866
+[92mAutogain:	[0mrssi: 0.989145
+[92mAutogain:	[0mgain: 6.318423
+[92mAutogain:	[0mrssi: 1.123020
+[92mAutogain:	[0mgain: 6.160287
+[92mAutogain:	[0mrssi: 1.067547
+[92mAutogain:	[0mgain: 6.006109
+[92mAutogain:	[0mrssi: 1.065660
+[92mAutogain:	[0mgain: 5.855790
+[92mAutogain:	[0mrssi: 1.049161
+[92mAutogain:	[0mgain: 5.709233
+[92mAutogain:	[0mrssi: 1.044763
+[92mAutogain:	[0mgain: 5.670123
+[92mAutogain:	[0mrssi: 0.993140
+[92mAutogain:	[0mgain: 6.059023
+[92mAutogain:	[0mrssi: 0.982797
+[92mAutogain:	[0mgain: 6.372009
+[92mAutogain:	[0mrssi: 1.002986
+[92mAutogain:	[0mgain: 6.276407
+[92mAutogain:	[0mrssi: 1.100627
+[92mAutogain:	[0mgain: 6.119323
+[92mAutogain:	[0mrssi: 1.120472
+[92mAutogain:	[0mgain: 5.966170
+[92mAutogain:	[0mrssi: 1.120676
+[92mAutogain:	[0mgain: 5.816851
+[92mAutogain:	[0mrssi: 1.134428
+[92mAutogain:	[0mgain: 5.671268
+[92mAutogain:	[0mrssi: 1.106837
+[92mAutogain:	[0mgain: 5.529330
+[92mAutogain:	[0mrssi: 1.052078
+[92mAutogain:	[0mgain: 5.390943
+[92mAutogain:	[0mrssi: 1.016816
+[92mAutogain:	[0mgain: 5.761849
+[92mAutogain:	[0mrssi: 0.966614
+[92mAutogain:	[0mgain: 5.962099
+[92mAutogain:	[0mrssi: 1.095259
+[92mAutogain:	[0mgain: 5.812881
+[92mAutogain:	[0mrssi: 1.041074
+[92mEqualizer:	[0mcorrelation: [36m0.852951[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mStdoutSink:	[0m[Receiving data!]
+[92mTYPE: <type 'str'> LENGTH: 75[0m
+>> hello world;{TZ\O&2M≤W1˛õ1&O¥Õ˜€£¿º—îK
+7◊±öû ⁄˙ê©˜k`â-ë∑=ƒKt›¥•v|
+[92mEqualizer:	[0mcorrelation: [36m1.290587[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.700531[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 11
+[92mFrameSync:	[0mbytes in queue: 2.500000
+[92mFrameSync:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.003868
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.010255
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.009748
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.009266
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.011585
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.011313
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.012263
+[92mAutogain:	[0mgain: 5.506014
+[92mAutogain:	[0mrssi: 0.012521
+[92mAutogain:	[0mgain: 6.119042
+[92mAutogain:	[0mrssi: 0.011902
+[92mAutogain:	[0mgain: 6.716728
+[92mAutogain:	[0mrssi: 0.011314
+[92mAutogain:	[0mgain: 7.299455
+[92mAutogain:	[0mrssi: 0.010754
+[92mAutogain:	[0mgain: 7.867597
+[92mAutogain:	[0mrssi: 0.010223
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.009492
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.002899
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.165890
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mPrefix:	[0m
+[92mAutogain:	[0mrssi: 0.010075
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.130333
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.135598
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.501925
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.125101
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.171934
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.369555
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.640053
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mPrefix:	[0mhello world:q
+[92mPrefix:	[0mPacket Length 316
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.022221
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.323714
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.550325
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.710469
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.979531
+[92mAutogain:	[0mgain: 3.488030
+[92mAutogain:	[0mrssi: 1.018580
+[92mAutogain:	[0mgain: 3.881730
+[92mAutogain:	[0mrssi: 0.968242
+[92mAutogain:	[0mgain: 4.189161
+[92mAutogain:	[0mrssi: 1.215352
+[92mAutogain:	[0mgain: 4.084315
+[92mAutogain:	[0mrssi: 1.155291
+[92mAutogain:	[0mgain: 3.982094
+[92mAutogain:	[0mrssi: 1.098181
+[92mAutogain:	[0mgain: 3.882432
+[92mAutogain:	[0mrssi: 1.131413
+[92mAutogain:	[0mgain: 3.785263
+[92mAutogain:	[0mrssi: 1.075519
+[92mAutogain:	[0mgain: 3.690527
+[92mAutogain:	[0mrssi: 1.022340
+[92mAutogain:	[0mgain: 3.863604
+[92mAutogain:	[0mrssi: 1.156442
+[92mAutogain:	[0mgain: 3.766907
+[92mAutogain:	[0mrssi: 1.099259
+[92mAutogain:	[0mgain: 3.672630
+[92mAutogain:	[0mrssi: 1.044933
+[92mAutogain:	[0mgain: 3.580712
+[92mAutogain:	[0mrssi: 1.005700
+[92mAutogain:	[0mgain: 4.097706
+[92mAutogain:	[0mrssi: 1.132950
+[92mAutogain:	[0mgain: 3.995150
+[92mAutogain:	[0mrssi: 1.120602
+[92mAutogain:	[0mgain: 3.895161
+[92mAutogain:	[0mrssi: 1.065226
+[92mAutogain:	[0mgain: 3.797674
+[92mAutogain:	[0mrssi: 1.012569
+[92mAutogain:	[0mgain: 4.025660
+[92mAutogain:	[0mrssi: 1.058773
+[92mAutogain:	[0mgain: 3.924907
+[92mAutogain:	[0mrssi: 1.006426
+[92mAutogain:	[0mgain: 4.483964
+[92mAutogain:	[0mrssi: 0.956676
+[92mAutogain:	[0mgain: 4.619662
+[92mAutogain:	[0mrssi: 1.117846
+[92mAutogain:	[0mgain: 4.504043
+[92mAutogain:	[0mrssi: 1.309062
+[92mAutogain:	[0mgain: 4.391317
+[92mAutogain:	[0mrssi: 1.244369
+[92mAutogain:	[0mgain: 4.281412
+[92mAutogain:	[0mrssi: 1.182846
+[92mAutogain:	[0mgain: 4.174259
+[92mAutogain:	[0mrssi: 1.124389
+[92mAutogain:	[0mgain: 4.069786
+[92mAutogain:	[0mrssi: 1.068824
+[92mAutogain:	[0mgain: 3.967929
+[92mAutogain:	[0mrssi: 1.015987
+[92mAutogain:	[0mgain: 4.386858
+[92mAutogain:	[0mrssi: 0.965769
+[92mAutogain:	[0mgain: 4.577603
+[92mAutogain:	[0mrssi: 1.164035
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.061079
+[92mPrefix:	[0mhello world:q
+[92mPrefix:	[0mPacket Length 316
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.229465
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.352595
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.544820
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.912535
+[92mAutogain:	[0mgain: 4.068685
+[92mAutogain:	[0mrssi: 1.245551
+[92mAutogain:	[0mgain: 3.966855
+[92mAutogain:	[0mrssi: 1.183986
+[92mAutogain:	[0mgain: 3.867574
+[92mAutogain:	[0mrssi: 1.125455
+[92mAutogain:	[0mgain: 3.770778
+[92mAutogain:	[0mrssi: 1.069819
+[92mAutogain:	[0mgain: 3.676404
+[92mAutogain:	[0mrssi: 1.016964
+[92mAutogain:	[0mgain: 4.088761
+[92mAutogain:	[0mrssi: 0.966679
+[92mAutogain:	[0mgain: 4.210996
+[92mAutogain:	[0mrssi: 1.180212
+[92mAutogain:	[0mgain: 4.105605
+[92mAutogain:	[0mrssi: 1.121902
+[92mAutogain:	[0mgain: 4.002851
+[92mAutogain:	[0mrssi: 1.066428
+[92mAutogain:	[0mgain: 3.902669
+[92mAutogain:	[0mrssi: 1.101989
+[92mAutogain:	[0mgain: 3.804994
+[92mAutogain:	[0mrssi: 1.047528
+[92mAutogain:	[0mgain: 3.709764
+[92mAutogain:	[0mrssi: 1.018641
+[92mAutogain:	[0mgain: 4.096453
+[92mAutogain:	[0mrssi: 0.976916
+[92mAutogain:	[0mgain: 4.587009
+[92mAutogain:	[0mrssi: 1.228811
+[92mAutogain:	[0mgain: 4.472207
+[92mAutogain:	[0mrssi: 1.168086
+[92mAutogain:	[0mgain: 4.360278
+[92mAutogain:	[0mrssi: 1.110354
+[92mAutogain:	[0mgain: 4.251150
+[92mAutogain:	[0mrssi: 1.055455
+[92mAutogain:	[0mgain: 4.144753
+[92mAutogain:	[0mrssi: 1.054700
+[92mAutogain:	[0mgain: 4.041020
+[92mAutogain:	[0mrssi: 1.002562
+[92mAutogain:	[0mgain: 4.357976
+[92mAutogain:	[0mrssi: 0.972343
+[92mAutogain:	[0mgain: 4.409344
+[92mAutogain:	[0mrssi: 1.143195
+[92mAutogain:	[0mgain: 4.298988
+[92mAutogain:	[0mrssi: 1.251625
+[92mAutogain:	[0mgain: 4.191394
+[92mAutogain:	[0mrssi: 1.189746
+[92mAutogain:	[0mgain: 4.086493
+[92mAutogain:	[0mrssi: 1.130940
+[92mAutogain:	[0mgain: 3.984218
+[92mAutogain:	[0mrssi: 1.075049
+[92mAutogain:	[0mgain: 3.884502
+[92mAutogain:	[0mrssi: 1.021912
+[92mAutogain:	[0mgain: 4.010605
+[92mAutogain:	[0mrssi: 1.015701
+[92mAutogain:	[0mgain: 4.432844
+[92mAutogain:	[0mrssi: 0.965477
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.003361
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mPrefix:	[0mhelo world
+[92mPrefix:	[0mPacket Length 304
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.007526
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.296349
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.558719
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.736942
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.982274
+[92mAutogain:	[0mgain: 3.636725
+[92mAutogain:	[0mrssi: 0.993168
+[92mAutogain:	[0mgain: 4.066001
+[92mAutogain:	[0mrssi: 0.997865
+[92mAutogain:	[0mgain: 4.409217
+[92mAutogain:	[0mrssi: 1.152285
+[92mAutogain:	[0mgain: 4.298864
+[92mAutogain:	[0mrssi: 1.147305
+[92mAutogain:	[0mgain: 4.191274
+[92mAutogain:	[0mrssi: 1.090577
+[92mAutogain:	[0mgain: 4.086376
+[92mAutogain:	[0mrssi: 1.127571
+[92mAutogain:	[0mgain: 3.984103
+[92mAutogain:	[0mrssi: 1.071855
+[92mAutogain:	[0mgain: 3.884390
+[92mAutogain:	[0mrssi: 1.018875
+[92mAutogain:	[0mgain: 4.142252
+[92mAutogain:	[0mrssi: 1.107462
+[92mAutogain:	[0mgain: 4.038581
+[92mAutogain:	[0mrssi: 1.052704
+[92mAutogain:	[0mgain: 3.937505
+[92mAutogain:	[0mrssi: 1.122918
+[92mAutogain:	[0mgain: 3.838958
+[92mAutogain:	[0mrssi: 1.086308
+[92mAutogain:	[0mgain: 3.742878
+[92mAutogain:	[0mrssi: 1.118525
+[92mAutogain:	[0mgain: 3.649202
+[92mAutogain:	[0mrssi: 1.063224
+[92mAutogain:	[0mgain: 3.557871
+[92mAutogain:	[0mrssi: 1.010672
+[92mAutogain:	[0mgain: 4.064314
+[92mAutogain:	[0mrssi: 0.984972
+[92mAutogain:	[0mgain: 4.264909
+[92mAutogain:	[0mrssi: 1.172166
+[92mAutogain:	[0mgain: 4.158168
+[92mAutogain:	[0mrssi: 1.146864
+[92mAutogain:	[0mgain: 4.054098
+[92mAutogain:	[0mrssi: 1.104442
+[92mAutogain:	[0mgain: 3.952634
+[92mAutogain:	[0mrssi: 1.083590
+[92mAutogain:	[0mgain: 3.853708
+[92mAutogain:	[0mrssi: 1.203760
+[92mAutogain:	[0mgain: 3.757259
+[92mAutogain:	[0mrssi: 1.144238
+[92mAutogain:	[0mgain: 3.663223
+[92mAutogain:	[0mrssi: 1.087703
+[92mAutogain:	[0mgain: 3.571541
+[92mAutogain:	[0mrssi: 1.033938
+[92mAutogain:	[0mgain: 3.740929
+[92mAutogain:	[0mrssi: 0.982827
+[92mAutogain:	[0mgain: 4.095221
+[92mAutogain:	[0mrssi: 1.168519
+[92mAutogain:	[0mgain: 3.992727
+[92mAutogain:	[0mrssi: 1.110755
+[92mEqualizer:	[0mcorrelation: [36m0.972557[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mAutogain:	[0mgain: 3.892798
+[92mAutogain:	[0mrssi: 1.055852
+[92mFrameSync:	[0mcorrelation: [36m0.835609[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 10
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-3 -1 -1  1]
+2: [ 1 -3 -3  1]
+
+[92mStdoutSink:	[0m[Receiving data!]
+[92mTYPE: <type 'str'> LENGTH: 10[0m
+>> helo wlçìõ
+[92mAutogain:	[0mgain: 3.795371
+[92mAutogain:	[0mrssi: 1.003662
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 4.398314
+[92mAutogain:	[0mrssi: 0.954039
+[92mAutogain:	[0mgain: 4.699199
+[92mAutogain:	[0mrssi: 1.122416
+[92mAutogain:	[0mgain: 4.581589
+[92mAutogain:	[0mrssi: 1.165026
+[92mAutogain:	[0mgain: 4.466922
+[92mAutogain:	[0mrssi: 1.123909
+[92mAutogain:	[0mgain: 4.355125
+[92mAutogain:	[0mrssi: 1.118857
+[92mAutogain:	[0mgain: 4.246126
+[92mAutogain:	[0mrssi: 1.063562
+[92mAutogain:	[0mgain: 4.139856
+[92mAutogain:	[0mrssi: 1.010975
+[92mAutogain:	[0mgain: 4.627365
+[92mAutogain:	[0mrssi: 0.961009
+[92mAutogain:	[0mgain: 5.113825
+[92mAutogain:	[0mrssi: 1.074127
+[92mAutogain:	[0mgain: 4.985837
+[92mAutogain:	[0mrssi: 1.147891
+[92mAutogain:	[0mgain: 4.861053
+[92mAutogain:	[0mrssi: 1.091170
+[92mAutogain:	[0mgain: 4.739392
+[92mAutogain:	[0mrssi: 1.038777
+[92mAutogain:	[0mgain: 4.685780
+[92mAutogain:	[0mrssi: 1.183881
+[92mAutogain:	[0mgain: 4.568506
+[92mAutogain:	[0mrssi: 1.125343
+[92mAutogain:	[0mgain: 4.454166
+[92mAutogain:	[0mrssi: 1.157905
+[92mAutogain:	[0mgain: 4.342689
+[92mAutogain:	[0mrssi: 1.100654
+[92mAutogain:	[0mgain: 4.234001
+[92mAutogain:	[0mrssi: 1.122277
+[92mAutogain:	[0mgain: 4.128034
+[92mAutogain:	[0mrssi: 1.081813
+[92mAutogain:	[0mgain: 4.024719
+[92mAutogain:	[0mrssi: 1.028344
+[92mAutogain:	[0mgain: 4.263632
+[92mAutogain:	[0mrssi: 0.977503
+[92mAutogain:	[0mgain: 4.619547
+[92mAutogain:	[0mrssi: 1.152755
+[92mAutogain:	[0mgain: 4.503930
+[92mAutogain:	[0mrssi: 1.095770
+[92mAutogain:	[0mgain: 4.391207
+[92mAutogain:	[0mrssi: 1.041592
+[92mAutogain:	[0mgain: 4.281306
+[92mAutogain:	[0mrssi: 1.040108
+[92mAutogain:	[0mgain: 4.174154
+[92mAutogain:	[0mrssi: 1.238716
+[92mAutogain:	[0mgain: 4.069685
+[92mAutogain:	[0mrssi: 1.177473
+[92mAutogain:	[0mgain: 3.967830
+[92mAutogain:	[0mrssi: 1.119284
+[92mAutogain:	[0mgain: 3.868524
+[92mAutogain:	[0mrssi: 1.063955
+[92mAutogain:	[0mgain: 3.771704
+[92mAutogain:	[0mrssi: 1.011378
+[92mAutogain:	[0mgain: 4.183995
+[92mAutogain:	[0mrssi: 1.086223
+[92mAutogain:	[0mgain: 4.079279
+[92mAutogain:	[0mrssi: 1.032527
+[92mEqualizer:	[0mcorrelation: [36m0.918800[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 4.256565
+[92mAutogain:	[0mrssi: 0.981478
+[92mAutogain:	[0mgain: 4.896409
+[92mAutogain:	[0mrssi: 1.016098
+[92mAutogain:	[0mgain: 4.871893
+[92mAutogain:	[0mrssi: 1.114106
+[92mAutogain:	[0mgain: 4.749960
+[92mAutogain:	[0mrssi: 1.090578
+[92mAutogain:	[0mgain: 4.631080
+[92mAutogain:	[0mrssi: 1.085279
+[92mAutogain:	[0mgain: 4.515174
+[92mAutogain:	[0mrssi: 1.031642
+[92mAutogain:	[0mgain: 4.694789
+[92mAutogain:	[0mrssi: 0.980631
+[92mAutogain:	[0mgain: 4.961507
+[92mAutogain:	[0mrssi: 1.030555
+[92mAutogain:	[0mgain: 5.141684
+[92mAutogain:	[0mrssi: 1.015248
+[92mAutogain:	[0mgain: 5.012999
+[92mAutogain:	[0mrssi: 1.073490
+[92mAutogain:	[0mgain: 4.887536
+[92mAutogain:	[0mrssi: 1.020447
+[92mAutogain:	[0mgain: 5.218431
+[92mAutogain:	[0mrssi: 0.970008
+[92mAutogain:	[0mgain: 5.709728
+[92mAutogain:	[0mrssi: 1.342239
+[92mAutogain:	[0mgain: 5.566827
+[92mAutogain:	[0mrssi: 1.275873
+[92mAutogain:	[0mgain: 5.427502
+[92mAutogain:	[0mrssi: 1.281528
+[92mAutogain:	[0mgain: 5.291664
+[92mAutogain:	[0mrssi: 1.234781
+[92mAutogain:	[0mgain: 5.159226
+[92mAutogain:	[0mrssi: 1.236342
+[92mAutogain:	[0mgain: 5.030102
+[92mAutogain:	[0mrssi: 1.175219
+[92mAutogain:	[0mgain: 4.904210
+[92mAutogain:	[0mrssi: 1.117132
+[92mAutogain:	[0mgain: 4.781469
+[92mAutogain:	[0mrssi: 1.061893
+[92mAutogain:	[0mgain: 4.661800
+[92mAutogain:	[0mrssi: 1.073584
+[92mAutogain:	[0mgain: 4.545126
+[92mAutogain:	[0mrssi: 1.077129
+[92mAutogain:	[0mgain: 4.431372
+[92mAutogain:	[0mrssi: 1.023874
+[92mAutogain:	[0mgain: 4.320465
+[92mAutogain:	[0mrssi: 1.030273
+[92mAutogain:	[0mgain: 4.212334
+[92mAutogain:	[0mrssi: 1.046641
+[92mAutogain:	[0mgain: 4.183295
+[92mAutogain:	[0mrssi: 0.994889
+[92mAutogain:	[0mgain: 4.620754
+[92mAutogain:	[0mrssi: 1.102689
+[92mAutogain:	[0mgain: 4.505107
+[92mAutogain:	[0mrssi: 1.048172
+[92mAutogain:	[0mgain: 4.392355
+[92mAutogain:	[0mrssi: 1.055267
+[92mAutogain:	[0mgain: 4.282424
+[92mAutogain:	[0mrssi: 1.003103
+[92mAutogain:	[0mgain: 4.881155
+[92mAutogain:	[0mrssi: 0.953521
+[92mFrameSync:	[0mcorrelation: [36m0.745265[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 11
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+
+[92mStdoutSink:	[0m[Receiving data!]
+[92mTYPE: <type 'str'> LENGTH: 11[0m
+>> lZì„\ﬂàërld
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.083538
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.063346
+[92mPrefix:	[0mhello:q
+[92mPrefix:	[0mPacket Length 292
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.284276
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.554470
+[92mAutogain:	[0mgain: 2.872402
+[92mAutogain:	[0mrssi: 1.051296
+[92mAutogain:	[0mgain: 2.810906
+[92mAutogain:	[0mrssi: 0.999287
+[92mAutogain:	[0mgain: 3.491387
+[92mAutogain:	[0mrssi: 0.949903
+[92mAutogain:	[0mgain: 4.154836
+[92mAutogain:	[0mrssi: 0.902959
+[92mAutogain:	[0mgain: 4.801681
+[92mAutogain:	[0mrssi: 0.858344
+[92mAutogain:	[0mgain: 4.698163
+[92mAutogain:	[0mrssi: 1.064625
+[92mAutogain:	[0mgain: 4.580579
+[92mAutogain:	[0mrssi: 1.012025
+[92mAutogain:	[0mgain: 4.721954
+[92mAutogain:	[0mrssi: 1.308402
+[92mAutogain:	[0mgain: 4.603774
+[92mAutogain:	[0mrssi: 1.243693
+[92mAutogain:	[0mgain: 4.488552
+[92mAutogain:	[0mrssi: 1.182226
+[92mAutogain:	[0mgain: 4.376214
+[92mAutogain:	[0mrssi: 1.123811
+[92mAutogain:	[0mgain: 4.266687
+[92mAutogain:	[0mrssi: 1.068267
+[92mAutogain:	[0mgain: 4.159902
+[92mAutogain:	[0mrssi: 1.015429
+[92mAutogain:	[0mgain: 4.371195
+[92mAutogain:	[0mrssi: 0.979102
+[92mAutogain:	[0mgain: 5.005943
+[92mAutogain:	[0mrssi: 1.073663
+[92mAutogain:	[0mgain: 4.880655
+[92mAutogain:	[0mrssi: 1.032567
+[92mAutogain:	[0mgain: 5.037149
+[92mAutogain:	[0mrssi: 0.981529
+[92mAutogain:	[0mgain: 5.182376
+[92mAutogain:	[0mrssi: 1.022680
+[92mAutogain:	[0mgain: 5.173720
+[92mAutogain:	[0mrssi: 1.169363
+[92mAutogain:	[0mgain: 5.044234
+[92mAutogain:	[0mrssi: 1.226359
+[92mAutogain:	[0mgain: 4.917988
+[92mAutogain:	[0mrssi: 1.165762
+[92mAutogain:	[0mgain: 4.794903
+[92mAutogain:	[0mrssi: 1.183333
+[92mAutogain:	[0mgain: 4.674897
+[92mAutogain:	[0mrssi: 1.140250
+[92mAutogain:	[0mgain: 4.557895
+[92mAutogain:	[0mrssi: 1.083931
+[92mAutogain:	[0mgain: 4.443822
+[92mAutogain:	[0mrssi: 1.142924
+[92mAutogain:	[0mgain: 4.332603
+[92mAutogain:	[0mrssi: 1.086465
+[92mAutogain:	[0mgain: 4.224168
+[92mAutogain:	[0mrssi: 1.076842
+[92mAutogain:	[0mgain: 4.118447
+[92mAutogain:	[0mrssi: 1.023613
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.010893
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.250860
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.169477
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.161103
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.361069
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.488535
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.726823
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.792407
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.817767
+[92mAutogain:	[0mgain: 5.506014
+[92mAutogain:	[0mrssi: 0.929478
+[92mAutogain:	[0mgain: 5.463207
+[92mAutogain:	[0mrssi: 1.133587
+[92mAutogain:	[0mgain: 5.326475
+[92mAutogain:	[0mrssi: 1.077547
+[92mAutogain:	[0mgain: 5.193166
+[92mAutogain:	[0mrssi: 1.024276
+[92mAutogain:	[0mgain: 5.319269
+[92mAutogain:	[0mrssi: 1.020154
+[92mAutogain:	[0mgain: 5.186140
+[92mAutogain:	[0mrssi: 1.011318
+[92mAutogain:	[0mgain: 5.086209
+[92mAutogain:	[0mrssi: 1.030090
+[92mAutogain:	[0mgain: 5.273584
+[92mAutogain:	[0mrssi: 0.979124
+[92mAutogain:	[0mgain: 5.892429
+[92mAutogain:	[0mrssi: 0.981101
+[92mAutogain:	[0mgain: 5.758714
+[92mAutogain:	[0mrssi: 1.079498
+[92mAutogain:	[0mgain: 5.614587
+[92mAutogain:	[0mrssi: 1.114725
+[92mAutogain:	[0mgain: 5.474067
+[92mAutogain:	[0mrssi: 1.059622
+[92mAutogain:	[0mgain: 5.337063
+[92mAutogain:	[0mrssi: 1.012173
+[92mAutogain:	[0mgain: 5.566042
+[92mAutogain:	[0mrssi: 0.988089
+[92mAutogain:	[0mgain: 5.644009
+[92mAutogain:	[0mrssi: 1.005858
+[92mAutogain:	[0mgain: 5.811506
+[92mAutogain:	[0mrssi: 1.137563
+[92mAutogain:	[0mgain: 5.666057
+[92mAutogain:	[0mrssi: 1.081389
+[92mAutogain:	[0mgain: 5.524249
+[92mAutogain:	[0mrssi: 1.054508
+[92mAutogain:	[0mgain: 5.385990
+[92mAutogain:	[0mrssi: 1.005644
+[92mAutogain:	[0mgain: 5.251191
+[92mAutogain:	[0mrssi: 1.075577
+[92mAutogain:	[0mgain: 5.119765
+[92mAutogain:	[0mrssi: 1.022378
+[92mAutogain:	[0mgain: 5.164895
+[92mAutogain:	[0mrssi: 1.088002
+[92mAutogain:	[0mgain: 5.035630
+[92mAutogain:	[0mrssi: 1.034212
+[92mAutogain:	[0mgain: 5.047601
+[92mAutogain:	[0mrssi: 1.060349
+[92mAutogain:	[0mgain: 4.921271
+[92mAutogain:	[0mrssi: 1.020618
+[92mAutogain:	[0mgain: 5.249128
+[92mAutogain:	[0mrssi: 0.970172
+[92mAutogain:	[0mgain: 5.286929
+[92mAutogain:	[0mrssi: 1.548013
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.018648
+[92mPrefix:	[0mhel
+[92mPrefix:	[0mPacket Length 276
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.053249
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.352283
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.513445
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.697458
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.766422
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.787518
+[92mAutogain:	[0mgain: 5.506014
+[92mAutogain:	[0mrssi: 0.899951
+[92mAutogain:	[0mgain: 5.820541
+[92mAutogain:	[0mrssi: 1.070029
+[92mAutogain:	[0mgain: 5.674866
+[92mAutogain:	[0mrssi: 1.017132
+[92mAutogain:	[0mgain: 5.859997
+[92mAutogain:	[0mrssi: 0.978318
+[92mAutogain:	[0mgain: 6.071711
+[92mAutogain:	[0mrssi: 1.166113
+[92mAutogain:	[0mgain: 5.919750
+[92mAutogain:	[0mrssi: 1.108477
+[92mAutogain:	[0mgain: 5.771592
+[92mAutogain:	[0mrssi: 1.113659
+[92mAutogain:	[0mgain: 5.627142
+[92mAutogain:	[0mrssi: 1.093355
+[92mAutogain:	[0mgain: 5.486308
+[92mAutogain:	[0mrssi: 1.039302
+[92mAutogain:	[0mgain: 5.383708
+[92mAutogain:	[0mrssi: 1.068424
+[92mAutogain:	[0mgain: 5.248966
+[92mAutogain:	[0mrssi: 1.110572
+[92mAutogain:	[0mgain: 5.117596
+[92mAutogain:	[0mrssi: 1.061547
+[92mAutogain:	[0mgain: 4.989515
+[92mAutogain:	[0mrssi: 1.009073
+[92mAutogain:	[0mgain: 5.483408
+[92mAutogain:	[0mrssi: 0.976845
+[92mAutogain:	[0mgain: 5.382392
+[92mAutogain:	[0mrssi: 1.043450
+[92mAutogain:	[0mgain: 5.247683
+[92mAutogain:	[0mrssi: 1.061748
+[92mAutogain:	[0mgain: 5.116346
+[92mAutogain:	[0mrssi: 1.022471
+[92mAutogain:	[0mgain: 4.988296
+[92mAutogain:	[0mrssi: 1.020121
+[92mAutogain:	[0mgain: 5.141509
+[92mAutogain:	[0mrssi: 1.023501
+[92mAutogain:	[0mgain: 5.012829
+[92mAutogain:	[0mrssi: 1.108213
+[92mAutogain:	[0mgain: 4.887370
+[92mAutogain:	[0mrssi: 1.053421
+[92mAutogain:	[0mgain: 4.765050
+[92mAutogain:	[0mrssi: 1.055565
+[92mAutogain:	[0mgain: 4.645792
+[92mAutogain:	[0mrssi: 1.003382
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 5.231077
+[92mAutogain:	[0mrssi: 0.953786
+[92mAutogain:	[0mgain: 5.692498
+[92mAutogain:	[0mrssi: 1.102870
+[92mAutogain:	[0mgain: 5.550028
+[92mAutogain:	[0mrssi: 1.187137
+[92mAutogain:	[0mgain: 5.411123
+[92mAutogain:	[0mrssi: 1.128464
+[92mAutogain:	[0mgain: 5.275695
+[92mAutogain:	[0mrssi: 1.212983
+[92mAutogain:	[0mgain: 5.143657
+[92mAutogain:	[0mrssi: 1.153038
+[92mAutogain:	[0mgain: 5.014923
+[92mAutogain:	[0mrssi: 1.096042
+[92mAutogain:	[0mgain: 4.889411
+[92mAutogain:	[0mrssi: 1.041864
+[92mAutogain:	[0mgain: 4.912230
+[92mAutogain:	[0mrssi: 0.990366
+[92mAutogain:	[0mgain: 5.158659
+[92mAutogain:	[0mrssi: 1.095317
+[92mAutogain:	[0mgain: 5.029550
+[92mAutogain:	[0mrssi: 1.041175
+[92mAutogain:	[0mgain: 5.058467
+[92mAutogain:	[0mrssi: 0.989712
+[92mAutogain:	[0mgain: 5.555247
+[92mAutogain:	[0mrssi: 1.278208
+[92mAutogain:	[0mgain: 5.416212
+[92mAutogain:	[0mrssi: 1.215019
+[92mAutogain:	[0mgain: 5.280656
+[92mAutogain:	[0mrssi: 1.154963
+[92mAutogain:	[0mgain: 5.148494
+[92mAutogain:	[0mrssi: 1.165405
+[92mAutogain:	[0mgain: 5.019639
+[92mAutogain:	[0mrssi: 1.107801
+[92mAutogain:	[0mgain: 4.894009
+[92mAutogain:	[0mrssi: 1.107222
+[92mAutogain:	[0mgain: 4.771523
+[92mAutogain:	[0mrssi: 1.052492
+[92mAutogain:	[0mgain: 4.652103
+[92mAutogain:	[0mrssi: 1.000470
+[92mAutogain:	[0mgain: 5.068362
+[92mAutogain:	[0mrssi: 1.143273
+[92mAutogain:	[0mgain: 4.941513
+[92mAutogain:	[0mrssi: 1.086763
+[92mAutogain:	[0mgain: 4.817838
+[92mAutogain:	[0mrssi: 1.033044
+[92mAutogain:	[0mgain: 4.810057
+[92mAutogain:	[0mrssi: 1.009212
+[92mAutogain:	[0mgain: 4.689672
+[92mAutogain:	[0mrssi: 1.163662
+[92mAutogain:	[0mgain: 4.572301
+[92mAutogain:	[0mrssi: 1.106144
+[92mAutogain:	[0mgain: 4.457866
+[92mAutogain:	[0mrssi: 1.055504
+[92mAutogain:	[0mgain: 4.346296
+[92mAutogain:	[0mrssi: 1.003336
+[92mAutogain:	[0mgain: 4.939803
+[92mAutogain:	[0mrssi: 0.962013
+[92mAutogain:	[0mgain: 5.482469
+[92mAutogain:	[0mrssi: 1.208222
+[92mAutogain:	[0mgain: 5.345255
+[92mAutogain:	[0mrssi: 1.148502
+[92mEqualizer:	[0mcorrelation: [36m1.148863[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m1.109105[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 11
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+
+[92mStdoutSink:	[0m[Receiving data!]
+[92mTYPE: <type 'str'> LENGTH: 11[0m
+>> hello world
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.051292
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.010867
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.120007
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.276619
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.388141
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.468613
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.606581
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.757450
+[92mAutogain:	[0mgain: 5.506014
+[92mAutogain:	[0mrssi: 0.720012
+[92mAutogain:	[0mgain: 6.119042
+[92mAutogain:	[0mrssi: 0.804239
+[92mAutogain:	[0mgain: 6.716728
+[92mAutogain:	[0mrssi: 0.943446
+[92mAutogain:	[0mgain: 7.299455
+[92mAutogain:	[0mrssi: 0.978241
+[92mAutogain:	[0mgain: 7.540438
+[92mAutogain:	[0mrssi: 1.011531
+[92mAutogain:	[0mgain: 7.351718
+[92mAutogain:	[0mrssi: 1.073341
+[92mAutogain:	[0mgain: 7.167721
+[92mAutogain:	[0mrssi: 1.020289
+[92mAutogain:	[0mgain: 7.444474
+[92mAutogain:	[0mrssi: 0.969852
+[92mAutogain:	[0mgain: 7.562351
+[92mAutogain:	[0mrssi: 1.191973
+[92mAutogain:	[0mgain: 7.373083
+[92mAutogain:	[0mrssi: 1.133057
+[92mAutogain:	[0mgain: 7.188551
+[92mAutogain:	[0mrssi: 1.077051
+[92mAutogain:	[0mgain: 7.008638
+[92mAutogain:	[0mrssi: 1.023811
+[92mAutogain:	[0mgain: 6.900699
+[92mAutogain:	[0mrssi: 1.033938
+[92mAutogain:	[0mgain: 6.986765
+[92mAutogain:	[0mrssi: 0.982829
+[92mAutogain:	[0mgain: 7.504870
+[92mAutogain:	[0mrssi: 1.037431
+[92mAutogain:	[0mgain: 7.317040
+[92mAutogain:	[0mrssi: 1.001764
+[92mAutogain:	[0mgain: 7.246441
+[92mAutogain:	[0mrssi: 1.103811
+[92mAutogain:	[0mgain: 7.065079
+[92mAutogain:	[0mrssi: 1.049255
+[92mAutogain:	[0mgain: 6.927587
+[92mAutogain:	[0mrssi: 0.997390
+[92mAutogain:	[0mgain: 7.158408
+[92mAutogain:	[0mrssi: 1.181554
+[92mAutogain:	[0mgain: 6.979249
+[92mAutogain:	[0mrssi: 1.159576
+[92mAutogain:	[0mgain: 6.804575
+[92mAutogain:	[0mrssi: 1.102263
+[92mAutogain:	[0mgain: 6.634272
+[92mAutogain:	[0mrssi: 1.047776
+[92mAutogain:	[0mgain: 6.529060
+[92mAutogain:	[0mrssi: 0.995982
+[92mAutogain:	[0mgain: 7.106219
+[92mAutogain:	[0mrssi: 0.978309
+[92mAutogain:	[0mgain: 7.282346
+[92mAutogain:	[0mrssi: 1.030281
+[92mEqualizer:	[0mcorrelation: [36m1.219501[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.856606[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 11
+[92mFrameSync:	[0mbytes in queue: 2.500000
+[92mFrameSync:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+
+[92mAutogain:	[0mgain: 7.411818
+[92mAutogain:	[0mrssi: 0.979359
+[92mStdoutSink:	[0m[Receiving data!]
+[92mTYPE: <type 'str'> LENGTH: 11[0m
+>> hello world
+[92mAutogain:	[0mgain: 7.977148
+[92mAutogain:	[0mrssi: 0.930947
+[92mAutogain:	[0mgain: 8.528329
+[92mAutogain:	[0mrssi: 0.884935
+[92mAutogain:	[0mgain: 9.065716
+[92mAutogain:	[0mrssi: 0.841195
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.010766
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.247410
+[92mPrefix:	[0mhell
+[92mPrefix:	[0mPacket Length 280
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.364049
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.487639
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.804429
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.832977
+[92mAutogain:	[0mgain: 4.532471
+[92mAutogain:	[0mrssi: 1.096288
+[92mAutogain:	[0mgain: 4.419034
+[92mAutogain:	[0mrssi: 1.042106
+[92mAutogain:	[0mgain: 4.449931
+[92mAutogain:	[0mrssi: 0.990604
+[92mAutogain:	[0mgain: 4.719662
+[92mAutogain:	[0mrssi: 1.019427
+[92mAutogain:	[0mgain: 5.070114
+[92mAutogain:	[0mrssi: 0.969040
+[92mAutogain:	[0mgain: 5.302329
+[92mAutogain:	[0mrssi: 1.124088
+[92mAutogain:	[0mgain: 5.169624
+[92mAutogain:	[0mrssi: 1.168813
+[92mAutogain:	[0mgain: 5.040240
+[92mAutogain:	[0mrssi: 1.111042
+[92mAutogain:	[0mgain: 4.914095
+[92mAutogain:	[0mrssi: 1.056119
+[92mAutogain:	[0mgain: 4.791106
+[92mAutogain:	[0mrssi: 1.150121
+[92mAutogain:	[0mgain: 4.671196
+[92mAutogain:	[0mrssi: 1.093295
+[92mAutogain:	[0mgain: 4.554286
+[92mAutogain:	[0mrssi: 1.040511
+[92mAutogain:	[0mgain: 4.440303
+[92mAutogain:	[0mrssi: 1.015202
+[92mAutogain:	[0mgain: 4.460769
+[92mAutogain:	[0mrssi: 1.082155
+[92mAutogain:	[0mgain: 4.349127
+[92mAutogain:	[0mrssi: 1.028644
+[92mAutogain:	[0mgain: 4.575515
+[92mAutogain:	[0mrssi: 0.977798
+[92mAutogain:	[0mgain: 5.211832
+[92mAutogain:	[0mrssi: 0.929465
+[92mAutogain:	[0mgain: 5.236007
+[92mAutogain:	[0mrssi: 1.202679
+[92mAutogain:	[0mgain: 5.104962
+[92mAutogain:	[0mrssi: 1.143222
+[92mAutogain:	[0mgain: 4.977196
+[92mAutogain:	[0mrssi: 1.086739
+[92mAutogain:	[0mgain: 4.852628
+[92mAutogain:	[0mrssi: 1.271675
+[92mAutogain:	[0mgain: 4.731178
+[92mAutogain:	[0mrssi: 1.208811
+[92mAutogain:	[0mgain: 4.612768
+[92mAutogain:	[0mrssi: 1.149058
+[92mAutogain:	[0mgain: 4.497321
+[92mAutogain:	[0mrssi: 1.148522
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.020856
+[92mPrefix:	[0m
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.023272
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.306963
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.500026
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.698314
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.890385
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.890584
+[92mAutogain:	[0mgain: 4.609767
+[92mAutogain:	[0mrssi: 1.013563
+[92mAutogain:	[0mgain: 4.709465
+[92mAutogain:	[0mrssi: 1.099358
+[92mAutogain:	[0mgain: 4.591598
+[92mAutogain:	[0mrssi: 1.045005
+[92mAutogain:	[0mgain: 4.544105
+[92mAutogain:	[0mrssi: 1.000817
+[92mAutogain:	[0mgain: 4.742010
+[92mAutogain:	[0mrssi: 1.118156
+[92mAutogain:	[0mgain: 4.623329
+[92mAutogain:	[0mrssi: 1.062825
+[92mAutogain:	[0mgain: 4.507618
+[92mAutogain:	[0mrssi: 1.010327
+[92mAutogain:	[0mgain: 4.830987
+[92mAutogain:	[0mrssi: 1.217874
+[92mAutogain:	[0mgain: 4.710079
+[92mAutogain:	[0mrssi: 1.157734
+[92mAutogain:	[0mgain: 4.592196
+[92mAutogain:	[0mrssi: 1.191011
+[92mAutogain:	[0mgain: 4.477264
+[92mAutogain:	[0mrssi: 1.155578
+[92mAutogain:	[0mgain: 4.365209
+[92mAutogain:	[0mrssi: 1.146278
+[92mAutogain:	[0mgain: 4.255958
+[92mAutogain:	[0mrssi: 1.104360
+[92mAutogain:	[0mgain: 4.149441
+[92mAutogain:	[0mrssi: 1.049742
+[92mAutogain:	[0mgain: 4.077503
+[92mAutogain:	[0mrssi: 0.997876
+[92mAutogain:	[0mgain: 4.380768
+[92mAutogain:	[0mrssi: 1.136363
+[92mAutogain:	[0mgain: 4.271128
+[92mAutogain:	[0mrssi: 1.080233
+[92mAutogain:	[0mgain: 4.164231
+[92mAutogain:	[0mrssi: 1.026850
+[92mAutogain:	[0mgain: 4.119356
+[92mAutogain:	[0mrssi: 0.996025
+[92mAutogain:	[0mgain: 4.042333
+[92mAutogain:	[0mrssi: 1.163128
+[92mAutogain:	[0mgain: 3.941163
+[92mAutogain:	[0mrssi: 1.105625
+[92mAutogain:	[0mgain: 3.842525
+[92mAutogain:	[0mrssi: 1.050982
+[92mAutogain:	[0mgain: 3.761203
+[92mAutogain:	[0mrssi: 0.999031
+[92mAutogain:	[0mgain: 4.309681
+[92mAutogain:	[0mrssi: 1.089302
+[92mAutogain:	[0mgain: 4.201819
+[92mAutogain:	[0mrssi: 1.067372
+[92mAutogain:	[0mgain: 4.096658
+[92mAutogain:	[0mrssi: 1.014619
+[92mEqualizer:	[0mcorrelation: [36m1.006369[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.864288[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 11
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+
+[92mStdoutSink:	[0mhello world
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.024156
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.318130
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.507949
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.651153
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.894856
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.921674
+[92mAutogain:	[0mgain: 4.721715
+[92mAutogain:	[0mrssi: 1.002552
+[92mAutogain:	[0mgain: 4.982189
+[92mAutogain:	[0mrssi: 1.204770
+[92mAutogain:	[0mgain: 4.857496
+[92mAutogain:	[0mrssi: 1.145205
+[92mAutogain:	[0mgain: 4.735924
+[92mAutogain:	[0mrssi: 1.088601
+[92mAutogain:	[0mgain: 4.617395
+[92mAutogain:	[0mrssi: 1.146096
+[92mAutogain:	[0mgain: 4.501832
+[92mAutogain:	[0mrssi: 1.089387
+[92mAutogain:	[0mgain: 4.389162
+[92mAutogain:	[0mrssi: 1.035575
+[92mAutogain:	[0mgain: 4.355290
+[92mAutogain:	[0mrssi: 1.155697
+[92mAutogain:	[0mgain: 4.246288
+[92mAutogain:	[0mrssi: 1.098625
+[92mAutogain:	[0mgain: 4.140013
+[92mAutogain:	[0mrssi: 1.092955
+[92mAutogain:	[0mgain: 4.036398
+[92mAutogain:	[0mrssi: 1.083255
+[92mAutogain:	[0mgain: 3.935376
+[92mAutogain:	[0mrssi: 1.060532
+[92mAutogain:	[0mgain: 3.836883
+[92mAutogain:	[0mrssi: 1.037170
+[92mAutogain:	[0mgain: 3.953215
+[92mAutogain:	[0mrssi: 0.985874
+[92mAutogain:	[0mgain: 4.156700
+[92mAutogain:	[0mrssi: 0.994833
+[92mAutogain:	[0mgain: 4.457983
+[92mAutogain:	[0mrssi: 1.182887
+[92mAutogain:	[0mgain: 4.346410
+[92mAutogain:	[0mrssi: 1.124460
+[92mAutogain:	[0mgain: 4.237629
+[92mAutogain:	[0mrssi: 1.068890
+[92mAutogain:	[0mgain: 4.131571
+[92mAutogain:	[0mrssi: 1.028821
+[92mAutogain:	[0mgain: 4.028167
+[92mAutogain:	[0mrssi: 1.176623
+[92mAutogain:	[0mgain: 3.927352
+[92mAutogain:	[0mrssi: 1.118453
+[92mAutogain:	[0mgain: 3.829059
+[92mAutogain:	[0mrssi: 1.063176
+[92mAutogain:	[0mgain: 3.733227
+[92mAutogain:	[0mrssi: 1.010623
+[92mAutogain:	[0mgain: 4.130749
+[92mAutogain:	[0mrssi: 1.039392
+[92mAutogain:	[0mgain: 4.099049
+[92mAutogain:	[0mrssi: 1.034693
+[92mAutogain:	[0mgain: 4.244190
+[92mAutogain:	[0mrssi: 0.983554
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.022921
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.307695
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.493497
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.659135
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.880791
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.889842
+[92mAutogain:	[0mgain: 4.721715
+[92mAutogain:	[0mrssi: 1.006315
+[92mAutogain:	[0mgain: 4.929982
+[92mAutogain:	[0mrssi: 1.191614
+[92mAutogain:	[0mgain: 4.806596
+[92mAutogain:	[0mrssi: 1.132699
+[92mAutogain:	[0mgain: 4.686298
+[92mAutogain:	[0mrssi: 1.076713
+[92mAutogain:	[0mgain: 4.569011
+[92mAutogain:	[0mrssi: 1.124227
+[92mAutogain:	[0mgain: 4.454659
+[92mAutogain:	[0mrssi: 1.068600
+[92mAutogain:	[0mgain: 4.343169
+[92mAutogain:	[0mrssi: 1.015815
+[92mAutogain:	[0mgain: 4.591976
+[92mAutogain:	[0mrssi: 1.191724
+[92mAutogain:	[0mgain: 4.477049
+[92mAutogain:	[0mrssi: 1.132873
+[92mAutogain:	[0mgain: 4.364999
+[92mAutogain:	[0mrssi: 1.125217
+[92mAutogain:	[0mgain: 4.255753
+[92mAutogain:	[0mrssi: 1.099862
+[92mAutogain:	[0mgain: 4.149241
+[92mAutogain:	[0mrssi: 1.100204
+[92mAutogain:	[0mgain: 4.045395
+[92mAutogain:	[0mrssi: 1.045823
+[92mAutogain:	[0mgain: 4.032384
+[92mAutogain:	[0mrssi: 0.994099
+[92mAutogain:	[0mgain: 4.161957
+[92mAutogain:	[0mrssi: 0.999668
+[92mAutogain:	[0mgain: 4.461641
+[92mAutogain:	[0mrssi: 1.145634
+[92mAutogain:	[0mgain: 4.349976
+[92mAutogain:	[0mrssi: 1.089047
+[92mAutogain:	[0mgain: 4.241106
+[92mAutogain:	[0mrssi: 1.035225
+[92mAutogain:	[0mgain: 4.134961
+[92mAutogain:	[0mrssi: 1.000174
+[92mAutogain:	[0mgain: 4.055375
+[92mAutogain:	[0mrssi: 1.158921
+[92mAutogain:	[0mgain: 3.953878
+[92mAutogain:	[0mrssi: 1.101623
+[92mAutogain:	[0mgain: 3.854922
+[92mAutogain:	[0mrssi: 1.047182
+[92mAutogain:	[0mgain: 3.827421
+[92mAutogain:	[0mrssi: 0.995417
+[92mAutogain:	[0mgain: 4.372762
+[92mAutogain:	[0mrssi: 1.094420
+[92mAutogain:	[0mgain: 4.263322
+[92mAutogain:	[0mrssi: 1.068849
+[92mAutogain:	[0mgain: 4.156621
+[92mAutogain:	[0mrssi: 1.016022
+[92mEqualizer:	[0mcorrelation: [36m0.972246[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.733002[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 11
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-3 -1 -1 -1]
+2: [ 1 -3 -3  1]
+
+[92mStdoutSink:	[0mhello world
+[92mPrefix:	[0mhello
+[92mPrefix:	[0mPacket Length 284
+[92mAutogain:	[0mgain: 4.570098
+[92mAutogain:	[0mrssi: 0.965803
+[92mAutogain:	[0mgain: 5.206550
+[92mAutogain:	[0mrssi: 0.976346
+[92mAutogain:	[0mgain: 5.238864
+[92mAutogain:	[0mrssi: 1.092123
+[92mAutogain:	[0mgain: 5.107747
+[92mAutogain:	[0mrssi: 1.130158
+[92mAutogain:	[0mgain: 4.979912
+[92mAutogain:	[0mrssi: 1.116116
+[92mAutogain:	[0mgain: 4.855276
+[92mAutogain:	[0mrssi: 1.132295
+[92mAutogain:	[0mgain: 4.733760
+[92mAutogain:	[0mrssi: 1.076304
+[92mAutogain:	[0mgain: 4.615285
+[92mAutogain:	[0mrssi: 1.023163
+[92mAutogain:	[0mgain: 4.914207
+[92mAutogain:	[0mrssi: 0.972575
+[92mAutogain:	[0mgain: 5.108816
+[92mAutogain:	[0mrssi: 1.033909
+[92mAutogain:	[0mgain: 4.980954
+[92mAutogain:	[0mrssi: 1.105829
+[92mAutogain:	[0mgain: 4.856292
+[92mAutogain:	[0mrssi: 1.051104
+[92mAutogain:	[0mgain: 4.747371
+[92mAutogain:	[0mrssi: 0.999187
+[92mAutogain:	[0mgain: 5.214989
+[92mAutogain:	[0mrssi: 1.256891
+[92mAutogain:	[0mgain: 5.084470
+[92mAutogain:	[0mrssi: 1.194828
+[92mAutogain:	[0mgain: 4.957217
+[92mAutogain:	[0mrssi: 1.191949
+[92mAutogain:	[0mgain: 4.833150
+[92mAutogain:	[0mrssi: 1.195766
+[92mAutogain:	[0mgain: 4.712187
+[92mAutogain:	[0mrssi: 1.193350
+[92mAutogain:	[0mgain: 4.594252
+[92mAutogain:	[0mrssi: 1.134368
+[92mAutogain:	[0mgain: 4.479268
+[92mAutogain:	[0mrssi: 1.078261
+[92mAutogain:	[0mgain: 4.367162
+[92mAutogain:	[0mrssi: 1.024990
+[92mAutogain:	[0mgain: 4.306277
+[92mAutogain:	[0mrssi: 1.047246
+[92mAutogain:	[0mgain: 4.198501
+[92mAutogain:	[0mrssi: 1.008798
+[92mAutogain:	[0mgain: 4.715828
+[92mAutogain:	[0mrssi: 0.958948
+[92mAutogain:	[0mgain: 4.747322
+[92mAutogain:	[0mrssi: 1.140574
+[92mAutogain:	[0mgain: 4.628508
+[92mAutogain:	[0mrssi: 1.227713
+[92mAutogain:	[0mgain: 4.512667
+[92mAutogain:	[0mrssi: 1.167017
+[92mAutogain:	[0mgain: 4.399725
+[92mAutogain:	[0mrssi: 1.109341
+[92mAutogain:	[0mgain: 4.289610
+[92mAutogain:	[0mrssi: 1.054509
+[92mEqualizer:	[0mcorrelation: [36m1.069500[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.998154[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 5
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-3 -1  1  3]
+2: [ 1 -3 -3  1]
+
+[92mPrefix:	[0mhello
+[92mPrefix:	[0mPacket Length 284
+[92mAutogain:	[0mgain: 4.182251
+[92mAutogain:	[0mrssi: 1.002376
+[92mAutogain:	[0mgain: 4.793638
+[92mAutogain:	[0mrssi: 0.952854
+[92mAutogain:	[0mgain: 5.375526
+[92mAutogain:	[0mrssi: 1.088939
+[92mAutogain:	[0mgain: 5.240989
+[92mAutogain:	[0mrssi: 1.129495
+[92mAutogain:	[0mgain: 5.109819
+[92mAutogain:	[0mrssi: 1.104637
+[92mAutogain:	[0mgain: 4.981932
+[92mAutogain:	[0mrssi: 1.106001
+[92mAutogain:	[0mgain: 4.857246
+[92mAutogain:	[0mrssi: 1.051309
+[92mStdoutSink:	[0mhello
+[92mAutogain:	[0mgain: 4.735680
+[92mAutogain:	[0mrssi: 1.003204
+[92mAutogain:	[0mgain: 5.001857
+[92mAutogain:	[0mrssi: 0.999644
+[92mAutogain:	[0mgain: 5.581499
+[92mAutogain:	[0mrssi: 1.093361
+[92mAutogain:	[0mgain: 5.441807
+[92mAutogain:	[0mrssi: 1.152668
+[92mAutogain:	[0mgain: 5.305611
+[92mAutogain:	[0mrssi: 1.095624
+[92mAutogain:	[0mgain: 5.172824
+[92mAutogain:	[0mrssi: 1.041508
+[92mAutogain:	[0mgain: 5.043360
+[92mAutogain:	[0mrssi: 1.169680
+[92mAutogain:	[0mgain: 4.917136
+[92mAutogain:	[0mrssi: 1.111923
+[92mAutogain:	[0mgain: 4.794072
+[92mAutogain:	[0mrssi: 1.095448
+[92mAutogain:	[0mgain: 4.674087
+[92mAutogain:	[0mrssi: 1.087829
+[92mAutogain:	[0mgain: 4.557105
+[92mAutogain:	[0mrssi: 1.099714
+[92mAutogain:	[0mgain: 4.443051
+[92mAutogain:	[0mrssi: 1.045358
+[92mAutogain:	[0mgain: 4.427490
+[92mAutogain:	[0mrssi: 0.993653
+[92mAutogain:	[0mgain: 4.700466
+[92mAutogain:	[0mrssi: 0.989470
+[92mAutogain:	[0mgain: 4.985204
+[92mAutogain:	[0mrssi: 1.116201
+[92mAutogain:	[0mgain: 4.860436
+[92mAutogain:	[0mrssi: 1.083164
+[92mAutogain:	[0mgain: 4.738790
+[92mAutogain:	[0mrssi: 1.029635
+[92mAutogain:	[0mgain: 4.620189
+[92mAutogain:	[0mrssi: 1.039405
+[92mAutogain:	[0mgain: 4.504557
+[92mAutogain:	[0mrssi: 1.148341
+[92mAutogain:	[0mgain: 4.391818
+[92mAutogain:	[0mrssi: 1.091569
+[92mAutogain:	[0mgain: 4.281901
+[92mAutogain:	[0mrssi: 1.037620
+[92mAutogain:	[0mgain: 4.381197
+[92mAutogain:	[0mrssi: 0.986335
+[92mPrefix:	[0mthis is a longer message but ncurses is really giving me a bad time
+[92mPrefix:	[0mPacket Length 532
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.283916
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.273667
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.427655
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.578488
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.770993
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.782703
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.921515
+[92mAutogain:	[0mgain: 5.198097
+[92mAutogain:	[0mrssi: 1.088516
+[92mAutogain:	[0mgain: 5.068001
+[92mAutogain:	[0mrssi: 1.034693
+[92mAutogain:	[0mgain: 5.151039
+[92mAutogain:	[0mrssi: 1.027762
+[92mAutogain:	[0mgain: 5.022120
+[92mAutogain:	[0mrssi: 1.077956
+[92mAutogain:	[0mgain: 4.896428
+[92mAutogain:	[0mrssi: 1.024610
+[92mAutogain:	[0mgain: 5.167070
+[92mAutogain:	[0mrssi: 0.974004
+[92mAutogain:	[0mgain: 5.622707
+[92mAutogain:	[0mrssi: 1.311202
+[92mAutogain:	[0mgain: 5.481983
+[92mAutogain:	[0mrssi: 1.246458
+[92mAutogain:	[0mgain: 5.344782
+[92mAutogain:	[0mrssi: 1.269652
+[92mAutogain:	[0mgain: 5.211014
+[92mAutogain:	[0mrssi: 1.206935
+[92mAutogain:	[0mgain: 5.080594
+[92mAutogain:	[0mrssi: 1.235258
+[92mAutogain:	[0mgain: 4.953439
+[92mAutogain:	[0mrssi: 1.174204
+[92mAutogain:	[0mgain: 4.829466
+[92mAutogain:	[0mrssi: 1.116125
+[92mAutogain:	[0mgain: 4.708595
+[92mAutogain:	[0mrssi: 1.060982
+[92mAutogain:	[0mgain: 4.590750
+[92mAutogain:	[0mrssi: 1.070320
+[92mAutogain:	[0mgain: 4.475854
+[92mAutogain:	[0mrssi: 1.033002
+[92mAutogain:	[0mgain: 4.542997
+[92mAutogain:	[0mrssi: 0.988148
+[92mAutogain:	[0mgain: 4.586095
+[92mAutogain:	[0mrssi: 1.063842
+[92mAutogain:	[0mgain: 4.471316
+[92mAutogain:	[0mrssi: 1.174988
+[92mAutogain:	[0mgain: 4.359409
+[92mAutogain:	[0mrssi: 1.116898
+[92mAutogain:	[0mgain: 4.250303
+[92mAutogain:	[0mrssi: 1.061703
+[92mAutogain:	[0mgain: 4.143928
+[92mAutogain:	[0mrssi: 1.009201
+[92mAutogain:	[0mgain: 4.634533
+[92mAutogain:	[0mrssi: 1.042825
+[92mAutogain:	[0mgain: 4.518542
+[92mAutogain:	[0mrssi: 1.017325
+[92mAutogain:	[0mgain: 4.873540
+[92mAutogain:	[0mrssi: 1.021965
+[92mAutogain:	[0mgain: 4.751566
+[92mAutogain:	[0mrssi: 1.104071
+[92mAutogain:	[0mgain: 4.632645
+[92mAutogain:	[0mrssi: 1.049520
+[92mAutogain:	[0mgain: 4.516701
+[92mAutogain:	[0mrssi: 1.049549
+[92mAutogain:	[0mgain: 4.428886
+[92mAutogain:	[0mrssi: 1.081186
+[92mAutogain:	[0mgain: 4.318041
+[92mAutogain:	[0mrssi: 1.027804
+[92mAutogain:	[0mgain: 4.557688
+[92mAutogain:	[0mrssi: 0.976946
+[92mAutogain:	[0mgain: 5.069959
+[92mAutogain:	[0mrssi: 1.213054
+[92mAutogain:	[0mgain: 4.943069
+[92mAutogain:	[0mrssi: 1.253970
+[92mAutogain:	[0mgain: 4.819356
+[92mAutogain:	[0mrssi: 1.226774
+[92mAutogain:	[0mgain: 4.698738
+[92mAutogain:	[0mrssi: 1.166173
+[92mAutogain:	[0mgain: 4.581139
+[92mAutogain:	[0mrssi: 1.108536
+[92mAutogain:	[0mgain: 4.466484
+[92mAutogain:	[0mrssi: 1.053699
+[92mAutogain:	[0mgain: 4.354698
+[92mAutogain:	[0mrssi: 1.169746
+[92mAutogain:	[0mgain: 4.245710
+[92mAutogain:	[0mrssi: 1.111913
+[92mAutogain:	[0mgain: 4.139450
+[92mAutogain:	[0mrssi: 1.056952
+[92mAutogain:	[0mgain: 4.035849
+[92mAutogain:	[0mrssi: 1.004687
+[92mAutogain:	[0mgain: 4.592302
+[92mAutogain:	[0mrssi: 1.027908
+[92mAutogain:	[0mgain: 4.477367
+[92mAutogain:	[0mrssi: 1.041077
+[92mAutogain:	[0mgain: 4.365309
+[92mAutogain:	[0mrssi: 1.035978
+[92mAutogain:	[0mgain: 4.485370
+[92mAutogain:	[0mrssi: 0.984773
+[92mAutogain:	[0mgain: 4.882470
+[92mAutogain:	[0mrssi: 1.002826
+[92mAutogain:	[0mgain: 4.760273
+[92mAutogain:	[0mrssi: 1.034697
+[92mEqualizer:	[0mcorrelation: [36m1.087633[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.751374[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 67
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-1 -1  3 -1]
+2: [ 1 -3 -3  1]
+
+[92mStdoutSink:	[0mthis is a longer message but ncurses is really giving me a bad time
+[92mPrefix:	[0mwow it still works great even though the output looks like shit
+[92mPrefix:	[0mPacket Length 516
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.020694
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.279425
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.444954
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.558644
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.783582
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.814548
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.906368
+[92mAutogain:	[0mgain: 5.399275
+[92mAutogain:	[0mrssi: 1.137900
+[92mAutogain:	[0mgain: 5.264144
+[92mAutogain:	[0mrssi: 1.081638
+[92mAutogain:	[0mgain: 5.132394
+[92mAutogain:	[0mrssi: 1.028179
+[92mAutogain:	[0mgain: 5.003942
+[92mAutogain:	[0mrssi: 1.078238
+[92mAutogain:	[0mgain: 4.878705
+[92mAutogain:	[0mrssi: 1.024879
+[92mAutogain:	[0mgain: 5.145393
+[92mAutogain:	[0mrssi: 0.974258
+[92mAutogain:	[0mgain: 5.601572
+[92mAutogain:	[0mrssi: 1.317884
+[92mAutogain:	[0mgain: 5.461378
+[92mAutogain:	[0mrssi: 1.252807
+[92mAutogain:	[0mgain: 5.324692
+[92mAutogain:	[0mrssi: 1.247865
+[92mAutogain:	[0mgain: 5.191427
+[92mAutogain:	[0mrssi: 1.211906
+[92mAutogain:	[0mgain: 5.061498
+[92mAutogain:	[0mrssi: 1.206555
+[92mAutogain:	[0mgain: 4.934820
+[92mAutogain:	[0mrssi: 1.169970
+[92mAutogain:	[0mgain: 4.811313
+[92mAutogain:	[0mrssi: 1.112103
+[92mAutogain:	[0mgain: 4.690897
+[92mAutogain:	[0mrssi: 1.057158
+[92mAutogain:	[0mgain: 4.573494
+[92mAutogain:	[0mrssi: 1.067458
+[92mAutogain:	[0mgain: 4.459030
+[92mAutogain:	[0mrssi: 1.014736
+[92mAutogain:	[0mgain: 4.796262
+[92mAutogain:	[0mrssi: 0.970379
+[92mAutogain:	[0mgain: 4.834477
+[92mAutogain:	[0mrssi: 1.058584
+[92mAutogain:	[0mgain: 4.713481
+[92mAutogain:	[0mrssi: 1.247124
+[92mAutogain:	[0mgain: 4.595513
+[92mAutogain:	[0mrssi: 1.185467
+[92mAutogain:	[0mgain: 4.480498
+[92mAutogain:	[0mrssi: 1.126895
+[92mAutogain:	[0mgain: 4.368361
+[92mAutogain:	[0mrssi: 1.071139
+[92mAutogain:	[0mgain: 4.259031
+[92mAutogain:	[0mrssi: 1.018215
+[92mAutogain:	[0mgain: 4.638549
+[92mAutogain:	[0mrssi: 0.982324
+[92mAutogain:	[0mgain: 4.869110
+[92mAutogain:	[0mrssi: 1.154991
+[92mAutogain:	[0mgain: 4.747247
+[92mAutogain:	[0mrssi: 1.097883
+[92mAutogain:	[0mgain: 4.628434
+[92mAutogain:	[0mrssi: 1.043622
+[92mAutogain:	[0mgain: 4.632650
+[92mAutogain:	[0mrssi: 0.992070
+[92mAutogain:	[0mgain: 4.781283
+[92mAutogain:	[0mrssi: 1.083537
+[92mAutogain:	[0mgain: 4.661619
+[92mAutogain:	[0mrssi: 1.030016
+[92mAutogain:	[0mgain: 4.693738
+[92mAutogain:	[0mrssi: 1.018274
+[92mAutogain:	[0mgain: 4.722741
+[92mAutogain:	[0mrssi: 1.057314
+[92mAutogain:	[0mgain: 4.604541
+[92mAutogain:	[0mrssi: 1.005018
+[92mAutogain:	[0mgain: 4.777394
+[92mAutogain:	[0mrssi: 1.083291
+[92mAutogain:	[0mgain: 4.657827
+[92mAutogain:	[0mrssi: 1.029788
+[92mAutogain:	[0mgain: 4.861066
+[92mAutogain:	[0mrssi: 0.983707
+[92mAutogain:	[0mgain: 5.490236
+[92mAutogain:	[0mrssi: 0.999795
+[92mAutogain:	[0mgain: 5.352828
+[92mAutogain:	[0mrssi: 1.104375
+[92mAutogain:	[0mgain: 5.218859
+[92mAutogain:	[0mrssi: 1.321888
+[92mAutogain:	[0mgain: 5.088243
+[92mAutogain:	[0mrssi: 1.256555
+[92mAutogain:	[0mgain: 4.960896
+[92mAutogain:	[0mrssi: 1.200275
+[92mAutogain:	[0mgain: 4.836736
+[92mAutogain:	[0mrssi: 1.140996
+[92mAutogain:	[0mgain: 4.715684
+[92mAutogain:	[0mrssi: 1.084551
+[92mAutogain:	[0mgain: 4.597661
+[92mAutogain:	[0mrssi: 1.122828
+[92mAutogain:	[0mgain: 4.482592
+[92mAutogain:	[0mrssi: 1.067324
+[92mPrefix:	[0moh it didn't get that
+[92mPrefix:	[0mPacket Length 348
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.096586
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.306000
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.493498
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.640587
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.882717
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.904396
+[92mAutogain:	[0mgain: 4.720238
+[92mAutogain:	[0mrssi: 1.019995
+[92mAutogain:	[0mgain: 4.726664
+[92mAutogain:	[0mrssi: 1.114968
+[92mAutogain:	[0mgain: 4.608367
+[92mAutogain:	[0mrssi: 1.059837
+[92mAutogain:	[0mgain: 4.493030
+[92mAutogain:	[0mrssi: 1.007457
+[92mAutogain:	[0mgain: 4.597929
+[92mAutogain:	[0mrssi: 1.106344
+[92mAutogain:	[0mgain: 4.482853
+[92mAutogain:	[0mrssi: 1.060368
+[92mAutogain:	[0mgain: 4.370658
+[92mAutogain:	[0mrssi: 1.038392
+[92mAutogain:	[0mgain: 4.299657
+[92mAutogain:	[0mrssi: 1.108286
+[92mAutogain:	[0mgain: 4.192046
+[92mAutogain:	[0mrssi: 1.053565
+[92mAutogain:	[0mgain: 4.087129
+[92mAutogain:	[0mrssi: 1.109005
+[92mAutogain:	[0mgain: 3.984838
+[92mAutogain:	[0mrssi: 1.094882
+[92mAutogain:	[0mgain: 3.885106
+[92mAutogain:	[0mrssi: 1.091379
+[92mAutogain:	[0mgain: 3.787871
+[92mAutogain:	[0mrssi: 1.037438
+[92mAutogain:	[0mgain: 3.693069
+[92mAutogain:	[0mrssi: 1.019250
+[92mAutogain:	[0mgain: 4.071407
+[92mAutogain:	[0mrssi: 0.979256
+[92mAutogain:	[0mgain: 4.073948
+[92mAutogain:	[0mrssi: 1.146026
+[92mAutogain:	[0mgain: 3.971986
+[92mAutogain:	[0mrssi: 1.137659
+[92mAutogain:	[0mgain: 3.872577
+[92mAutogain:	[0mrssi: 1.081440
+[92mAutogain:	[0mgain: 3.775655
+[92mAutogain:	[0mrssi: 1.080679
+[92mAutogain:	[0mgain: 3.681159
+[92mAutogain:	[0mrssi: 1.086837
+[92mAutogain:	[0mgain: 3.589028
+[92mAutogain:	[0mrssi: 1.033106
+[92mAutogain:	[0mgain: 3.769754
+[92mAutogain:	[0mrssi: 0.982046
+[92mAutogain:	[0mgain: 3.820561
+[92mAutogain:	[0mrssi: 1.020282
+[92mAutogain:	[0mgain: 3.920838
+[92mAutogain:	[0mrssi: 1.096160
+[92mAutogain:	[0mgain: 3.822709
+[92mAutogain:	[0mrssi: 1.061173
+[92mAutogain:	[0mgain: 3.727035
+[92mAutogain:	[0mrssi: 1.081411
+[92mAutogain:	[0mgain: 3.633756
+[92mAutogain:	[0mrssi: 1.027953
+[92mAutogain:	[0mgain: 3.888327
+[92mAutogain:	[0mrssi: 0.977119
+[92mAutogain:	[0mgain: 4.162581
+[92mAutogain:	[0mrssi: 1.112683
+[92mEqualizer:	[0mcorrelation: [36m1.042008[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.814197[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 21
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-3 -3  1  3]
+2: [ 1 -3 -3  1]
+
+[92mPrefix:	[0mflush
+[92mPrefix:	[0mPacket Length 284
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.855759
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.813467
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.773245
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.735023
+[92mStdoutSink:	[0moh it didn't get tha
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.972473
+[92mAutogain:	[0mgain: 3.494548
+[92mAutogain:	[0mrssi: 1.008521
+[92mAutogain:	[0mgain: 4.033855
+[92mAutogain:	[0mrssi: 0.958649
+[92mAutogain:	[0mgain: 4.526717
+[92mAutogain:	[0mrssi: 1.243505
+[92mAutogain:	[0mgain: 4.413423
+[92mAutogain:	[0mrssi: 1.182023
+[92mAutogain:	[0mgain: 4.302965
+[92mAutogain:	[0mrssi: 1.123597
+[92mAutogain:	[0mgain: 4.195272
+[92mAutogain:	[0mrssi: 1.163494
+[92mAutogain:	[0mgain: 4.090274
+[92mAutogain:	[0mrssi: 1.105928
+[92mAutogain:	[0mgain: 3.987904
+[92mAutogain:	[0mrssi: 1.051301
+[92mAutogain:	[0mgain: 3.888096
+[92mAutogain:	[0mrssi: 1.125389
+[92mAutogain:	[0mgain: 3.790786
+[92mAutogain:	[0mrssi: 1.069814
+[92mAutogain:	[0mgain: 3.695911
+[92mAutogain:	[0mrssi: 1.062927
+[92mAutogain:	[0mgain: 3.603411
+[92mAutogain:	[0mrssi: 1.019897
+[92mAutogain:	[0mgain: 3.918838
+[92mAutogain:	[0mrssi: 1.179950
+[92mAutogain:	[0mgain: 3.820759
+[92mAutogain:	[0mrssi: 1.121625
+[92mAutogain:	[0mgain: 3.725134
+[92mAutogain:	[0mrssi: 1.066152
+[92mAutogain:	[0mgain: 3.631902
+[92mAutogain:	[0mrssi: 1.013469
+[92mAutogain:	[0mgain: 3.756063
+[92mAutogain:	[0mrssi: 1.081866
+[92mAutogain:	[0mgain: 3.662057
+[92mAutogain:	[0mrssi: 1.037843
+[92mAutogain:	[0mgain: 3.570405
+[92mAutogain:	[0mrssi: 1.008508
+[92mAutogain:	[0mgain: 3.620968
+[92mAutogain:	[0mrssi: 1.005672
+[92mAutogain:	[0mgain: 3.530344
+[92mAutogain:	[0mrssi: 1.157008
+[92mAutogain:	[0mgain: 3.441987
+[92mAutogain:	[0mrssi: 1.099803
+[92mAutogain:	[0mgain: 3.355842
+[92mAutogain:	[0mrssi: 1.045470
+[92mAutogain:	[0mgain: 3.333423
+[92mAutogain:	[0mrssi: 0.995950
+[92mEqualizer:	[0mcorrelation: [36m0.922079[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.773974[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 5
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-3 -1  1  3]
+2: [ 1 -3 -3  1]
+
+[92mAutogain:	[0mgain: 4.000826
+[92mAutogain:	[0mrssi: 0.946734
+[92mStdoutSink:	[0mflush
+[92mAutogain:	[0mgain: 4.651526
+[92mAutogain:	[0mrssi: 0.899941
+[92mAutogain:	[0mgain: 5.285940
+[92mAutogain:	[0mrssi: 0.855457
+[92mAutogain:	[0mgain: 5.904476
+[92mAutogain:	[0mrssi: 0.813174
+[92mAutogain:	[0mgain: 6.507531
+[92mAutogain:	[0mrssi: 0.772980
+[92mAutogain:	[0mgain: 7.095494
+[92mAutogain:	[0mrssi: 0.734774
+[92mAutogain:	[0mgain: 7.668741
+[92mAutogain:	[0mrssi: 0.698454
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.142970
+[92mPrefix:	[0mone this is for certain, things need to be synchronized better
+[92mPrefix:	[0mPacket Length 512
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.025091
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.332572
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.544732
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.674540
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.942360
+[92mAutogain:	[0mgain: 3.485857
+[92mAutogain:	[0mrssi: 1.000585
+[92mAutogain:	[0mgain: 4.141480
+[92mAutogain:	[0mrssi: 0.951103
+[92mAutogain:	[0mgain: 4.676002
+[92mAutogain:	[0mrssi: 1.246327
+[92mAutogain:	[0mgain: 4.558972
+[92mAutogain:	[0mrssi: 1.184717
+[92mAutogain:	[0mgain: 4.444872
+[92mAutogain:	[0mrssi: 1.126151
+[92mAutogain:	[0mgain: 4.333627
+[92mAutogain:	[0mrssi: 1.189357
+[92mAutogain:	[0mgain: 4.225166
+[92mAutogain:	[0mrssi: 1.130508
+[92mAutogain:	[0mgain: 4.119420
+[92mAutogain:	[0mrssi: 1.074667
+[92mAutogain:	[0mgain: 4.016320
+[92mAutogain:	[0mrssi: 1.169883
+[92mAutogain:	[0mgain: 3.915801
+[92mAutogain:	[0mrssi: 1.112113
+[92mAutogain:	[0mgain: 3.817798
+[92mAutogain:	[0mrssi: 1.078764
+[92mAutogain:	[0mgain: 3.722247
+[92mAutogain:	[0mrssi: 1.082091
+[92mAutogain:	[0mgain: 3.629088
+[92mAutogain:	[0mrssi: 1.078505
+[92mAutogain:	[0mgain: 3.538260
+[92mAutogain:	[0mrssi: 1.042949
+[92mAutogain:	[0mgain: 3.579373
+[92mAutogain:	[0mrssi: 0.991364
+[92mAutogain:	[0mgain: 3.920875
+[92mAutogain:	[0mrssi: 0.985973
+[92mAutogain:	[0mgain: 4.211916
+[92mAutogain:	[0mrssi: 1.203452
+[92mAutogain:	[0mgain: 4.106501
+[92mAutogain:	[0mrssi: 1.144011
+[92mAutogain:	[0mgain: 4.003725
+[92mAutogain:	[0mrssi: 1.091617
+[92mAutogain:	[0mgain: 3.903521
+[92mAutogain:	[0mrssi: 1.093771
+[92mAutogain:	[0mgain: 3.805825
+[92mAutogain:	[0mrssi: 1.232336
+[92mAutogain:	[0mgain: 3.710574
+[92mAutogain:	[0mrssi: 1.171402
+[92mAutogain:	[0mgain: 3.617707
+[92mAutogain:	[0mrssi: 1.113510
+[92mAutogain:	[0mgain: 3.527164
+[92mAutogain:	[0mrssi: 1.058459
+[92mAutogain:	[0mgain: 3.438887
+[92mAutogain:	[0mrssi: 1.006137
+[92mAutogain:	[0mgain: 3.671160
+[92mAutogain:	[0mrssi: 1.046898
+[92mAutogain:	[0mgain: 3.652703
+[92mAutogain:	[0mrssi: 0.995168
+[92mAutogain:	[0mgain: 3.654101
+[92mAutogain:	[0mrssi: 1.144622
+[92mAutogain:	[0mgain: 3.562647
+[92mAutogain:	[0mrssi: 1.088056
+[92mAutogain:	[0mgain: 3.473482
+[92mAutogain:	[0mrssi: 1.034315
+[92mAutogain:	[0mgain: 3.640171
+[92mAutogain:	[0mrssi: 0.983179
+[92mAutogain:	[0mgain: 3.829861
+[92mAutogain:	[0mrssi: 1.003722
+[92mAutogain:	[0mgain: 4.286026
+[92mAutogain:	[0mrssi: 1.188929
+[92mAutogain:	[0mgain: 4.178756
+[92mAutogain:	[0mrssi: 1.130171
+[92mAutogain:	[0mgain: 4.074172
+[92mAutogain:	[0mrssi: 1.107902
+[92mAutogain:	[0mgain: 3.972205
+[92mAutogain:	[0mrssi: 1.197273
+[92mAutogain:	[0mgain: 3.872789
+[92mAutogain:	[0mrssi: 1.138130
+[92mAutogain:	[0mgain: 3.775862
+[92mAutogain:	[0mrssi: 1.148180
+[92mAutogain:	[0mgain: 3.681361
+[92mAutogain:	[0mrssi: 1.091380
+[92mAutogain:	[0mgain: 3.589225
+[92mAutogain:	[0mrssi: 1.037472
+[92mAutogain:	[0mgain: 3.708069
+[92mAutogain:	[0mrssi: 0.986150
+[92mAutogain:	[0mgain: 4.157422
+[92mAutogain:	[0mrssi: 1.097867
+[92mAutogain:	[0mgain: 4.053371
+[92mAutogain:	[0mrssi: 1.337206
+[92mAutogain:	[0mgain: 3.951925
+[92mAutogain:	[0mrssi: 1.271105
+[92mAutogain:	[0mgain: 3.853017
+[92mAutogain:	[0mrssi: 1.208276
+[92mAutogain:	[0mgain: 3.756585
+[92mAutogain:	[0mrssi: 1.148550
+[92mAutogain:	[0mgain: 3.662566
+[92mAutogain:	[0mrssi: 1.091790
+[92mEqualizer:	[0mcorrelation: [36m0.926149[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.787669[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 62
+[92mFrameSync:	[0mbytes in queue: 1.500000
+[92mFrameSync:	[0m
+1: [-3  1 -3  1]
+2: [ 1 -3 -3  1]
+
+[92mStdoutSink:	[0mone this is for certain, things need to be synchronized better
+[92mPrefix:	[0mthere are a lot of issues here
+[92mPrefix:	[0mPacket Length 384
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.025445
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.321188
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.547698
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.690724
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.954756
+[92mAutogain:	[0mgain: 3.482961
+[92mAutogain:	[0mrssi: 1.037073
+[92mAutogain:	[0mgain: 3.609626
+[92mAutogain:	[0mrssi: 0.985793
+[92mAutogain:	[0mgain: 4.235978
+[92mAutogain:	[0mrssi: 1.185276
+[92mAutogain:	[0mgain: 4.129961
+[92mAutogain:	[0mrssi: 1.126687
+[92mAutogain:	[0mgain: 4.026598
+[92mAutogain:	[0mrssi: 1.070985
+[92mAutogain:	[0mgain: 3.925821
+[92mAutogain:	[0mrssi: 1.121614
+[92mAutogain:	[0mgain: 3.827567
+[92mAutogain:	[0mrssi: 1.066126
+[92mAutogain:	[0mgain: 3.731772
+[92mAutogain:	[0mrssi: 1.013462
+[92mAutogain:	[0mgain: 4.025725
+[92mAutogain:	[0mrssi: 1.218581
+[92mAutogain:	[0mgain: 3.924970
+[92mAutogain:	[0mrssi: 1.158398
+[92mAutogain:	[0mgain: 3.826737
+[92mAutogain:	[0mrssi: 1.110852
+[92mAutogain:	[0mgain: 3.730963
+[92mAutogain:	[0mrssi: 1.119226
+[92mAutogain:	[0mgain: 3.637585
+[92mAutogain:	[0mrssi: 1.097119
+[92mAutogain:	[0mgain: 3.546545
+[92mAutogain:	[0mrssi: 1.098403
+[92mAutogain:	[0mgain: 3.457783
+[92mAutogain:	[0mrssi: 1.044080
+[92mAutogain:	[0mgain: 3.483900
+[92mAutogain:	[0mrssi: 0.992485
+[92mAutogain:	[0mgain: 3.894652
+[92mAutogain:	[0mrssi: 1.153432
+[92mAutogain:	[0mgain: 3.797178
+[92mAutogain:	[0mrssi: 1.096455
+[92mAutogain:	[0mgain: 3.702143
+[92mAutogain:	[0mrssi: 1.044550
+[92mAutogain:	[0mgain: 3.609487
+[92mAutogain:	[0mrssi: 1.044390
+[92mAutogain:	[0mgain: 3.519150
+[92mAutogain:	[0mrssi: 1.181147
+[92mAutogain:	[0mgain: 3.431074
+[92mAutogain:	[0mrssi: 1.122739
+[92mAutogain:	[0mgain: 3.345202
+[92mAutogain:	[0mrssi: 1.067259
+[92mAutogain:	[0mgain: 3.261479
+[92mAutogain:	[0mrssi: 1.033015
+[92mAutogain:	[0mgain: 3.349576
+[92mAutogain:	[0mrssi: 1.033252
+[92mAutogain:	[0mgain: 3.534823
+[92mAutogain:	[0mrssi: 0.982187
+[92mAutogain:	[0mgain: 3.920748
+[92mAutogain:	[0mrssi: 1.124737
+[92mAutogain:	[0mgain: 3.822621
+[92mAutogain:	[0mrssi: 1.198209
+[92mAutogain:	[0mgain: 3.726949
+[92mAutogain:	[0mrssi: 1.138974
+[92mAutogain:	[0mgain: 3.633672
+[92mAutogain:	[0mrssi: 1.131491
+[92mAutogain:	[0mgain: 3.542730
+[92mAutogain:	[0mrssi: 1.075516
+[92mAutogain:	[0mgain: 3.454063
+[92mAutogain:	[0mrssi: 1.022383
+[92mAutogain:	[0mgain: 3.793031
+[92mAutogain:	[0mrssi: 0.971830
+[92mAutogain:	[0mgain: 4.021320
+[92mAutogain:	[0mrssi: 1.207801
+[92mEqualizer:	[0mcorrelation: [36m0.894943[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.674319[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 30
+[92mFrameSync:	[0mbytes in queue: 1.750000
+[92mFrameSync:	[0m
+1: [-3 -3 -3  1]
+2: [ 1 -3 -3  1]
+
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.025031
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.307646
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.497946
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.616004
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.902133
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.931479
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.905189
+[92mAutogain:	[0mgain: 5.420120
+[92mAutogain:	[0mrssi: 1.318234
+[92mAutogain:	[0mgain: 5.284467
+[92mAutogain:	[0mrssi: 1.253077
+[92mAutogain:	[0mgain: 5.152209
+[92mAutogain:	[0mrssi: 1.191150
+[92mAutogain:	[0mgain: 5.023261
+[92mAutogain:	[0mrssi: 1.213427
+[92mAutogain:	[0mgain: 4.897541
+[92mAutogain:	[0mrssi: 1.153512
+[92mAutogain:	[0mgain: 4.774966
+[92mAutogain:	[0mrssi: 1.096458
+[92mAutogain:	[0mgain: 4.655460
+[92mAutogain:	[0mrssi: 1.162481
+[92mAutogain:	[0mgain: 4.538945
+[92mAutogain:	[0mrssi: 1.104970
+[92mAutogain:	[0mgain: 4.425345
+[92mAutogain:	[0mrssi: 1.050388
+[92mAutogain:	[0mgain: 4.314589
+[92mAutogain:	[0mrssi: 1.018566
+[92mAutogain:	[0mgain: 4.625291
+[92mAutogain:	[0mrssi: 1.084596
+[92mAutogain:	[0mgain: 4.509531
+[92mAutogain:	[0mrssi: 1.065135
+[92mAutogain:	[0mgain: 4.396668
+[92mAutogain:	[0mrssi: 1.012519
+[92mAutogain:	[0mgain: 4.855904
+[92mAutogain:	[0mrssi: 0.962455
+[92mAutogain:	[0mgain: 5.136752
+[92mAutogain:	[0mrssi: 1.184902
+[92mAutogain:	[0mgain: 5.008191
+[92mAutogain:	[0mrssi: 1.126291
+[92mAutogain:	[0mgain: 4.882847
+[92mAutogain:	[0mrssi: 1.070620
+[92mAutogain:	[0mgain: 4.760641
+[92mAutogain:	[0mrssi: 1.035991
+[92mAutogain:	[0mgain: 4.641493
+[92mAutogain:	[0mrssi: 1.190392
+[92mAutogain:	[0mgain: 4.525327
+[92mAutogain:	[0mrssi: 1.131574
+[92mAutogain:	[0mgain: 4.412068
+[92mAutogain:	[0mrssi: 1.075631
+[92mAutogain:	[0mgain: 4.301644
+[92mAutogain:	[0mrssi: 1.022465
+[92mAutogain:	[0mgain: 4.617935
+[92mAutogain:	[0mrssi: 0.992715
+[92mAutogain:	[0mgain: 4.934508
+[92mAutogain:	[0mrssi: 1.116917
+[92mAutogain:	[0mgain: 4.811008
+[92mAutogain:	[0mrssi: 1.061709
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.111735
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.258614
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.432771
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.609873
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.866815
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.823957
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.794071
+[92mAutogain:	[0mgain: 5.432590
+[92mAutogain:	[0mrssi: 1.174303
+[92mAutogain:	[0mgain: 5.296625
+[92mAutogain:	[0mrssi: 1.116292
+[92mAutogain:	[0mgain: 5.164063
+[92mAutogain:	[0mrssi: 1.061089
+[92mAutogain:	[0mgain: 5.034818
+[92mAutogain:	[0mrssi: 1.132553
+[92mAutogain:	[0mgain: 4.908808
+[92mAutogain:	[0mrssi: 1.076568
+[92mAutogain:	[0mgain: 4.785952
+[92mAutogain:	[0mrssi: 1.023357
+[92mAutogain:	[0mgain: 4.877112
+[92mAutogain:	[0mrssi: 1.187315
+[92mAutogain:	[0mgain: 4.755049
+[92mAutogain:	[0mrssi: 1.128643
+[92mAutogain:	[0mgain: 4.636041
+[92mAutogain:	[0mrssi: 1.072849
+[92mAutogain:	[0mgain: 4.520011
+[92mAutogain:	[0mrssi: 1.066496
+[92mAutogain:	[0mgain: 4.406886
+[92mAutogain:	[0mrssi: 1.087246
+[92mAutogain:	[0mgain: 4.296592
+[92mAutogain:	[0mrssi: 1.033489
+[92mAutogain:	[0mgain: 4.454458
+[92mAutogain:	[0mrssi: 0.982402
+[92mAutogain:	[0mgain: 5.093804
+[92mAutogain:	[0mrssi: 0.967908
+[92mAutogain:	[0mgain: 5.337155
+[92mAutogain:	[0mrssi: 1.220081
+[92mAutogain:	[0mgain: 5.203578
+[92mAutogain:	[0mrssi: 1.159780
+[92mAutogain:	[0mgain: 5.073345
+[92mAutogain:	[0mrssi: 1.102424
+[92mAutogain:	[0mgain: 4.946370
+[92mAutogain:	[0mrssi: 1.255016
+[92mAutogain:	[0mgain: 4.822574
+[92mAutogain:	[0mrssi: 1.262392
+[92mAutogain:	[0mgain: 4.701876
+[92mAutogain:	[0mrssi: 1.199966
+[92mAutogain:	[0mgain: 4.584199
+[92mAutogain:	[0mrssi: 1.140665
+[92mAutogain:	[0mgain: 4.469467
+[92mAutogain:	[0mrssi: 1.084295
+[92mAutogain:	[0mgain: 4.357607
+[92mAutogain:	[0mrssi: 1.030691
+[92mAutogain:	[0mgain: 4.554398
+[92mAutogain:	[0mrssi: 0.979750
+[92mAutogain:	[0mgain: 5.191243
+[92mAutogain:	[0mrssi: 0.948002
+[92mPrefix:	[0mwhy?
+[92mPrefix:	[0mPacket Length 280
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.129319
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.338552
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.557340
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.762590
+[92mAutogain:	[0mgain: 3.541938
+[92mAutogain:	[0mrssi: 1.087026
+[92mAutogain:	[0mgain: 3.453291
+[92mAutogain:	[0mrssi: 1.033273
+[92mAutogain:	[0mgain: 3.635207
+[92mAutogain:	[0mrssi: 0.982190
+[92mAutogain:	[0mgain: 4.143217
+[92mAutogain:	[0mrssi: 1.114674
+[92mAutogain:	[0mgain: 4.039522
+[92mAutogain:	[0mrssi: 1.059601
+[92mAutogain:	[0mgain: 3.938422
+[92mAutogain:	[0mrssi: 1.007203
+[92mAutogain:	[0mgain: 4.021326
+[92mAutogain:	[0mrssi: 1.098991
+[92mAutogain:	[0mgain: 3.920681
+[92mAutogain:	[0mrssi: 1.044641
+[92mAutogain:	[0mgain: 3.927815
+[92mAutogain:	[0mrssi: 0.993024
+[92mAutogain:	[0mgain: 4.376830
+[92mAutogain:	[0mrssi: 1.263109
+[92mAutogain:	[0mgain: 4.267288
+[92mAutogain:	[0mrssi: 1.200717
+[92mAutogain:	[0mgain: 4.160487
+[92mAutogain:	[0mrssi: 1.195053
+[92mAutogain:	[0mgain: 4.056360
+[92mAutogain:	[0mrssi: 1.158133
+[92mAutogain:	[0mgain: 3.954839
+[92mAutogain:	[0mrssi: 1.184419
+[92mAutogain:	[0mgain: 3.855858
+[92mAutogain:	[0mrssi: 1.125859
+[92mAutogain:	[0mgain: 3.759355
+[92mAutogain:	[0mrssi: 1.070187
+[92mAutogain:	[0mgain: 3.665267
+[92mAutogain:	[0mrssi: 1.017291
+[92mAutogain:	[0mgain: 3.700130
+[92mAutogain:	[0mrssi: 1.038576
+[92mAutogain:	[0mgain: 3.799971
+[92mAutogain:	[0mrssi: 0.987265
+[92mAutogain:	[0mgain: 3.707039
+[92mAutogain:	[0mrssi: 1.016127
+[92mAutogain:	[0mgain: 3.841235
+[92mAutogain:	[0mrssi: 1.191313
+[92mAutogain:	[0mgain: 3.745097
+[92mAutogain:	[0mrssi: 1.212940
+[92mAutogain:	[0mgain: 3.651366
+[92mAutogain:	[0mrssi: 1.152956
+[92mAutogain:	[0mgain: 3.559981
+[92mAutogain:	[0mrssi: 1.122981
+[92mAutogain:	[0mgain: 3.470883
+[92mAutogain:	[0mrssi: 1.067465
+[92mChannel:	[0m[ 0.025  0.125  0.25  -0.15   0.125  0.1    0.075  0.05   0.025]
+[92mMicrophone:	[0m431
+[92mTimingRecovery:	[0mM: 101
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.005206
+[92mPrefix:	[0mhello
+[92mPrefix:	[0mPacket Length 284
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.295803
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.464301
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.527701
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.777349
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.873681
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.966749
+[92mAutogain:	[0mgain: 4.895246
+[92mAutogain:	[0mrssi: 1.049635
+[92mAutogain:	[0mgain: 4.772729
+[92mAutogain:	[0mrssi: 1.137772
+[92mAutogain:	[0mgain: 4.653278
+[92mAutogain:	[0mrssi: 1.081535
+[92mAutogain:	[0mgain: 4.536817
+[92mAutogain:	[0mrssi: 1.028090
+[92mAutogain:	[0mgain: 4.423271
+[92mAutogain:	[0mrssi: 1.044330
+[92mAutogain:	[0mgain: 4.339213
+[92mAutogain:	[0mrssi: 1.001759
+[92mAutogain:	[0mgain: 4.912314
+[92mAutogain:	[0mrssi: 1.024519
+[92mAutogain:	[0mgain: 4.789370
+[92mAutogain:	[0mrssi: 1.107185
+[92mAutogain:	[0mgain: 4.669503
+[92mAutogain:	[0mrssi: 1.052445
+[92mAutogain:	[0mgain: 4.552636
+[92mAutogain:	[0mrssi: 1.183593
+[92mAutogain:	[0mgain: 4.438694
+[92mAutogain:	[0mrssi: 1.151205
+[92mAutogain:	[0mgain: 4.327604
+[92mAutogain:	[0mrssi: 1.106203
+[92mAutogain:	[0mgain: 4.219294
+[92mAutogain:	[0mrssi: 1.051506
+[92mAutogain:	[0mgain: 4.113694
+[92mAutogain:	[0mrssi: 1.019803
+[92mAutogain:	[0mgain: 4.473463
+[92mAutogain:	[0mrssi: 0.974587
+[92mAutogain:	[0mgain: 4.453593
+[92mAutogain:	[0mrssi: 1.151238
+[92mAutogain:	[0mgain: 4.342130
+[92mAutogain:	[0mrssi: 1.098443
+[92mAutogain:	[0mgain: 4.233456
+[92mAutogain:	[0mrssi: 1.105286
+[92mAutogain:	[0mgain: 4.127503
+[92mAutogain:	[0mrssi: 1.143798
+[92mAutogain:	[0mgain: 4.024201
+[92mAutogain:	[0mrssi: 1.087242
+[92mAutogain:	[0mgain: 3.923484
+[92mAutogain:	[0mrssi: 1.033532
+[92mAutogain:	[0mgain: 3.825288
+[92mAutogain:	[0mrssi: 1.011472
+[92mAutogain:	[0mgain: 4.313391
+[92mAutogain:	[0mrssi: 0.961468
+[92mEqualizer:	[0mcorrelation: [36m0.766052[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mEqualizer:	[0mcorrelation: [36m0.995886[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.730023[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 5
+[92mFrameSync:	[0mbytes in queue: 2.500000
+[92mFrameSync:	[0m
+1: [-3 -1  1  3]
+2: [ 1 -3 -3  1]
+
+[92mStdoutSink:	[0mhello
+[92mPrefix:	[0mhello
+[92mPrefix:	[0mPacket Length 284
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.167915
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.326209
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.436382
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.671704
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.868729
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.904258
+[92mAutogain:	[0mgain: 4.562169
+[92mAutogain:	[0mrssi: 0.989231
+[92mAutogain:	[0mgain: 4.545889
+[92mAutogain:	[0mrssi: 1.144041
+[92mAutogain:	[0mgain: 4.432116
+[92mAutogain:	[0mrssi: 1.098427
+[92mAutogain:	[0mgain: 4.321190
+[92mAutogain:	[0mrssi: 1.044149
+[92mAutogain:	[0mgain: 4.213041
+[92mAutogain:	[0mrssi: 1.063388
+[92mAutogain:	[0mgain: 4.107598
+[92mAutogain:	[0mrssi: 1.022425
+[92mAutogain:	[0mgain: 4.429477
+[92mAutogain:	[0mrssi: 0.971905
+[92mAutogain:	[0mgain: 4.601606
+[92mAutogain:	[0mrssi: 1.222461
+[92mAutogain:	[0mgain: 4.486438
+[92mAutogain:	[0mrssi: 1.162020
+[92mAutogain:	[0mgain: 4.374153
+[92mAutogain:	[0mrssi: 1.215845
+[92mAutogain:	[0mgain: 4.264678
+[92mAutogain:	[0mrssi: 1.192065
+[92mAutogain:	[0mgain: 4.157943
+[92mAutogain:	[0mrssi: 1.179858
+[92mAutogain:	[0mgain: 4.053879
+[92mAutogain:	[0mrssi: 1.121519
+[92mAutogain:	[0mgain: 3.952420
+[92mAutogain:	[0mrssi: 1.066078
+[92mAutogain:	[0mgain: 3.853500
+[92mAutogain:	[0mrssi: 1.013411
+[92mAutogain:	[0mgain: 3.757056
+[92mAutogain:	[0mrssi: 1.027997
+[92mAutogain:	[0mgain: 3.746089
+[92mAutogain:	[0mrssi: 1.014253
+[92mAutogain:	[0mgain: 4.050171
+[92mAutogain:	[0mrssi: 1.106151
+[92mAutogain:	[0mgain: 3.948804
+[92mAutogain:	[0mrssi: 1.183480
+[92mAutogain:	[0mgain: 3.849975
+[92mAutogain:	[0mrssi: 1.136255
+[92mAutogain:	[0mgain: 3.753619
+[92mAutogain:	[0mrssi: 1.080124
+[92mAutogain:	[0mgain: 3.659674
+[92mAutogain:	[0mrssi: 1.056557
+[92mAutogain:	[0mgain: 3.568081
+[92mAutogain:	[0mrssi: 1.004323
+[92mEqualizer:	[0mcorrelation: [36m0.771990[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mEqualizer:	[0mcorrelation: [36m1.002869[0m
+[92mEqualizer:	[0mFOUND TRAINING HEADER!
+[92mFrameSync:	[0mcorrelation: [36m0.870280[0m
+[92mFrameSync:	[0mFOUND START OF PAYLOAD!
+[92mFrameSync:	[0mnum_bytes: 5
+[92mFrameSync:	[0mbytes in queue: 2.500000
+[92mFrameSync:	[0m
+1: [-3 -1  1  3]
+2: [ 1 -3 -3  1]
+
+[92mStdoutSink:	[0mhello
+[92mPrefix:	[0mkick
+[92mPrefix:	[0mPacket Length 280
+[92mAutogain:	[0mgain: 4.166557
+[92mAutogain:	[0mrssi: 0.954693
+[92mAutogain:	[0mgain: 4.813109
+[92mAutogain:	[0mrssi: 0.959556
+[92mAutogain:	[0mgain: 4.946412
+[92mAutogain:	[0mrssi: 1.016803
+[92mAutogain:	[0mgain: 4.822614
+[92mAutogain:	[0mrssi: 1.048611
+[92mAutogain:	[0mgain: 4.701915
+[92mAutogain:	[0mrssi: 1.049016
+[92mAutogain:	[0mgain: 4.627275
+[92mAutogain:	[0mrssi: 0.997188
+[92mAutogain:	[0mgain: 5.262296
+[92mAutogain:	[0mrssi: 0.966852
+[92mAutogain:	[0mgain: 5.232852
+[92mAutogain:	[0mrssi: 1.088818
+[92mAutogain:	[0mgain: 5.101886
+[92mAutogain:	[0mrssi: 1.037541
+[92mAutogain:	[0mgain: 5.181397
+[92mAutogain:	[0mrssi: 0.986275
+[92mAutogain:	[0mgain: 5.074171
+[92mAutogain:	[0mrssi: 1.067672
+[92mAutogain:	[0mgain: 4.947176
+[92mAutogain:	[0mrssi: 1.047147
+[92mAutogain:	[0mgain: 4.893079
+[92mAutogain:	[0mrssi: 0.995400
+[92mAutogain:	[0mgain: 5.053605
+[92mAutogain:	[0mrssi: 1.150593
+[92mAutogain:	[0mgain: 4.927125
+[92mAutogain:	[0mrssi: 1.093709
+[92mAutogain:	[0mgain: 4.803811
+[92mAutogain:	[0mrssi: 1.166514
+[92mAutogain:	[0mgain: 4.683582
+[92mAutogain:	[0mrssi: 1.128997
+[92mAutogain:	[0mgain: 4.566363
+[92mAutogain:	[0mrssi: 1.123210
+[92mAutogain:	[0mgain: 4.452077
+[92mAutogain:	[0mrssi: 1.067665
+[92mAutogain:	[0mgain: 4.340652
+[92mAutogain:	[0mrssi: 1.014883
+[92mAutogain:	[0mgain: 4.766303
+[92mAutogain:	[0mrssi: 0.966541
+[92mAutogain:	[0mgain: 4.746367
+[92mAutogain:	[0mrssi: 1.127239
+[92mAutogain:	[0mgain: 4.627576
+[92mAutogain:	[0mrssi: 1.116552
+[92mAutogain:	[0mgain: 4.511759
+[92mAutogain:	[0mrssi: 1.077788
+[92mAutogain:	[0mgain: 4.398840
+[92mAutogain:	[0mrssi: 1.200238
+[92mAutogain:	[0mgain: 4.288747
+[92mAutogain:	[0mrssi: 1.140887
+[92mAutogain:	[0mgain: 4.181409
+[92mAutogain:	[0mrssi: 1.084488
+[92mAutogain:	[0mgain: 4.076758
+[92mAutogain:	[0mrssi: 1.030907
+[92mPrefix:	[0mkick
+[92mPrefix:	[0mPacket Length 280
+[92mAutogain:	[0mresetting...
+[92mAutogain:	[0mgain: 0.750831
+[92mAutogain:	[0mrssi: 0.138144
+[92mAutogain:	[0mgain: 1.482871
+[92mAutogain:	[0mrssi: 0.281026
+[92mAutogain:	[0mgain: 2.196589
+[92mAutogain:	[0mrssi: 0.399076
+[92mAutogain:	[0mgain: 2.892444
+[92mAutogain:	[0mrssi: 0.564974
+[92mAutogain:	[0mgain: 3.570884
+[92mAutogain:	[0mrssi: 0.777855
+[92mAutogain:	[0mgain: 4.232344
+[92mAutogain:	[0mrssi: 0.777667
+[92mAutogain:	[0mgain: 4.877249
+[92mAutogain:	[0mrssi: 0.911306
+[92mAutogain:	[0mgain: 4.869069
+[92mAutogain:	[0mrssi: 1.047349
+[92mAutogain:	[0mgain: 4.813964
+[92mAutogain:	[0mrssi: 0.995578
+[92mAutogain:	[0mgain: 5.096595
+[92mAutogain:	[0mrssi: 1.032223
+[92mAutogain:	[0mgain: 4.969039
+[92mAutogain:	[0mrssi: 1.087597
+[92mAutogain:	[0mgain: 4.844676
+[92mAutogain:	[0mrssi: 1.047182
+[92mAutogain:	[0mgain: 4.793144
+[92mAutogain:	[0mrssi: 0.995435
+[92mAutogain:	[0mgain: 4.954710
+[92mAutogain:	[0mrssi: 1.166947
+[92mAutogain:	[0mgain: 4.830705
+[92mAutogain:	[0mrssi: 1.109255
+[92mAutogain:	[0mgain: 4.709803
+[92mAutogain:	[0mrssi: 1.170886
+[92mAutogain:	[0mgain: 4.591928
+[92mAutogain:	[0mrssi: 1.118622
+[92mAutogain:	[0mgain: 4.477002
+[92mAutogain:	[0mrssi: 1.137729
+[92mAutogain:	[0mgain: 4.364953
+[92mAutogain:	[0mrssi: 1.081464
+[92mAutogain:	[0mgain: 4.255708
+[92mAutogain:	[0mrssi: 1.028000
+[92mAutogain:	[0mgain: 4.493245
+[92mAutogain:	[0mrssi: 0.977217
+[92mAutogain:	[0mgain: 4.485955
+[92mAutogain:	[0mrssi: 1.115724
+[92mAutogain:	[0mgain: 4.373682
+[92mAutogain:	[0mrssi: 1.072036
+[92mAutogain:	[0mgain: 4.264219
+[92mAutogain:	[0mrssi: 1.040898
+[92mAutogain:	[0mgain: 4.157495
+[92mAutogain:	[0mrssi: 1.163100
+[92mAutogain:	[0mgain: 4.053443
+[92mAutogain:	[0mrssi: 1.105584
+[92mAutogain:	[0mgain: 3.951994
+[92mAutogain:	[0mrssi: 1.050929
+[92mAutogain:	[0mgain: 3.868675
+[92mAutogain:	[0mrssi: 0.999007
+[92mAutogain:	[0mgain: 4.522682
+[92mAutogain:	[0mrssi: 0.949622
+[92mPrefix:	[0mhello world
+[92mPrefix:	[0mPacket Length 308
+[92mAutogain:	[0mgain: 5.160321
+[92mAutogain:	[0mrssi: 0.902692
+[92mAutogain:	[0mgain: 5.782001
+[92mAutogain:	[0mrssi: 0.888411
+[92mAutogain:	[0mgain: 6.028663
+[92mAutogain:	[0mrssi: 1.091669
+[92mAutogain:	[0mgain: 5.877780
+[92mAutogain:	[0mrssi: 1.124496
+[92mAutogain:	[0mgain: 5.730672
+[92mAutogain:	[0mrssi: 1.175815
+[92mAutogain:	[0mgain: 5.587247
+[92mAutogain:	[0mrssi: 1.117725
+[92mAutogain:	[0mgain: 5.447411
+[92mAutogain:	[0mrssi: 1.062466
+[92mAutogain:	[0mgain: 5.311075
+[92mAutogain:	[0mrssi: 1.009944
+[92mAutogain:	[0mgain: 5.784554
+[92mAutogain:	[0mrssi: 0.974342
+[92mAutogain:	[0mgain: 6.039958
+[92mAutogain:	[0mrssi: 1.057234
+[92mAutogain:	[0mgain: 5.888792
+[92mAutogain:	[0mrssi: 1.119094
+[92mAutogain:	[0mgain: 5.741409
+[92mAutogain:	[0mrssi: 1.063781
+[92mAutogain:	[0mgain: 5.597715
+[92mAutogain:	[0mrssi: 1.011206
+[92mAutogain:	[0mgain: 5.576521
+[92mAutogain:	[0mrssi: 1.177081
+[92mAutogain:	[0mgain: 5.436954
+[92mAutogain:	[0mrssi: 1.118889
+[92mAutogain:	[0mgain: 5.300879
+[92mAutogain:	[0mrssi: 1.137199
+[92mAutogain:	[0mgain: 5.168211
+[92mAutogain:	[0mrssi: 1.112491
+[92mAutogain:	[0mgain: 5.038862
+[92mAutogain:	[0mrssi: 1.120838
+[92mAutogain:	[0mgain: 4.912751
+[92mAutogain:	[0mrssi: 1.065405
+[92mAutogain:	[0mgain: 4.789796
+[92mAutogain:	[0mrssi: 1.012734
+[92mAutogain:	[0mgain: 5.234822
+[92mAutogain:	[0mrssi: 0.962703
+[92mAutogain:	[0mgain: 5.222054
+[92mAutogain:	[0mrssi: 1.110667
+[92mAutogain:	[0mgain: 5.091358
+[92mAutogain:	[0mrssi: 1.055785
+[92mAutogain:	[0mgain: 4.963933
+[92mAutogain:	[0mrssi: 1.008422
+[92mAutogain:	[0mgain: 4.969391
+[92mAutogain:	[0mrssi: 1.200173
+[92mAutogain:	[0mgain: 4.845019
+[92mAutogain:	[0mrssi: 1.161982
+[92mAutogain:	[0mgain: 4.723759
+[92mAutogain:	[0mrssi: 1.104579
+[92mAutogain:	[0mgain: 4.605534
+[92mAutogain:	[0mrssi: 1.062521
+[92mAutogain:	[0mgain: 4.490268
+[92mAutogain:	[0mrssi: 1.009966
+[92mAutogain:	[0mgain: 4.983563
+[92mAutogain:	[0mrssi: 0.978107
+[92mAutogain:	[0mgain: 5.187180
+[92mAutogain:	[0mrssi: 1.109537

@@ -65,18 +65,20 @@ plot3  = PlotSi(main = True , debug = False, plt=plt, stem = True, persist = Fal
 speca  = Plotsp(main = True , debug = False, plt=plt, stem = True, persist = False, fs = fs)
 stdsin = Stdout(main = False)
 
+# Simulates Channel:
 #modules = [source, prefix, pshape, modula, channe, microp, bandpa, autoga, demodu, equali, mfilte, trecov, plot3, frsync, stdsin]
-modules = [source, prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
+# Uses Microphone:
+#modules = [source, prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
+
+modules = [prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
 connect(modules)
 
-controller = Controller(modules, 1, 0)
+controller = Controller(modules, 0, 0)
 controller.draw()
 
 try:
 	modules[0].start()
 	while True:
-		#ransrc.work()
-		#source.work()
 		if not controller.work():
 			break
 		#prefix.work()
@@ -102,7 +104,9 @@ except KeyboardInterrupt:
 	print 'quitting all threads!'
 
 except Exception:
-	print modules[0].FAIL + 'Got Exception in main!' + modules[0].ENDC
+	modules[0].FAIL + 'Got Exception in main!' + modules[0].ENDC
 	traceback.print_exc()
+	while True:
+		pass
 modules[0].quit(True)
 controller.reset_terminal()

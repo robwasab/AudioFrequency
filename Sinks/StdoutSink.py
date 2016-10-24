@@ -10,16 +10,21 @@ class StdoutSink(Sink):
 		self.done = False
 			
 	def process(self, data):
-		readable, writeable, exceptional = select.select([], [sys.stdout.fileno()], [])
+		readable, writeable, exceptional = select.select([sys.stderr.fileno()], [sys.stdout.fileno()], [])
+		for fd in readable:
+			output = os.read(fd, 1024)
+			self.box_log(output)
+
 		for fd in writeable:
-			header = self.GREEN + 'TYPE: ' + str(type(data))
-			try:
-				header += ' LENGTH: %d' % (len(data))
-			except Exception:
-				pass
-			header += self.ENDC + '\n>> '
-			#os.write(fd,  header + str(data) + '\n')
-			self.log('[Receiving data!]\n'+header+str(data))
+			#header = self.GREEN + 'TYPE: ' + str(type(data))
+			#try:
+			#	header += ' LENGTH: %d' % (len(data))
+			#except Exception:
+			#	pass
+			#header += self.ENDC + '\n>> '
+			#self.log('[Receiving data!]\n'+header+str(data))
+			self.log(data)
+			
 			self.data = data
 			self.done = True
 		return data

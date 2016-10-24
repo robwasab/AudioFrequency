@@ -8,6 +8,8 @@ import traceback
 import sys
 import pdb
 
+OUTPUT_LOG = open('output.txt', 'a')
+
 class Module(Box):
 	HEADER = '\033[95m'
 	BLUE = '\033[94m'
@@ -19,7 +21,7 @@ class Module(Box):
 	BOLD = '\033[1m'
 	UNDERLINE = '\033[4m'
 	print_lock = Lock()
-	
+
 	def reset(self):
 		return
 
@@ -52,6 +54,7 @@ class Module(Box):
 		[self.box_queue_size],
 		[self.box_queue_bar ],
 		[self.box_label, 'log: ']]
+		self.draw_header_zero = True
 
 	def box_title(self, line, offset, *args):
 		Module.box_label(self,
@@ -68,7 +71,8 @@ class Module(Box):
 
 	def work(self):
 		if not self.input.empty():
-			self.log('Queue size: %d'%len(self.input.queue))
+			self.draw_header_zero = True
+			self.draw()
 			in_data = self.input.get()
 			if self.passthrough == True:
 				self.output.input.put(in_data)
@@ -83,6 +87,9 @@ class Module(Box):
 					self.output.input.put(out_dat)
 			return True
 		else:
+			if self.draw_header_zero:
+				self.draw()
+				self.draw_header_zero = False
 			return True 
 			
 
@@ -141,13 +148,18 @@ class Module(Box):
 		return None
 	
 	def log(self, msg):
+		try:
+			self.box_log(msg)
+		except Exception:
+			pass
 		if type(msg) != str:
 			msg = str(msg)
-		msg = self.GREEN + self.__class__.__name__ + ':\t'+ self.ENDC + msg
+		msg = self.GREEN + self.__class__.__name__ + ':\t'+ self.ENDC + msg + '\n'
+		OUTPUT_LOG.write(msg)
 	
 	def print_kw_error(self, arg_name):
 		msg = Module.FAIL + self.__class__.__name__ + ' requires key word argument %s!'%arg_name + Module.ENDC
-		print msg
+		self.log(msg)
 		self.box_log(msg)
 
 	def print_pam(self, pam):

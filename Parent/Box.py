@@ -3,7 +3,7 @@ from  unicurses import *
 
 BORDER = 2
 class Box(Thread):
-	def __init__(self, line, col, height, width):
+	def __init__(self, line, col, height, width, debug=False):
 		Thread.__init__(self)
 		self.box_data = []
 		self.box_offset = 1
@@ -22,6 +22,7 @@ class Box(Thread):
 	
 	def box_label(self, line, offset, txt):
 		mvwaddstr(self.box_win, line, offset, txt)
+		wclrtoeol(self.box_win)
 
 	def box_bar(self, line, offset, size):
 		wattron(self.box_win, A_REVERSE) 
@@ -57,6 +58,8 @@ class Box(Thread):
 		self.box_msgs = ['']*self.box_max_msgs
 	
 	def box_log(self, msg):
+		if msg[-1] == '\n':
+			msg = msg[:-1]
 		if self.box_msg_size < self.box_max_msgs:
 			self.box_msgs[self.box_msg_size] = msg
 			self.box_msg_size += 1
