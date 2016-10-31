@@ -1,5 +1,5 @@
+from   threading import Thread, Semaphore
 from   Queue import Queue, Full, Empty
-from   threading import Semaphore
 from   time import time,sleep
 from   threading import Lock
 from   Box import Box
@@ -7,10 +7,28 @@ import numpy as np
 import traceback
 import sys
 import pdb
+import os
 
-OUTPUT_LOG = open('output.txt', 'a')
+stdout = sys.stdout
+output_redirection = False
 
-class Module(Box):
+if len(sys.argv) > 1:
+	new_tty = sys.argv[1]
+	for root, dirs, files in os.walk('/dev'):
+		for f in files:
+			if new_tty in f:
+				stdout = open(os.path.join(root,f), 'w')
+				sys.stderr = stdout
+				output_redirection = True
+				break
+		if output_redirection:
+			break
+
+if len(sys.argv) > 1 and not output_redirection:
+	print 'Invalid file descriptor'
+	sys.exit(-1)
+
+class Module(Thread):
 	HEADER = '\033[95m'
 	BLUE = '\033[94m'
 	CYAN = '\033[36m'
@@ -26,7 +44,7 @@ class Module(Box):
 		return
 
 	def __init__(self, next_module=None, **kwargs):
-		Box.__init__(self, 0, 0, 0, 0)
+		Thread.__init__(self)
 		self.output = next_module
 		self.mutex  = Lock()
 		self.stop   = False	
@@ -37,6 +55,7 @@ class Module(Box):
 		self.main   = False
 		self.debug  = False
 		self.input  = Queue()
+		self.zeroed = False
 
 		for key in kwargs:
 			if key == 'fig' :
@@ -49,30 +68,24 @@ class Module(Box):
 				self.main = bool(kwargs[key])
 			elif key == 'debug':
 				self.debug = bool(kwargs[key])
-		self.header = [
-		[self.box_title],
-		[self.box_queue_size],
-		[self.box_queue_bar ],
-		[self.box_label, 'log: ']]
-		self.draw_header_zero = True
 
-	def box_title(self, line, offset, *args):
-		Module.box_label(self,
-		line, offset, self.__class__.__name__)
-	
-	def box_queue_size(self, line, offset, *args):
-		txt = 'queue size %d'%len(self.input.queue)
-		Module.box_label(self,
-		line, offset, txt)
-	
-	def box_queue_bar(self, line, offset, *args):
-		size = len(self.input.queue)
-		Module.box_bar(self,line,offset,size)
+		if output_redirection:
+			self.box = Box(0,0,0,0)
+			self.box_title      = self.box.add_label(self.__class__.__name__)
+			self.box_queue_size = self.box.add_label('0')
+			self.box_queue_bar  = self.box.add_bar(0)
+			self.box_log        = self.box.add_label('log:')
+		else:
+			self.box = None
 
 	def work(self):
 		if not self.input.empty():
-			self.draw_header_zero = True
-			self.draw()
+			queue_size = len(self.input.queue)
+			if self.box is not None:
+				self.box.notify(self.box_queue_size, queue_size)
+				self.box.notify(self.box_queue_bar, queue_size)
+				self.zeroed = False
+
 			in_data = self.input.get()
 			if self.passthrough == True:
 				self.output.input.put(in_data)
@@ -87,9 +100,10 @@ class Module(Box):
 					self.output.input.put(out_dat)
 			return True
 		else:
-			if self.draw_header_zero:
-				self.draw()
-				self.draw_header_zero = False
+			if self.box is not None and not self.zeroed:
+				self.zeroed = True
+				self.box.notify(self.box_queue_size, 0)
+				self.box.notify(self.box_queue_bar, 0)
 			return True 
 			
 
@@ -104,14 +118,13 @@ class Module(Box):
 
 	def start(self):
 		if not self.main:
-			Box.start(self)
+			Thread.start(self)
 		if self.output != None:
 			self.output.start()
 		
 	def run(self):
 		Module.print_lock.acquire()
-		self.box_log(
-		self.__class__.__name__+' starting')
+		self.log(self.__class__.__name__+' starting')
 		Module.print_lock.release()
 		base = time()
 		try:
@@ -135,27 +148,25 @@ class Module(Box):
 
 		except Exception as e:
 			Module.print_lock.acquire()
-			self.box_log(self.FAIL + 'Exception in ' + self.__class__.__name__ + self.ENDC)
+			self.log(self.FAIL + 'Exception in ' + self.__class__.__name__ + self.ENDC)
 			traceback.print_exc()
 			Module.print_lock.release()
 
 		Module.print_lock.acquire()
-		self.box_log(
-		self.__class__.__name__+' quitting')
+		self.log(self.__class__.__name__+' quitting')
 		Module.print_lock.release()
 
 	def process(self):
 		return None
 	
+	def blog(self, msg):
+		if self.box is not None:
+			self.box.box_log(msg)
+
 	def log(self, msg):
-		try:
-			self.box_log(msg)
-		except Exception:
-			pass
 		if type(msg) != str:
 			msg = str(msg)
-		msg = self.GREEN + self.__class__.__name__ + ':\t'+ self.ENDC + msg + '\n'
-		OUTPUT_LOG.write(msg)
+		stdout.write(self.GREEN + self.__class__.__name__ + ':\t'+ self.ENDC + msg + '\n')
 	
 	def print_kw_error(self, arg_name):
 		msg = Module.FAIL + self.__class__.__name__ + ' requires key word argument %s!'%arg_name + Module.ENDC

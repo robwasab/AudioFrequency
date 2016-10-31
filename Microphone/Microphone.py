@@ -1,5 +1,4 @@
 from Parent.Module import Module
-import matplotlib.pyplot as plt
 from time import time,sleep
 from Queue import Queue
 import numpy as np

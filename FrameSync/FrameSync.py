@@ -25,6 +25,8 @@ class FrameSync(FastFilter):
 			self.queue = Queue(np.float64, 2**12)
 			self.state = 'look_for_header'
 			self.thresh = 0.5
+			if self.box is not None:
+				self.msg_prog = self.box.add_label('msg prog: [0/0]')
 			
 		except KeyError as ke:
 			self.print_kw_error(kw)
@@ -51,6 +53,7 @@ class FrameSync(FastFilter):
 			self.reset()
 			self.whiten.reset()
 			self.log('FOUND START OF PAYLOAD!')
+			self.blog('Found header!')
 
 		elif index == -1:
 			if self.state == 'look_for_header':
@@ -73,7 +76,10 @@ class FrameSync(FastFilter):
 				self.print_pam(pam)
 				self.state = 'read_payload'
 		
+		text = None
+
 		if self.state == 'read_payload':
+
 			if self.queue.size() >= 4 * self.num_bytes:
 				pam = [quantize(d) for d in self.queue.read(4*self.num_bytes)]
 				payload = self.pam2num(pam)
@@ -82,10 +88,13 @@ class FrameSync(FastFilter):
 				#self.log('payload after  whitening: ' + str(payload))
 				text = self.num2text(payload)	
 				self.state = 'look_for_header'
-
 				self.queue.read(self.queue.size())
-				return text
-		return None 
+				self.num_bytes = 0
+
+			if self.box is not None:
+				msg_prog_txt = 'msg prog: [%.3f/%d]'%(self.queue.size()/4.0, self.num_bytes)
+				self.box.notify(self.msg_prog, msg_prog_txt)
+		return text 
 
 class Queue(object):
 	def __init__(self, memory_type = np.float16, memory_size = 1024):

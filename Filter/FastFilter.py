@@ -78,12 +78,17 @@ class FastFilter(FirFilter):
 				der_scale = der-self.last_der
 				self.last_der = der
 
-			#self.log(der)
 			if filtered_abs[idx] > self.thresh or der_scale > 2.5: 
 				s = np.sign(filtered[idx])
-				self.log('correlation: %s%f%s'%(self.CYAN, filtered_abs[idx], self.ENDC))
+				corr_msg = 'correlation: %s%f%s'%(self.CYAN, filtered_abs[idx], self.ENDC)
+				self.log(corr_msg)
+				self.blog('corr: [%.3f]'%filtered_abs[idx])
 				return (idx,s)
-			#self.log('correlation: %f'%(filtered_abs[idx]))
+
+			corr_msg = 'corr: %.3f'%(filtered_abs[idx])
+			self.log(corr_msg)
+			self.blog(corr_msg)
+
 			return (-1, 1) 
 		return filtered
 

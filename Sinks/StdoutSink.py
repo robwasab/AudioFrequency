@@ -16,15 +16,14 @@ class StdoutSink(Sink):
 			self.box_log(output)
 
 		for fd in writeable:
-			#header = self.GREEN + 'TYPE: ' + str(type(data))
-			#try:
-			#	header += ' LENGTH: %d' % (len(data))
-			#except Exception:
-			#	pass
-			#header += self.ENDC + '\n>> '
-			#self.log('[Receiving data!]\n'+header+str(data))
-			self.log(data)
-			
+			header = self.GREEN + 'TYPE: ' + str(type(data))
+			try:
+				header += ' LENGTH: %d' % (len(data))
+			except Exception:
+				pass
+			header += self.ENDC + '\n>> '
+			self.log('[Receiving data!]\n'+header+str(data))
+			self.blog('>'+str(data))
 			self.data = data
 			self.done = True
 		return data

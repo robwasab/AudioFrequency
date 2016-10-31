@@ -19,7 +19,7 @@ from   Sinks.StdoutSink import StdoutSink         as Stdout
 from   Sinks.Plotspec   import Plotspec           as Plotsp
 from   Sinks.PlotSink   import PlotSink           as PlotSi
 from   Controller.Controller import Controller
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import numpy as np
 import traceback
 import pdb
@@ -36,8 +36,8 @@ def connect(modules):
 		modules[i].output = modules[i+1]
 		modules[i].fig = i
 	modules[-1].fig = len(modules)-1
-
-source = StdinS(main = True)
+plt = None
+source = StdinS(main = False)
 ransrc = Random(100, main = True)
 prefix = Prefix(main = False, debug = False, plt=plt, bits=9)
 pshape = Pulses(main = False, debug = False, plt=plt, M=101, beta = 0.5) 
@@ -59,54 +59,32 @@ mfilte = FastFi(main = False, debug = False, plt=plt, bcoef = pshape.ps)
 #trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M*interp.L, passthrough=False)
 trecov = Timing(main = False, debug = False, plt=plt, M=pshape.M, passthrough=False)
 frsync = FrameS(main = False, debug = False, plt=plt, cipher=prefix.cipher, prefix=train_pam, passthrough = False)
-plot1  = PlotSi(main = True , debug = False, plt=plt, stem = False, persist = False)
-plot2  = PlotSi(main = True , debug = False, plt=plt, stem = False, persist = False)
-plot3  = PlotSi(main = True , debug = False, plt=plt, stem = True, persist = False)
-speca  = Plotsp(main = True , debug = False, plt=plt, stem = True, persist = False, fs = fs)
+#plot1  = PlotSi(main = True , debug = False, plt=plt, stem = False, persist = False)
+#plot2  = PlotSi(main = True , debug = False, plt=plt, stem = False, persist = False)
+#plot3  = PlotSi(main = True , debug = False, plt=plt, stem = True, persist = False)
+#speca  = Plotsp(main = True , debug = False, plt=plt, stem = True, persist = False, fs = fs)
 stdsin = Stdout(main = False)
 
 # Simulates Channel:
 #modules = [source, prefix, pshape, modula, channe, microp, bandpa, autoga, demodu, equali, mfilte, trecov, plot3, frsync, stdsin]
-# Uses Microphone:
-#modules = [source, prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
 
-modules = [prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
+# Uses Microphone:
+modules = [source, prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
 connect(modules)
 
-controller = Controller(modules, 0, 0)
+controller = Controller(modules, 1, 0)
 controller.draw()
 
 try:
 	modules[0].start()
 	while True:
-		if not controller.work():
-			break
-		#prefix.work()
-		#pshape.work()
-		#modula.work()
-		#channe.work()
-		#microp.work()
-		#bandpa.work()
-		#autoga.work()
-		#demodu.work()
-		#equali.work()
-		#mfilte.work()
-		#interp.work()
-		#trecov.work()
-		plot1.work()
-		#frsync.work()
-		plot3.work()
-		#stdsin.work()
-		#if stdsin.done:
-		#	stdsin.log('Pass: ' + str(ransrc.data==stdsin.data))
-		#	stdsin.done = False
+		controller.work()
+
 except KeyboardInterrupt:
 	print 'quitting all threads!'
 
 except Exception:
 	modules[0].FAIL + 'Got Exception in main!' + modules[0].ENDC
 	traceback.print_exc()
-	while True:
-		pass
+
 modules[0].quit(True)
-controller.reset_terminal()

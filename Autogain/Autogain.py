@@ -96,5 +96,8 @@ class Autogain(Module):
 			self.plt.show()
 		self.log('gain: %f'%self.gain)
 		self.log('rssi: %f'%self.rssi)
+		self.blog('gain: %.3f'%self.gain)
+		self.blog('rssi: %.3f'%self.rssi)
+
 		self.init = time()
 		return data/2.0

@@ -34,7 +34,7 @@ class Equalizer(FastFilter):
 			self.equal = FastFilter(bcoef = self.default_eq, flush=False)
 			self.chan_resp = None
 			self.sign = 1
-			self.thresh = 0.6
+			self.thresh = 0.75
 
 		except KeyError as ke:
 			self.print_kw_error(kw)
@@ -75,6 +75,10 @@ class Equalizer(FastFilter):
 		index, s = self.conv_chunk_chunk(data, fsync_hack=True, flush=False)
 		if index == -1 :
 			self.put(data)
+			# TODO: CONTROLLER RESETS EQUALIZER COEFFICIENTS AFTER:
+			# 1. Successful reception
+			# 2. Timeout
+			# 3. Error of some sort
 			return self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)
 
 		# so, if the sign is found to be -1, it means all of the data we have been previously filtering
@@ -84,6 +88,7 @@ class Equalizer(FastFilter):
 
 		self.put(data[:index])
 		self.log('FOUND TRAINING HEADER!')
+
 		if self.debug:
 			self.log('index: %d'%index)
 
@@ -91,6 +96,7 @@ class Equalizer(FastFilter):
 		self.equal.set_bcoef(s*np.array(fir))
 
 		equalized_header = self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)	
+		self.reset() 
 		return equalized_header
 
 	def equalizer(self, r):

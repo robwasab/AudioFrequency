@@ -1,5 +1,4 @@
 from Parent.Module import Module
-import matplotlib.pyplot as plt
 import numpy as np
 
 class Modulator(Module):
