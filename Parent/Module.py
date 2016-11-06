@@ -52,10 +52,22 @@ class Module(Thread):
 		self.fig    = 1
 		self.base   = time()
 		self.passthrough = False
+		# if main = True, then the thread will not start and be expected to be called from the
+		# main thread
 		self.main   = False
+		# TODO: legacy code that enabled calling matplotlib, needs to be replaced with Scope
 		self.debug  = False
 		self.input  = Queue()
+		# Variable to update the ncurses interface to display zero data in queue
 		self.zeroed = False
+
+		# Scope represents our way of calling matplotlib
+		# from the module. Since the module is on a separate
+		# thread, scope is a queue mechanism to send data over
+		# to the main thread.
+		# A separate controller will manage calling the scope from
+		# the main thread.
+		self.scope  = None
 
 		for key in kwargs:
 			if key == 'fig' :
@@ -68,15 +80,27 @@ class Module(Thread):
 				self.main = bool(kwargs[key])
 			elif key == 'debug':
 				self.debug = bool(kwargs[key])
+			elif key == 'scope_size':
+				self.scope_size = int(kwargs[key])
 
 		if output_redirection:
 			self.box = Box(0,0,0,0)
 			self.box_title      = self.box.add_label(self.__class__.__name__)
 			self.box_queue_size = self.box.add_label('0')
 			self.box_queue_bar  = self.box.add_bar(0)
+			self.box_plot_on    = self.box.add_label('plot: off')
 			self.box_log        = self.box.add_label('log:')
 		else:
 			self.box = None
+
+	def set_scope(self, scope):
+		if scope is not None:
+			self.box.notify(self.box_plot_on, 'plot: on')
+		else:
+			self.box.notify(self.box_plot_on, 'plot: off')
+		self.mutex.acquire()
+		self.scope = scope
+		self.mutex.release()
 
 	def work(self):
 		if not self.input.empty():

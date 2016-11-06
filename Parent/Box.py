@@ -15,6 +15,9 @@ class Box(object):
 	def __init__(self, line, col, height, width, debug=False):
 		if Box.init_ncurses and len(sys.argv) > 1:
 			stdscr = initscr()
+			if has_colors() != ERR:
+				start_color()
+				use_default_colors()
 			Box.stdscr = stdscr
 			clear()
 			noecho()
@@ -24,6 +27,7 @@ class Box(object):
 			refresh()
 			atexit.register(quit_ncurses)
 			Box.init_ncurses = False
+
 	# Dimension Properties shall only be accessed from the main thread
 	# Information Properties shall have multi thread access
 	# Therefore Dimension Properties will not have a mutex lock
@@ -45,8 +49,17 @@ class Box(object):
 		self.box_header = []
 		self.box_lock = Lock()
 		self.box_update = False
-	
-
+		self.box_selected = False
+		self.box_txt_red = 0x1
+		self.box_txt_grn = 0x2
+		self.box_txt_blu = 0x3
+		self.box_txt_ylw = 0x4
+		self.box_txt_mga = 0x5
+		init_pair(self.box_txt_red, COLOR_RED  , -1)
+		init_pair(self.box_txt_grn, COLOR_GREEN, -1)
+		init_pair(self.box_txt_blu, COLOR_BLUE , -1)
+		init_pair(self.box_txt_ylw, COLOR_YELLOW, -1)
+		init_pair(self.box_txt_mga, COLOR_MAGENTA, -1)
 	
 	# Private
 	# Will only be called in draw()
@@ -182,12 +195,20 @@ class Box(object):
 			mvwaddstr(
 			self.box_win,line,col,self.box_msgs[n])
 			wclrtoeol(self.box_win)
-		box(self.box_win, 0, 0)
+		if self.box_selected:
+			wattron(self.box_win, A_BOLD)
+			wattron(self.box_win, COLOR_PAIR(self.box_txt_grn))
+			box(self.box_win, 0, 0)
+			wattroff(self.box_win, A_BOLD)
+			wattroff(self.box_win, COLOR_PAIR(self.box_txt_grn))
+		else:
+			box(self.box_win, 0, 0)
+
 		wrefresh(self.box_win)
 		self.box_lock.release()
 
 	# Public - Main Thread
-	# Only modifies dimensions. Only mean thread relies on
+	# Only modifies dimensions. Only main thread relies on
 	# dimensions because of drawing, no lock
 	def move(self, line, col):
 		self.erase()
@@ -199,3 +220,10 @@ class Box(object):
 		self.box_width, 
 		self.box_line, 
 		self.box_col)
+	
+	# Public - Main Thread
+	def set_selected(self, selected):
+		self.box_lock.acquire()
+		self.box_selected = selected
+		self.box_update = True
+		self.box_lock.release()
