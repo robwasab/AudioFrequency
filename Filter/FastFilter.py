@@ -3,19 +3,6 @@ from   Filter import FirFilter
 import numpy as np
 import pdb
 
-def peri_convo(sig,fir):
-	delta = len(sig) - len(fir)
-	if delta > 0:
-		fir = np.append(fir, [0] * delta)
-		sig = sig 
-	elif delta < 0:
-		sig = np.append(sig, [0] * -delta)
-		fir = fir
-	fftsig = fft(sig)
-	fftfir = fft(fir)
-	fftout = fftsig * fftfir
-	out = ifft(fftout).real
-	return out
 
 class FastFilter(FirFilter):
 	def __init__(self, *args, **kwargs):
@@ -23,12 +10,10 @@ class FastFilter(FirFilter):
 		self.set_bcoef(self.bcoef)
 		self.flush = False 
 		self.thresh = 0.75
-		self.last_der = 0
-		self.last_max = 0
 		for kw in kwargs:
 			if kw == 'flush':
 				self.flush = kwargs[kw]
-	
+
 	def set_bcoef(self, bcoef):
 		self.bcoef = bcoef
 		self.slen  = len(self.bcoef) - 1
@@ -36,11 +21,41 @@ class FastFilter(FirFilter):
 		self.chunklen = 2 
 		efficiency = (self.chunklen - self.slen)/float(self.chunklen)
 
-		while efficiency < 0.75:
+		while efficiency < 0.49:
 			self.chunklen *= 2
 			efficiency = (self.chunklen - self.slen)/float(self.chunklen)
-		#self.log('Efficiency: %%%3.3f\tChunk Len: %5d\tSave Len: %4d'%(100.0*efficiency, self.chunklen, self.slen))
+		self.log('Efficiency: %%%3.3f\tChunk Len: %5d\tSave Len: %4d'%(100.0*efficiency, self.chunklen, self.slen))
 		self.periodic_mode = False
+
+	def peri_convo(self, sig, fir):
+		self.start_timer('peri_convo pad')
+		delta = len(sig) - len(fir)
+		pad_size = 0
+		end_size = 0
+		if len(sig) > len(fir):
+			pad_size = int(np.power(2, np.ceil(np.log2(len(sig)))))
+			end_size = len(sig)
+		else:
+			pad_size = int(np.power(2, np.ceil(np.log2(len(fir)))))
+			end_size = len(fir)
+
+		sig = np.append(sig, np.zeros(pad_size-len(sig)))
+		fir = np.append(fir, np.zeros(pad_size-len(fir)))
+		self.stop_timer ('peri_convo pad')
+
+		self.start_timer('fft sig')
+		fftsig = fft(sig)
+		self.stop_timer ('fft sig')
+
+		self.start_timer('fft fir')
+		fftfir = fft(fir)
+		self.stop_timer ('fft fir')
+
+		self.start_timer('fftsig*fftfir')
+		fftout = fftsig * fftfir
+		self.stop_timer ('fftsig*fftfir')
+		out = ifft(fftout).real
+		return out[:end_size]
 
 	def process(self, signal):
 		return self.conv_chunk_chunk(signal, False, self.flush)
@@ -53,43 +68,46 @@ class FastFilter(FirFilter):
 		else:
 			self.save = signal[-self.slen:]
 		return outp
-		
+
 	def reset(self):
 		self.save = np.zeros(self.slen)
 
-	def conv_chunk_chunk(self, data, fsync_hack=False, flush=False):
+	def conv_chunk_chunk(self, data, fsync_hack=False, flush=False, scope=None, times={}):
+		# TODO TIME ALL THE METHODS TO DETERMINE WHERE TO SPEED UP CODE
+		self.start_timer('total')
+		self.start_timer('np_append(save, data)')	
 		signal = np.append(self.save, data)
 		if flush:
 			signal = np.append(signal, np.zeros(self.slen))
+		self.stop_timer('np_append(save, data)')	
 
-		filtered = peri_convo(signal, self.bcoef)[self.slen:]
+		self.start_timer('peri_convo(signal, self.bcoef)')
+		filtered = self.peri_convo(signal, self.bcoef)[self.slen:]
+		self.stop_timer('peri_convo(signal, self.bcoef)')
 
 		self.save= signal[-self.slen:]
 
 		if fsync_hack:
+			if scope is not None:
+				scope.queue.put(filtered)
+				scope.set_ylim(1, -1)
+
 			filtered_abs = np.abs(filtered)
 			idx = np.argmax(filtered_abs)
-			der = filtered_abs[idx] - self.last_max
-			self.last_max = filtered_abs[idx]
-			der_scale = 0
-			if self.last_der < 1E-6:
-				self.last_der = der
-			else:
-				der_scale = der-self.last_der
-				self.last_der = der
 
-			if filtered_abs[idx] > self.thresh or der_scale > 2.5: 
+			if filtered_abs[idx] > self.thresh: 
 				s = np.sign(filtered[idx])
 				corr_msg = 'correlation: %s%f%s'%(self.CYAN, filtered_abs[idx], self.ENDC)
 				self.log(corr_msg)
-				self.blog('corr: [%.3f]'%filtered_abs[idx])
+				self.stop_timer('total')
 				return (idx,s)
 
 			corr_msg = 'corr: %.3f'%(filtered_abs[idx])
 			self.log(corr_msg)
-			self.blog(corr_msg)
-
+			self.stop_timer('total')
 			return (-1, 1) 
+
+		self.stop_timer('total')
 		return filtered
 
 	def conv_chunk(self,data,fsync_hack=False, debug=False):
@@ -128,7 +146,7 @@ class FastFilter(FirFilter):
 		#		self.log('        save  length %d'%len(self.save))
 		#		self.log('        bcoef length %d'%len(self.bcoef))
 			self.save = np.append(self.save, sig[k*size:(k+1)*size])
-			raw = peri_convo(self.save, self.bcoef)[self.slen:]
+			raw = self.peri_convo(self.save, self.bcoef)[self.slen:]
 
 			if debug:
 				if self.save_handle == None:

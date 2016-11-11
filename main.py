@@ -5,7 +5,7 @@ from   Pulseshape.Pulseshape import Pulseshape    as Pulses
 from   Filter.FastFilter     import FastFilter    as FastFi
 from   Modulator.Modulator   import Modulator     as Modula
 from   Filter.Channel        import Channel       as Channe
-#from   Microphone.Microphone import Microphone    as Microp
+from   Microphone.Microphone import Microphone    as SimMic
 from   Hardware.Hardware     import Microphone    as Microp
 from   Hardware.Hardware     import Speaker       as Speake
 from   Filter.BandPassFilter import BandPassFilter as BandPa
@@ -26,6 +26,7 @@ import pdb
 import os
 
 fs = 44.1E3
+audio_loopback = False 
 
 def fround(fc):
 	n = np.round(float(fs)/float(fc))
@@ -40,13 +41,14 @@ def connect(modules):
 plt = None
 source = StdinS(main = False)
 ransrc = Random(100, main = True)
-prefix = Prefix(main = False, debug = False, plt=plt, bits=8)
+prefix = Prefix(main = False, debug = False, plt=plt, bits=9)
 pshape = Pulses(main = False, debug = False, plt=plt, M=101, beta = 0.5) 
 modula = Modula(main = False, debug = False, plt=plt, fs=fs, fc = 11025)
 distor = 0.25*np.array([0.1, 0.5, 1.0, -0.6, 0.5, 0.4, 0.3, 0.2, 0.1]) 
 channe = Channe(main = False, debug = False, plt=plt, bcoef=distor, passthrough=False)
 speake = Speake(main = False, debug = False, plt=plt, passthrough=False)
 microp = Microp(main = False, debug = False, plt=plt, passthrough=True)
+simmic = SimMic(main = False, debug = False, plt=plt, passthrough=False)
 bandpa = BandPa(main = False, debug = False, plt=plt, fs = fs, fc = 11025, taps=256, passthrough=False)
 autoga = Autoga(main = False, debug = False, plt=plt, fs = fs, M=pshape.M, passthrough=False)
 demodu = Demodu(main = False, debug = False, plt=plt, fs = fs, fc = 11025)
@@ -66,13 +68,16 @@ frsync = FrameS(main = False, debug = False, plt=plt, cipher=prefix.cipher, pref
 #speca = Plotsp(main = True , debug = False, plt=plt, stem = True, persist = False, fs = fs)
 stdsin = Stdout(main = False)
 
-# Simulates Channel:
-# modules = [source, prefix, pshape, modula, channe, microp, bandpa, autoga, demodu, equali, mfilte, trecov, plot3, frsync, stdsin]
+modules = None
 
-# Uses Microphone:
-modules = [source, prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
+if audio_loopback:
+	# Simulates Channel:
+	modules = [source, prefix, pshape, modula, channe, simmic, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
+else:
+	# Uses Microphone:
+	modules = [source, prefix, pshape, modula, speake, microp, bandpa, autoga, demodu, equali, mfilte, trecov, frsync, stdsin]
+
 connect(modules)
-
 view_controller = ViewController(modules, 1, 0)
 view_controller.draw()
 

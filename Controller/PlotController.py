@@ -9,7 +9,7 @@ class PlotController(object):
 	def __init__(self):
 		self.modules = []
 	
-	def add_module(self, module, buffer_size=1024):
+	def add_module(self, module, buffer_size=2**11):
 		if module not in self.modules:
 			s = Scope(buffer_size)
 			s.set_title(module.__class__.__name__)

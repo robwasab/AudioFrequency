@@ -52,6 +52,7 @@ class Module(Thread):
 		self.fig    = 1
 		self.base   = time()
 		self.passthrough = False
+		self.quitted = False
 		# if main = True, then the thread will not start and be expected to be called from the
 		# main thread
 		self.main   = False
@@ -67,7 +68,11 @@ class Module(Thread):
 		# to the main thread.
 		# A separate controller will manage calling the scope from
 		# the main thread.
-		self.scope  = None
+		self.scope = None
+
+		# times is a dictionary to keep track of all the execution times of methods
+		# and print it out in the end
+		self.times = {}
 
 		for key in kwargs:
 			if key == 'fig' :
@@ -129,9 +134,10 @@ class Module(Thread):
 				self.box.notify(self.box_queue_size, 0)
 				self.box.notify(self.box_queue_bar, 0)
 			return True 
-			
 
 	def quit(self, all = False):
+		# TODO: Quit gracefully
+		self.print_times()
 		self.mutex.acquire()
 		self.stop = True 
 		self.mutex.release()
@@ -178,6 +184,7 @@ class Module(Thread):
 
 		Module.print_lock.acquire()
 		self.log(self.__class__.__name__+' quitting')
+		self.quitted = True
 		Module.print_lock.release()
 
 	def process(self):
@@ -210,6 +217,21 @@ class Module(Thread):
 		if count%4 > 0:
 			msg += '%d: ['%(1+count/4) + ('%2d '*(count%4))%tuple(byte[:count%4]) + '...\n'
 		
+		self.log(msg)
+	
+	def start_timer(self, key):
+		if self.times.has_key(key):
+			self.times[key].append(time())
+		else:
+			self.times[key] = [time()]
+	
+	def stop_timer(self, key):
+		self.times[key][-1] = time() - self.times[key][-1] 
+	
+	def print_times(self):
+		msg = '\n'
+		for key in self.times:
+			msg += '%s, %.3f ms\n'%(key,1000.0*np.average(self.times[key]))
 		self.log(msg)
 
 class MyQueue(object):

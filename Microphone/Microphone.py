@@ -4,6 +4,7 @@ from Queue import Queue
 import numpy as np
 import pyaudio
 import wave
+import sys
 import pdb
 
 class Microphone(Module):
@@ -15,20 +16,6 @@ class Microphone(Module):
 				self.chunk_size = kwargs[kw]
 
 		self.save = None
-
-	def work(self):
-		if not self.input.empty():
-			in_data = self.input.get()
-			if self.passthrough == True:
-				self.output.input.put(in_data)
-				return True
-			start = time()
-			self.process(in_data)
-			stop  = time()
-			print self.YELLOW + self.__class__.__name__+':\t [%4.3f ms]'%(1000.0*(stop-start))+self.ENDC
-			return True
-		else:
-			return False
 
 	def process(self, data):
 		pad = np.zeros((self.chunk_size - (len(data)%self.chunk_size)))

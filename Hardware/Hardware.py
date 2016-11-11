@@ -29,6 +29,8 @@ class Microphone(Module):
 			if kw == 'fs':
 				self.fs = kwargs[kw]
 
+
+	def start(self):
 		self.p = pyaudio.PyAudio()
 		self.stream = self.p.open(
 				format=pyaudio.paFloat32,
@@ -37,13 +39,6 @@ class Microphone(Module):
 				input=True,
 				frames_per_buffer=self.chunk_size,
 				stream_callback=self.callback)
-		self.rec_time = 10.0
-		self.num_chunks = int(np.round(self.rec_time/self.chunk_size*self.fs))
-		self.log(self.num_chunks)	
-		self.save = np.zeros(self.num_chunks*self.chunk_size)
-		self.k = 0
-
-	def start(self):
 		self.stream.start_stream()
 		Module.start(self)
 	
@@ -71,16 +66,21 @@ class Speaker(Module):
 				self.chunk_size = kwargs[kw]
 			if kw == 'fs':
 				self.fs = kwargs[kw]
-			
+		self.p = None
+		self.stream = None
+
+	def start(self):
 		self.p = pyaudio.PyAudio()
 		self.stream = self.p.open(
 				format=pyaudio.paFloat32,
 				channels=1,
 				rate=int(self.fs),
 				output=True)
+		Module.start(self)
 
 	def process(self, data):
-		self.stream.write(data.astype(np.float32).tostring())
+		if self.stream is not None:
+			self.stream.write(data.astype(np.float32).tostring())
 		return None
 	
 	def quit(self, all):

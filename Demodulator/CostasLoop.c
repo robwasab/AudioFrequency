@@ -21,6 +21,7 @@ static LowPass * qlp_signal;
 static LowPass * freq_filter;
 static LowPass * input_thresh_lp;
 static LockDetector * lock_detector;
+static double HZ_PER_RAD = 0.0;
 
 static PyObject * init(PyObject * self, PyObject * args)
 {
@@ -42,18 +43,22 @@ static PyObject * init(PyObject * self, PyObject * args)
 	// Low Pass filters for generating the error signal
 	ilp = LowPass_create(fc, fs);
 	qlp = LowPass_create(fc, fs);
+	freq_filter = LowPass_create(100.0, fs);
 
 	// Low Pass Filters for filtering the output signal
 	ilp_signal = LowPass_create(fc > 2E3 ? 2E3 : fc, fs);
 	qlp_signal = LowPass_create(fc > 2E3 ? 2E3 : fc, fs);
 	lock_detector = LockDetector_create(fs);
+	HZ_PER_RAD = fs/2.0/PI;
 	return Py_None;
 }
 
-inline static float work(float input)
+inline static float work(float input, float * freq_est)
 {
-	static int locked = 0;
+	//static int locked = 0;
 	static float real_input;
+	static double last_vco_phase = 0.0;
+
 	real_input = input;
 	if (input > 1.0)
 		input = 1.0;
@@ -81,8 +86,15 @@ inline static float work(float input)
 
 	float qu_phase_signal = 2.0*qlp_signal->work(qlp_signal, real_input*sin_vco);
 
-	locked = lock_detector->work(lock_detector, in_phase_signal, qu_phase_signal);
+	//locked = lock_detector->work(lock_detector, in_phase_signal, qu_phase_signal);
 
+	if (freq_est) {
+		double phase_derivative = 
+			(vco_phase - last_vco_phase) * HZ_PER_RAD;
+		*freq_est = freq_filter->work(freq_filter, phase_derivative);
+		last_vco_phase = vco_phase;
+	}
+/*
 	static int foo = 0;
 	static int bar = 0;
 	if (locked) {
@@ -99,73 +111,100 @@ inline static float work(float input)
 		}
 		foo = 0;
 	}
-	
-	return 0.7*in_phase_signal;	
+*/	
+	return 0.7*in_phase_signal;
 }
+
+#define IF_NOT_NULL(p, statement) if(!p) statement(p)
 
 static PyObject * process(PyObject * self, PyObject * args)
 {
 	PyArrayObject * in_array;
 	PyObject * out_array;
-	NpyIter * in_iter;
+	NpyIter *  in_iter;
 	NpyIter * out_iter;
+	NpyIter *  db_iter;
 	NpyIter_IterNextFunc * in_iternext;
 	NpyIter_IterNextFunc * out_iternext;
+	NpyIter_IterNextFunc * db_iternext;
+	PyObject * db_array;
 
-	if (!PyArg_ParseTuple(args, "O!", &PyArray_Type, &in_array))
+	if (!PyArg_ParseTuple(args, "O!", 
+				&PyArray_Type, &in_array))
 		return NULL;
+
+	Py_INCREF(in_array);
 
 	out_array = PyArray_NewLikeArray(in_array, NPY_ANYORDER, NULL, 0);
-	if (out_array == NULL)
-		return NULL;
 
-	in_iter = NpyIter_New(in_array, NPY_ITER_READONLY, NPY_KEEPORDER,
-			NPY_NO_CASTING, NULL);
-
-	if (in_iter == NULL)
+	db_array = PyArray_NewLikeArray(in_array, NPY_ANYORDER, NULL, 0);
+	
+	if (!out_array || !db_array)
 		goto fail;
+
+	in_iter  = NpyIter_New(in_array, NPY_ITER_READONLY, NPY_KEEPORDER,
+			NPY_NO_CASTING, NULL);
 
 	out_iter = NpyIter_New((PyArrayObject *) out_array, NPY_ITER_READWRITE,
 			NPY_KEEPORDER, NPY_NO_CASTING, NULL);
 
-	if (out_iter == NULL) {
-		NpyIter_Deallocate(in_iter);
-	}
+	db_iter  = NpyIter_New((PyArrayObject *) db_array, NPY_ITER_READWRITE,
+			NPY_KEEPORDER, NPY_NO_CASTING, NULL);
 
-	in_iternext = NpyIter_GetIterNext(in_iter, NULL);
-	out_iternext = NpyIter_GetIterNext(out_iter, NULL);
-	if (in_iternext == NULL || out_iternext == NULL) {
-		NpyIter_Deallocate(in_iter);
-		NpyIter_Deallocate(out_iter);
+	if (!in_iter || !out_iter || !db_iter)
 		goto fail;
-	}
+	
+	in_iternext  = NpyIter_GetIterNext(in_iter, NULL);
+	out_iternext = NpyIter_GetIterNext(out_iter, NULL);
+	db_iternext  = NpyIter_GetIterNext(db_iter, NULL);
+	
+	if (!in_iternext || !out_iternext || !db_iternext)
+		goto fail;
 
-	double ** in_dataptr  =  (double **)NpyIter_GetDataPtrArray(in_iter);
-	double ** out_dataptr =  (double **)NpyIter_GetDataPtrArray(out_iter);
-
+	double **  in_dataptr = (double **)NpyIter_GetDataPtrArray( in_iter);
+	double ** out_dataptr = (double **)NpyIter_GetDataPtrArray(out_iter);
+	double **  db_dataptr = (double **)NpyIter_GetDataPtrArray( db_iter);
+	float freq_est;
 	switch (PyArray_TYPE(in_array))
 	{
 		case NPY_FLOAT32:
 			do {
-				**((float **)out_dataptr) = (float) work(**((float **)in_dataptr));
-			} while (in_iternext(in_iter) && out_iternext(out_iter));
+				**((float **)out_dataptr)
+				       	= work(**((float **)in_dataptr), 
+							&freq_est);
+				**((float **)db_dataptr)
+					= freq_est;
+			} while 
+			(in_iternext(in_iter)   && 
+			 out_iternext(out_iter) &&
+			 db_iternext(db_iter) );
 			break;
 		case NPY_FLOAT64:
 			do {
-				**out_dataptr = work(**in_dataptr);
-			} while (in_iternext(in_iter) && out_iternext(out_iter));
+				**out_dataptr = work(**in_dataptr, &freq_est);
+				**db_dataptr = freq_est;
+			} while 
+			(in_iternext(in_iter) && 
+			 out_iternext(out_iter) &&
+			 db_iternext(db_iter) );
 			break;
 		default:
 			printf("unknown type...");
 			return NULL;
 	}
-	NpyIter_Deallocate(in_iter);
+
+	NpyIter_Deallocate( in_iter);
 	NpyIter_Deallocate(out_iter);
-	Py_INCREF(out_array);
-	return out_array;
+	NpyIter_Deallocate( db_iter);
+	Py_DECREF(in_array);
+	return PyTuple_Pack(2, out_array, db_array);
 
 fail:
 	Py_XDECREF(out_array);
+	Py_XDECREF( db_array);
+	IF_NOT_NULL( in_iter, NpyIter_Deallocate);
+	IF_NOT_NULL(out_iter, NpyIter_Deallocate);
+	IF_NOT_NULL( db_iter, NpyIter_Deallocate);
 	return NULL;
 }
 

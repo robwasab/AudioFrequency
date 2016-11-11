@@ -10,11 +10,16 @@ class Scope(object):
 		self.size     = 0
 		self.handle   = None
 		self.fmt = fmt 
-		self.title = ''
+		self.plot_properties = {}
+		self.plot_properties['ylim']  = [Queue(), (-1,1), True, lambda self: self.ax.set_ylim (self.plot_properties['ylim'][1])]
+		self.plot_properties['title'] = [Queue(), ''    , True, lambda self: self.ax.set_title(self.plot_properties['title'][1])]
 
 	def work(self):
 		if self.ax is None:
 			return
+	
+
+		# Data plotting using queues
 		data = None
 		if len(self.overflow) > 0 and self.size < len(self.buffer):
 			data = self.overflow.pop()
@@ -36,14 +41,34 @@ class Scope(object):
 			if self.handle is None:
 				self.handle, = self.ax.plot(np.arange(len(self.buffer)), self.buffer, self.fmt)
 				self.ax.set_xlim((0,len(self.buffer)))
-				self.ax.title(self.title)
 			else:
 				self.handle.set_ydata(self.buffer)
 			self.size = 0
 			self.ax.figure.canvas.draw()
 
+		# update plot properties
+		for key in self.plot_properties:
+			prop = self.plot_properties[key]
+			if not prop[0].empty():
+				new_value = prop[0].get()
+				prop[1] = new_value
+				prop[2] = True
+
+			if prop[2]:
+				prop[2] = False
+				prop[3](self)
+
+	def set_property(self, key, value):
+		self.plot_properties[key][0].put(value)
+	
 	def set_title(self, title):
-		self.title = title
+		self.set_property('title', title)
+
+	def set_ylim(self, top, bot=None):
+		if bot is None:
+			self.set_property('ylim', (-top, top))
+		else:
+			self.set_property('ylim', ( bot, top))
 
 	def set_ax(self, ax):
 		self.ax = ax
