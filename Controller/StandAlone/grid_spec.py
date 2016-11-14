@@ -45,8 +45,13 @@ class Scope(object):
 	def set_ax(self, ax):
 		self.ax = ax
 		self.handle = None
+	
+	def set_grid(self, geom, loc):
+		self.ax = plt.subplot2grid(geom, loc, colspan = 2, rowspan = 2)
+		self.handle = None
+		
 
-def partition(modules):
+def partition(modules, res=2):
 	plt.gcf().clf()
 	rows = 2 
 
@@ -57,15 +62,15 @@ def partition(modules):
 	size = N*rows
 	cols = int(size/rows)
 	rows = int(rows)
-	geom = (rows, cols)
+	geom = (rows*res, cols*res)
 	loc  = [0, 0]
 	for m in modules:
-		ax1 = plt.subplot2grid(geom, loc)
+		ax1 = plt.subplot2grid(geom, loc, colspan = res, rowspan = res)
 		m.set_ax(ax1)
-		loc[1] += 1
-		if loc[1] >= cols:
+		loc[1] += res
+		if loc[1] >= cols*res:
 			loc[1] = 0
-			loc[0] += 1
+			loc[0] += res
 	plt.show(block=False)
 	plt.gcf().canvas.draw()
 

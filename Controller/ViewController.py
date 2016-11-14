@@ -1,4 +1,5 @@
 from   PlotController import PlotController
+from   SongLyrics import get_lyric
 from   Parent.Box import Box
 from   Queue import Queue
 from   unicurses import *
@@ -183,6 +184,48 @@ class ViewController(Box):
 
 		elif self.command == 'poff':
 			self.plot_controller.rm_module(self.selected)
+
+		elif self.command == 'random' or self.command == 'rand':
+			os.write(self.source_fd, get_lyric()[:-1])
+
+		elif self.command == 'help' or self.command == '?':
+			msgs = self.selected.cmd_info()
+			max_info_len = 0
+			max_cmd_len = 0
+			for msg in msgs:
+				cmd = msg[0]
+				info = msg[1]
+				if len(cmd) > max_cmd_len:
+					max_cmd_len = len(cmd)
+				if len(info) > max_info_len:
+					max_info_len = len(info)
+
+			cmd_infos = []
+			for msg in msgs:
+				pad = ' ' * (max_cmd_len - len(msg[0]))
+				cmd_infos.append(msg[0] + pad + ' : ' + msg[1])
+
+			height = len(msgs) + 4 
+			width  = max_cmd_len + max_info_len + 5 
+			lines, cols = getmaxyx(Box.stdscr)
+			starty = (lines-height)/2
+			startx = (cols-width)/2
+			msg_box = Box(0,0,0,0)
+			msg_box.add_label(self.selected.__class__.__name__)
+			msg_box.add_label('')
+			for cmd_info in cmd_infos:
+				msg_box.add_label(cmd_info)
+			msg_box.resize(height, width)
+			msg_box.move(starty, startx)
+			msg_box.draw()
+			while True:
+				c = getch()
+				if c >= 0 and c < 256:
+					break
+			msg_box.erase()
+			self.draw()
+		else:
+			self.selected.interpret_cmd(self.command)
 
 	def work(self):
 		if not self.enable:

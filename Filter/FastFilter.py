@@ -89,7 +89,7 @@ class FastFilter(FirFilter):
 
 		if fsync_hack:
 			if scope is not None:
-				scope.queue.put(filtered)
+				scope.put(filtered)
 				scope.set_ylim(1, -1)
 
 			filtered_abs = np.abs(filtered)

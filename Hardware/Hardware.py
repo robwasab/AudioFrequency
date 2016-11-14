@@ -45,8 +45,12 @@ class Microphone(Module):
 	def callback(self, in_data, frame_count, time_info, status):
 		audio = np.fromstring(in_data, dtype=np.float32)
 		power = np.sum(audio**2)
-		if self.output is not None and power > 1:
+		if self.output is not None and power > 0.25:
 			self.output.input.put(audio)
+			if self.scope is not None:
+				self.scope.set_fft(True)
+				self.scope.set_fft_fs(44.1E3)
+				self.scope.put(audio)
 		return (audio, pyaudio.paContinue)
 	
 	def quit(self, all):

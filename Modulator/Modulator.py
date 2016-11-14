@@ -11,66 +11,47 @@ class Modulator(Module):
 			del kwargs['fs']
 
 			kw = 'fc'
-			fc = float(kwargs['fc'])
-			self.n  = int(np.round(self.fs/fc))
-			self.fc = self.fs/self.n
-			#self.log('User fc: %.3f -> %.3f'%(fc,self.fc))
+			self.fc = float(kwargs['fc'])
+			self.osc_phase = Integrator(self.fc/self.fs)
 			del kwargs['fc']
 
 			self.offset = 0
 			if kwargs.has_key('offset'):
 				self.offset = float(kwargs['offset'])
 
+			if self.box is not None:
+				self.box_fc = self.box.add_label('fm: %.1f'%self.fc)
+
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise ke
 	
-		w  = 2.0 * np.pi * self.fc
-		ns = np.arange(0, int(self.n))
-		fs = self.fs
-
-		self.wavelet = np.sin(w*ns/self.fs)	
-		self.incomplete = 0
-
-		if self.debug:
-			self.log('fs: %f'%self.fs)
-			self.log('fc: %f'%self.fc)
-			#plt.stem(self.wavelet)
-			#plt.show(block = False)
-	
 	def reset(self):
 		Module.reset(self)
-		self.incomplete = 0
+		#self.incomplete = 0
+		osc_phase.reset()
 
-	
 	def process(self, data):
-		if self.incomplete > 0:
-			if self.incomplete > len(data):
-				offset = self.n - self.incomplete
-				data[0:] = data[0:]*self.wavelet[offset:offset+len(data)]
-				self.incomplete -= len(data)
-
-				if self.debug:
-					self.log('incomplete   : %d'%self.incomplete)
-					self.log('wavelet size : %d'%self.n)
-				return data
-			else:
-				data[0:self.incomplete] = data[0:self.incomplete] * self.wavelet[-self.incomplete:]
-
-		for k in xrange(self.incomplete,len(data),self.n):
-			if k+self.n > len(data):
-				leftover = len(data)-k
-				if self.debug:
-					self.log('leftover     : %d'%leftover)
-
-				data[k:k+leftover] *= self.wavelet[:leftover]
-
-				self.incomplete = self.n - leftover 
-				if self.debug:
-					self.log('incomplete   : %d'%self.incomplete)
-					self.log('wavelet size : %d'%self.n)
-			else:
-				data[k:k+self.n] *= self.wavelet
+		for n in xrange(len(data)):
+			osc = 2.0*np.sin(2.0*np.pi*self.osc_phase.value())
+			data[n] *= osc
+			self.osc_phase.work(1.0)
 		return data
 
+class Integrator(object):
+	def __init__(self, ki = 1):
+		self.lasty = 0
+		self.ki = ki
+		self.lastx = 0
 
+	def value(self):
+		return self.lasty
+
+	def work(self, input):
+		self.lasty = self.ki*self.lastx + self.lasty
+		self.lastx = input
+		return self.lasty 
+	
+	def reset(self):
+		self.lasty = 0
+		self.lastx = 0

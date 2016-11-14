@@ -73,7 +73,7 @@ class Autogain(Module):
 				self.peaks[n] = peak
 
 		if self.scope is not None:
-			self.scope.queue.put(self.peaks)
+			self.scope.put(self.peaks)
 
 		self.log('gain: %f'%self.gain)
 		self.log('rssi: %f'%self.rssi)

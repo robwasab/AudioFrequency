@@ -10,6 +10,7 @@ from   numpy.fft import fft
 from   time import time
 import numpy as np
 import pdb
+import sys
 
 class Equalizer(FastFilter):
 	def __init__(self, *args, **kwargs):
@@ -19,7 +20,7 @@ class Equalizer(FastFilter):
 			corr_prefix  = np.fliplr([kwargs[kw]])[0]
 
 			# M = Decimation factor
-			self.M = 4
+			self.M = 8
 			dec_corr_prefix = corr_prefix[np.arange(0, len(corr_prefix), self.M)]
 			dec_corr_prefix_power = np.sum(dec_corr_prefix**2)
 			dec_corr_prefix /= dec_corr_prefix_power
@@ -90,7 +91,7 @@ class Equalizer(FastFilter):
 	def process(self, data):
 		start = time()
 		decimate_indecies = np.arange(self.skip, len(data), self.M) 
-		index, s = self.conv_chunk_chunk(data[decimate_indecies], fsync_hack=True, flush=False, scope=self.scope)
+		index, s = self.conv_chunk_chunk(data[decimate_indecies], fsync_hack=True, flush=False, scope=None)
 		self.skip = (self.M - ((len(data)-self.skip) % self.M))%self.M
 		stop = time()
 		corre_time = stop-start
@@ -128,10 +129,16 @@ class Equalizer(FastFilter):
 			self.log('index: %d'%index)
 
 		start = time()
-		fir = self.equalizer(self.read_all()).tolist()
-		self.equal.set_bcoef(s*np.array(fir))
+		fir = np.transpose(s*np.array(self.equalizer(self.read_all()).tolist()))[0]
+		self.equal.set_bcoef(fir)
 		stop = time()
 		solve_time = stop-start
+		
+		if self.scope is not None:
+			self.scope.set_size(len(fir))
+			self.scope.set_fft(True)
+			self.scope.set_fft_fs(44.1E3)
+			self.scope.put(fir)
 
 		start = time()
 		equalized_header = self.equal.conv_chunk_chunk(data, fsync_hack=False, flush=False)	

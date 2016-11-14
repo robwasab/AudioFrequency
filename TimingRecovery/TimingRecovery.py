@@ -2,6 +2,7 @@ from   Parent.Module  import Module
 from   Functions.util import quantize
 import numpy as np
 import pdb
+import sys
 
 class TimingRecovery(Module):
 	def __init__(self, *args, **kwargs):
@@ -65,7 +66,12 @@ class TimingRecovery(Module):
 				self.offset = -self.M
 			#self.log(self.offset)
 
-		return down_samples[:k]
+		result = down_samples[:k]
+		if self.scope is not None:
+			self.scope.set_ylim(4)
+			self.scope.set_size(2**9)
+			self.scope.put(result)
+		return result
 
 		#for skip_by_m in range(self.start_index, len(data), self.M):
 		#	#print self.offset

@@ -17,27 +17,37 @@ class BandPassFilter(FastFilter):
 		# Dummy 'bcoef'
 		kwargs['bcoef'] = [1.0]
 		FastFilter.__init__(self, *args, **kwargs)
-		self.taps = 128
 		kw = ''
 		try:
 			kw = 'fc'
 			self.fc = kwargs[kw]
 			kw = 'fs'
 			self.fs = kwargs[kw]
-			for kw in kwargs:
-				if kw == 'taps':
-					self.taps = kwargs[kw]
+			kw = 'bw'
+			self.bw = kwargs[kw]
+			kw = 'taps'
+			self.taps = kwargs[kw]
+			self.fir_lp = 2.0*signal.firwin(self.taps, self.bw/(self.fs/2.0))
+			self.set_fc(self.fc)
+			if self.box is not None:
+				self.box_fc   = self.box.add_label('fc: %.1f'%self.fc)
+				self.box_taps = self.box.add_label('taps: %d'%self.taps)
+
 		except KeyError as ke:
 			self.print_kw_error(kw)
 			raise(ke)
 
-		self.fir_lp = 2.0*signal.firwin(self.taps, 3E3/(self.fs/2.0))
-		self.set_fc(self.fc)
 	
 	def process(self, audio):
 		power = np.sum(audio**2)
-		if power > 0.05:
-			return FastFilter.process(self, audio)
+		if power > 0.005:
+			filtered = FastFilter.process(self, audio)
+			if self.scope is not None:
+				self.scope.set_fft(True)
+				self.scope.set_fft_fs(44.1E3)
+				self.scope.put(filtered)
+			return filtered
+			
 
 	def set_fc(self, fc):
 		bcoef = self.fir_lp * np.cos(2.0*np.pi*self.fc*np.arange(0,self.taps)/self.fs)

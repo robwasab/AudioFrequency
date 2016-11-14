@@ -12,7 +12,7 @@ BORDER = 2
 class Box(object):
 	init_ncurses = True
 	stdscr = -1
-	def __init__(self, line, col, height, width, debug=False):
+	def __init__(self, line, col, height, width):
 		if Box.init_ncurses and len(sys.argv) > 1:
 			stdscr = initscr()
 			if has_colors() != ERR:

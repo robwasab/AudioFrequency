@@ -29,4 +29,8 @@ class Microphone(Module):
 		#data *= 0.1
 		for n in xrange(0,N):
 			self.output.input.put(data[n*self.chunk_size:(n+1)*self.chunk_size])
+		if self.scope is not None:
+			self.scope.set_fft(True)
+			self.scope.set_fft_fs(44.1E3)
+			self.scope.put(data)
 		return None

@@ -33,7 +33,7 @@ class Demodulator(Module):
 	def process(self, data):
 		demod, freqs = self.C_process(data)
 		if self.scope is not None:
-			self.scope.queue.put(freqs)
+			self.scope.put(freqs)
 			self.scope.set_ylim(self.fc+100, self.fc-100)
 		return demod
 		#return self.Python_process(data)

@@ -2,7 +2,6 @@ from   Scope import Scope
 from   Queue import Queue
 import numpy as np
 
-
 class PlotController(object):
 	mpl_inited = False
 
@@ -54,7 +53,7 @@ class PlotController(object):
 		for m in self.modules:
 			ax1 = self.plt.subplot2grid(geom, loc)
 			m.scope.set_ax(ax1)
-			ax1.set_title(m.__class__.__name__)
+			m.scope.set_title(m.__class__.__name__)
 			loc[1] += 1
 			if loc[1] >= cols:
 				loc[1] = 0

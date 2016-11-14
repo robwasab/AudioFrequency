@@ -94,7 +94,6 @@ class Module(Thread):
 			self.box_queue_size = self.box.add_label('0')
 			self.box_queue_bar  = self.box.add_bar(0)
 			self.box_plot_on    = self.box.add_label('plot: off')
-			self.box_log        = self.box.add_label('log:')
 		else:
 			self.box = None
 
@@ -106,6 +105,9 @@ class Module(Thread):
 		self.mutex.acquire()
 		self.scope = scope
 		self.mutex.release()
+	
+	def num_scopes(self):
+		return 1
 
 	def work(self):
 		if not self.input.empty():
@@ -147,6 +149,8 @@ class Module(Thread):
 			self.join()	
 
 	def start(self):
+		if self.box is not None:
+			self.box_log = self.box.add_label('log:')
 		if not self.main:
 			Thread.start(self)
 		if self.output != None:
@@ -233,6 +237,15 @@ class Module(Thread):
 		for key in self.times:
 			msg += '%s, %.3f ms\n'%(key,1000.0*np.average(self.times[key]))
 		self.log(msg)
+	
+	def cmd_info(self):
+		msgs = [('pon' , 'enable plot'),
+			('poff', 'disable plot'),
+			('q'   , 'quit the program')]
+		return msgs
+	
+	def interpret_cmd(self, cmd):
+		return
 
 class MyQueue(object):
 	def __init__(self, memory_type, memory_size = 1024):

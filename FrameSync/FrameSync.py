@@ -75,7 +75,6 @@ class FrameSync(FastFilter):
 				self.log('bytes in queue: %f'%(self.queue.size()/4.0))
 				self.print_pam(pam)
 				self.state = 'read_payload'
-		
 		text = None
 
 		if self.state == 'read_payload':
