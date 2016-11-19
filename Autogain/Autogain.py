@@ -55,11 +55,10 @@ class Autogain(Module):
 			self.lowp.reset()
 			self.log('resetting...')
 
-		if self.scope is not None:
-			self.scope.set_ylim(1.5)
+		if self.debug and self.plt is not None:
 			self.peaks = np.zeros(len(data))
-		#	self.compa = np.zeros(len(data))
-		#	self.lowpa = np.zeros(len(data))
+			self.compa = np.zeros(len(data))
+			self.lowpa = np.zeros(len(data))
 
 		for n in xrange(len(data)):
 			recv = self.gain*data[n]
@@ -69,12 +68,32 @@ class Autogain(Module):
 			lowp = self.lowp.work(comp)
 			self.gain = lowp
 			data[n] = recv
-			if self.scope is not None:
+			if self.debug and self.plt is not None:
 				self.peaks[n] = peak
+				self.compa[n] = comp
+				self.lowpa[n] = lowp
 
-		if self.scope is not None:
-			self.scope.put(self.peaks)
+		if self.debug and self.plt is not None:
+			self.plt.figure(self.fig)
+			self.plt.gcf().clf()
+			self.plt.subplot(411)
+			self.plt.plot(data)
+			self.plt.title('data')
 
+			self.plt.subplot(412)
+			self.plt.plot(self.peaks)
+			self.plt.title('peaks')
+
+			self.plt.subplot(413)
+			self.plt.plot(self.compa)
+			self.plt.title('compa')
+			self.plt.gca().set_ylim((-1,6))
+
+			self.plt.subplot(414)
+			self.plt.plot(self.lowpa)
+			self.plt.title('low pass')
+
+			self.plt.show()
 		self.log('gain: %f'%self.gain)
 		self.log('rssi: %f'%self.rssi)
 		self.blog('gain: %.3f'%self.gain)

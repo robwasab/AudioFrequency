@@ -7,11 +7,8 @@
 #include "LockDetector.h"
 #define PI M_PI
 
-static double fc, fs, F, gain;
+static double fc, fs, F;
 static float last_vco_phase;
-static float rc_tau;
-static float rc_constant;
-static float ref;
 static Integrator * vco_integrator;
 static LoopIntegrator * phase_integrator;
 static LowPass * ilp;
@@ -19,7 +16,6 @@ static LowPass * qlp;
 static LowPass * ilp_signal;
 static LowPass * qlp_signal;
 static LowPass * freq_filter;
-static LowPass * input_thresh_lp;
 static LockDetector * lock_detector;
 static double HZ_PER_RAD = 0.0;
 
@@ -84,7 +80,7 @@ inline static float work(float input, float * freq_est)
 	// Downconvert analog
 	float in_phase_signal = 2.0*ilp_signal->work(ilp_signal, real_input*cos_vco);
 
-	float qu_phase_signal = 2.0*qlp_signal->work(qlp_signal, real_input*sin_vco);
+	//float qu_phase_signal = 2.0*qlp_signal->work(qlp_signal, real_input*sin_vco);
 
 	//locked = lock_detector->work(lock_detector, in_phase_signal, qu_phase_signal);
 
@@ -119,15 +115,15 @@ inline static float work(float input, float * freq_est)
 
 static PyObject * process(PyObject * self, PyObject * args)
 {
-	PyArrayObject * in_array;
-	PyObject * out_array;
-	NpyIter *  in_iter;
-	NpyIter * out_iter;
-	NpyIter *  db_iter;
-	NpyIter_IterNextFunc * in_iternext;
-	NpyIter_IterNextFunc * out_iternext;
-	NpyIter_IterNextFunc * db_iternext;
-	PyObject * db_array;
+	PyArrayObject * in_array = NULL;
+	PyObject * out_array = NULL;
+	NpyIter *  in_iter = NULL;
+	NpyIter * out_iter = NULL;
+	NpyIter *  db_iter = NULL;
+	NpyIter_IterNextFunc * in_iternext = NULL;
+	NpyIter_IterNextFunc * out_iternext = NULL;
+	NpyIter_IterNextFunc * db_iternext = NULL;
+	PyObject * db_array = NULL;
 
 	if (!PyArg_ParseTuple(args, "O!", 
 				&PyArray_Type, &in_array))
